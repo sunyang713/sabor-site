@@ -1,0 +1,393 @@
+/* ---------------------------------------------------------------------------------------------------------------
+global styles
+------------------------------------------------------------------------------------------------------------------ */
+
+
+body
+{
+	margin: 0;
+	padding: 0;
+	font: 85% arial, hevetica, sans-serif;
+	text-align: center;
+	color: white;
+	background: black
+		url(../images/background.jpg);
+	background-repeat: repeat-x;
+}
+
+a:link { color: white; }
+a:visited { color: #b93411; }
+a:focus { color: Orange; }
+a:hover { color: #7d8206; }
+a:active { color: red; }
+h1, h2, h3, h4, h5, h6 { margin: 0 0 .5em; }
+0
+h1 {
+	font: 250%  "monotype corsiva", times, "times new roman", serif purple;
+	padding: 5px 5px 5px 5px;
+	padding-color:whitesmoke;
+	border: 5px;
+}
+HR
+{
+	color: orange;
+}
+
+h2
+{
+	color: Orange;
+	font: 150% papyrus,"monotype corsiva", times, "times new roman", serif;
+}
+
+h2 a { text-decoration: none; }
+
+h3
+{
+	color: #7d8206;
+	font: 110% georgia, times, "times new roman", serif;
+}
+
+h4
+{
+	color: orange;
+	font: 100%  papyrus, "monotype corsiva", times, "times new roman", serif;
+}
+table {
+	font: Times, "Times new roman";
+	
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------
+container styles
+--------------------------------------------------------------------------------------------------------------------- */
+
+#container{
+	margin: 1em auto;
+	width: 900px;
+	height: auto;
+	text-align: left;
+	background: url(../images/Sa-background2.jpg);
+    	border-style:solid;
+    	border-width:5px;
+    	border-color: purple;
+
+
+
+
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------
+header styles
+-------------------------------------------------------------------------------------------------------------------- */
+
+#header
+{
+	height: 150px;
+	width: 100%;
+	margin-left:50px;
+	margin-right:50px;
+	margin-top:10px;
+	background: url(images/headerII.jpg) no-repeat 0 0;
+}
+
+#header h1
+{
+	position: absolute;
+	left: -500em;
+}
+
+
+
+
+/* --------------------------------------------------------------------------------------------------------------------
+mainnav styles
+--------------------------------------------------------------------------------------------------------------------- */
+
+#mainnav
+{
+	background: url(../images/background2.jpg)
+	color: white;
+	padding: 0 0;
+	margin-bottom: 22px;
+	margin-top:30px;
+	margin-left:70px;
+	margin-right:70px;
+	
+}
+
+#mainnav ul
+{
+	margin: 0 0 0 0;
+	padding: 0;
+	list-style-type: none;
+	
+}
+
+#mainnav li
+{
+	display: inline;
+	padding: 0 0;
+	
+}
+
+#mainnav li a
+{
+	text-decoration: none;
+	color: #272900;
+}
+
+#mainnav li a:hover
+{
+	text-decoration: none;
+	color: #fff;
+	background-color: #272900;
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------------------
+menu styles
+----------------------------------------------------------------------------------------------------------------------- */
+
+#menu
+{
+	float: right;
+	width: 300px;
+	height: 300px;
+	border-left: 1px solid grey;
+	padding-left: 10px;
+}
+
+#menu ul
+{
+	margin: 1em 0;
+	padding: 0;
+}
+
+#menu ul li
+{
+	margin: 0 0 1em;
+	padding: 0;
+	list-style-type: none;
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------------------
+contents styles
+---------------------------------------------------------------------------------------------------------------------- */
+
+#contents
+{
+	float: left;
+	width: 800px;
+	height: auto;
+	margin: 0 20px 20px 20px;
+}
+
+#contents p { line-height: 165%; }
+.blogentry { border-bottom: 1px; }
+.blogentry p {
+	font: "times new roman";
+}
+.blogentry ul
+{
+	text-align: right;
+	margin: 1em 0;
+	padding: 0;
+	font-size: 95%;
+	
+}
+
+.blogentry li
+{
+	list-style: square;
+	display: inline;
+	margin: 0;
+	padding: 0 0 0 7px;
+}
+
+.blogentry img {
+	margin: 5px 15px 5px 5px;
+	
+	
+}
+
+
+.imagefloat
+{
+	float: left;
+	padding: 2px;
+	border: 1px solid #9FA41D;
+	margin: 0 0 5px 5px;
+}
+
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------
+footer styles
+---------------------------------------------------------------------------------------------------------------------- */
+
+
+#footer {
+	clear: both;
+	height: 60px;
+	font-family: Tahoma, Arial, Helvetica, Sans-serif;
+	font-size: 12px;
+	color: #c9c9c9;
+	border-top: 1px solid grey;
+	line-height: 18px;
+}
+
+#footer a {
+	color: #c9c9c9;
+	text-decoration: none;
+}
+
+#footer : hover {
+	color: #db6d16;
+}
+
+#footer img {
+	margin-left: 5px;
+}
+#footer #altnav{
+	width: 890px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#footer #altnav p{
+	float: right;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------
+MAPS
+---------------------------------------------------------------------------------------------------------------------- */
+
+<style type="text/css">
+	dl.image_map {display:block; width:850px; height:603px; background:url(http://www.image-maps.com/uploaded_files/7201009091818101_world.jpg); position:relative; 
+margin:2px auto 2px auto;}
+	a.LINK0 {left:377px; top:234px; background:transparent;}
+	a.LINK0 {display:block; width:33px; height:0; padding-top:16px; overflow:hidden; position:absolute;}
+	a.LINK0:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK1 {left:535px; top:304px; background:transparent;}
+	a.LINK1 {display:block; width:33px; height:0; padding-top:16px; overflow:hidden; position:absolute;}
+	a.LINK1:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK2 {left:521px; top:272px; background:transparent;}
+	a.LINK2 {display:block; width:31px; height:0; padding-top:12px; overflow:hidden; position:absolute;}
+	a.LINK2:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK3 {left:550px; top:278px; background:transparent;}
+	a.LINK3 {display:block; width:37px; height:0; padding-top:14px; overflow:hidden; position:absolute;}
+	a.LINK3:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK4 {left:429px; top:352px; background:transparent;}
+	a.LINK4 {display:block; width:34px; height:0; padding-top:18px; overflow:hidden; position:absolute;}
+	a.LINK4:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK5 {left:387px; top:289px; background:transparent;}
+	a.LINK5 {display:block; width:34px; height:0; padding-top:18px; overflow:hidden; position:absolute;}
+	a.LINK5:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK6 {left:236px; top:286px; background:transparent;}
+	a.LINK6 {display:block; width:21px; height:0; padding-top:16px; overflow:hidden; position:absolute;}
+	a.LINK6:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK7 {left:237px; top:270px; background:transparent;}
+	a.LINK7 {display:block; width:21px; height:0; padding-top:16px; overflow:hidden; position:absolute;}
+	a.LINK7:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK8 {left:248px; top:206px; background:transparent;}
+	a.LINK8 {display:block; width:25px; height:0; padding-top:20px; overflow:hidden; position:absolute;}
+	a.LINK8:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK9 {left:243px; top:228px; background:transparent;}
+	a.LINK9 {display:block; width:25px; height:0; padding-top:20px; overflow:hidden; position:absolute;}
+	a.LINK9:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK10 {left:266px; top:219px; background:transparent;}
+	a.LINK10 {display:block; width:16px; height:0; padding-top:15px; overflow:hidden; position:absolute;}
+	a.LINK10:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK11 {left:271px; top:232px; background:transparent;}
+	a.LINK11 {display:block; width:31px; height:0; padding-top:15px; overflow:hidden; position:absolute;}
+	a.LINK11:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK12 {left:212px; top:298px; background:transparent;}
+	a.LINK12 {display:block; width:31px; height:0; padding-top:15px; overflow:hidden; position:absolute;}
+	a.LINK12:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK13 {left:264px; top:423px; background:transparent;}
+	a.LINK13 {display:block; width:31px; height:0; padding-top:15px; overflow:hidden; position:absolute;}
+	a.LINK13:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK14 {left:257px; top:284px; background:transparent;}
+	a.LINK14 {display:block; width:22px; height:0; padding-top:15px; overflow:hidden; position:absolute;}
+	a.LINK14:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK15 {left:276px; top:285px; background:transparent;}
+	a.LINK15 {display:block; width:22px; height:0; padding-top:15px; overflow:hidden; position:absolute;}
+	a.LINK15:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK16 {left:257px; top:298px; background:transparent;}
+	a.LINK16 {display:block; width:22px; height:0; padding-top:15px; overflow:hidden; position:absolute;}
+	a.LINK16:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.LINK17 {left:280px; top:301px; background:transparent;}
+	a.LINK17 {display:block; width:32px; height:0; padding-top:15px; overflow:hidden; position:absolute;}
+	a.LINK17:hover  {background:transparent; border:1px dashed black; color:black;}
+	a.BLINK {left:848px; top:601px; background:transparent;}
+	a.BLINK {display:block; width:202px; height:17px; overflow:hidden; position:absolute; font-size:0px;}
+	a.BLINK:hover  {background:black; border:1px dashed white; color:white; font-size:9px;}
+</style>
+
+<dl class="image_map">
+	<dd><a class="LINK0" title="Flamenco" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/1/1QcMt1oIOW0 "></a></dd>
+	<dd><a class="LINK1" title="Bhangara-Guest" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/4/BUkO67mV3dw"></a></dd>
+	<dd><a class="LINK2" title="Bhangara I" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/3/ugZ9Y9Hls3c "></a></dd>
+	<dd><a class="LINK3" title="Bhangara II" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/4/7G-j-xgYyJs "></a></dd>
+	<dd><a class="LINK4" title="African (Orisha)" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/0/BCO9iVtnx6A "></a></dd>
+	<dd><a class="LINK5" title="African" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/1/H9DCtD6LhW8 "></a></dd>
+	<dd><a class="LINK6" title="Conga" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/5/B_KP2xveO9I "></a></dd>
+	<dd><a class="LINK7" title="Salsa" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/4/7G-j-xgYyJs "></a></dd>
+	<dd><a class="LINK8" title="Hip-Hop I" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/4/7G-j-xgYyJs "></a></dd>
+	<dd><a class="LINK9" title="Hip-Hop II" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/7/0yCl-DvVhfc "></a></dd>
+	<dd><a class="LINK10" title="Hip-Hop III" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/10/r4Y-PeaO8BA "></a></dd>
+	<dd><a class="LINK11" title="Jazz" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/2/OJAxzHVssyQ "></a></dd>
+	<dd><a class="LINK12" title="Punta" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/3/MbhEc7nqL9Y "></a></dd>
+	<dd><a class="LINK13" title="Tango" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/1/1QcMt1oIOW0 "></a></dd>
+	<dd><a class="LINK14" title="Merenegue I" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/3/MbhEc7nqL9Y "></a></dd>
+	<dd><a class="LINK15" title="Merengue II" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/9/wvkcAAwBlHM "></a></dd>
+	<dd><a class="LINK16" title="Bachata I" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/4/7G-j-xgYyJs "></a></dd>
+	<dd><a class="LINK17" title="Bachata II" href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/2/n8W4FN5t3I8 "></a></dd>
+</dl>
+
+<!-- Image map text links - Start - If you do not wish to have text links under your image map, you can move or delete this DIV -->
+<div style="text-align:center; font-size:12px; font-family:verdana; margin-left:auto; margin-right:auto; width:850px;">
+	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/1/1QcMt1oIOW0 " title="Flamenco">Flamenco</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/4/BUkO67mV3dw" title="Bhangara-Guest">Bhangara-Guest</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/3/ugZ9Y9Hls3c " title="Bhangara I">Bhangara I</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/4/7G-j-xgYyJs " title="Bhangara II">Bhangara II</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/0/BCO9iVtnx6A " title="African (Orisha)">African (Orisha)</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/1/H9DCtD6LhW8 " title="African">African</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/5/B_KP2xveO9I " title="Conga">Conga</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/4/7G-j-xgYyJs " title="Salsa">Salsa</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/4/7G-j-xgYyJs " title="Hip-Hop I">Hip-Hop I</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/7/0yCl-DvVhfc " title="Hip-Hop II">Hip-Hop II</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/10/r4Y-PeaO8BA " title="Hip-Hop III">Hip-Hop III</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/2/OJAxzHVssyQ " title="Jazz">Jazz</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/3/MbhEc7nqL9Y " title="Punta">Punta</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/1/1QcMt1oIOW0 " title="Tango">Tango</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/3/MbhEc7nqL9Y " title="Merenegue I">Merenegue I</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/9/wvkcAAwBlHM " title="Merengue II">Merengue II</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/BF195EC79B4145B8/4/7G-j-xgYyJs " title="Bachata I">Bachata I</a>
+ | 	<a style="text-decoration:none; color:black; font-size:12px; font-family:verdana;" 
+href="http://www.youtube.com/user/SaborDanceTroupe#p/c/68E35756DCD1823E/2/n8W4FN5t3I8 " title="Bachata II">Bachata II</a>
+</div>
+<!-- Image map text links - End - -->
+
+            
+            
