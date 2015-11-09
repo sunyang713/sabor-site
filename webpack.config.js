@@ -1,16 +1,16 @@
 'use strict';
 
-var webpack = require('webpack'),  
+var webpack = require('webpack'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   path = require('path'),
   srcPath = path.join(__dirname, 'src');
 
-module.exports = {  
+module.exports = {
   target: 'web',
   cache: true,
   entry: {
     index: path.join(srcPath, 'index.js'),
-    common: ['react', 'react-router']//, 'alt']
+    common: ['react', 'react-dom', 'react-bootstrap', 'react-router']//, 'alt']
   },
   resolve: {
     root: srcPath,
@@ -27,7 +27,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.jsx?$/, exclude: /(node_modules)/, loader: 'babel-loader' },
-      { test: /\.json$/, loader: "json" },
+      { test: /\.json$/, loader: "json-loader" },
       { test: /\.css$/, loader: "style-loader!css-loader" },
       { test: /\.png$/, loader: "url-loader?limit=100000" },
       { test: /\.jpg$/, loader: "file-loader" },
@@ -43,6 +43,10 @@ module.exports = {
     }),
     new webpack.NoErrorsPlugin()
   ],
+  node: {
+    net: "empty",
+    tls: "empty"
+  },
 
   debug: true,
   devtool: 'eval-cheap-module-source-map',
