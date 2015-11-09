@@ -15,7 +15,18 @@ module.exports = {
   resolve: {
     root: srcPath,
     extensions: ['', '.js'],
-    modulesDirectories: ['node_modules', 'src']
+    modulesDirectories: ['node_modules', 'src'],
+    alias: {
+      // Bind version of jquery
+      jquery: "jquery-2.1.4",
+
+      // Bind version of jquery-ui
+      "jquery-ui": "jquery-ui-1.10.3",
+
+      // jquery-ui doesn't contain a index file
+      // bind module to the complete module
+      "jquery-ui-1.10.3$": "jquery-ui-1.10.3/ui/jquery-ui.js",
+    }
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -26,13 +37,25 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.jsx?$/, exclude: /(node_modules)/, loader: 'babel-loader' },
+      // required to write "require('./style.css')"
+      { test: /\.css$/, exclude: /\.useable\.css$/, loader: "style-loader!css-loader" },
+
+      // required for bootstrap icons.
+      // the url-loader uses DataUrls. 
+      // the file-loader emits files. 
+      { test: /\.(woff|woff2)$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+      { test: /\.ttf$/, loader: "file-loader" },
+      { test: /\.eot$/, loader: "file-loader" },
+      { test: /\.svg$/, loader: "file-loader" },
+
+      // required for react jsx
+      { test: /\.js$/, exclude: /(node_modules)/, loader: "babel-loader" },
+      { test: /\.jsx$/, loader: "babel-loader" },
+
+      // misc
       { test: /\.json$/, loader: "json-loader" },
-      { test: /\.css$/, loader: "style-loader!css-loader" },
       { test: /\.png$/, loader: "url-loader?limit=100000" },
-      { test: /\.jpg$/, loader: "file-loader" },
-      { test: /\.css$/, exclude: /\.useable\.css$/, loader: "style!css" },
-      { test: /\.useable\.css$/, loader: "style/useable!css" }
+      { test: /\.jpg$/, loader: "file-loader" }
     ]
   },
   plugins: [
@@ -41,7 +64,14 @@ module.exports = {
       inject: true,
       template: 'src/index.html'
     }),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.ProvidePlugin({
+      // Automtically detect jQuery and $ as free var in modules
+      // and inject the jquery library
+      // This is required by many jquery plugins
+      jQuery: "jquery",
+      $: "jquery"
+    })
   ],
   node: {
     net: "empty",
