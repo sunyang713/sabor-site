@@ -3,25 +3,33 @@ import React from 'react';
 
 class Event extends React.Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { };
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: '',
+      name: '',
+      description: ''
+    };
+  }
 
-  // componentDidMount() {
-
-  // }
+  componentDidMount() {
+    this.props.FB.api(
+      this.props.id,
+      'GET',
+      { access_token: this.props.token },
+      function(response) {
+        this.setState({
+          name: response.name,
+          description: response.description
+        })
+      }.bind(this)
+    )
+  }
 
   render() {
-
-    var event = this.props.data;
-    var name = event.name;
-    var description = event.description;
-
     return (
       <div>
-        <p>name: { name }</p>
-        <p>description: { description }</p>
+        <p>Name: { this.state.name }</p>
       </div>
     )
   }
