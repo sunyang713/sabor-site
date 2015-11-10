@@ -2,7 +2,7 @@ import React from 'react';
 import Event from './event';
 
 
-class Events extends React.Component {
+class EventsList extends React.Component {
 
   render() {
 
@@ -21,5 +21,5 @@ class Events extends React.Component {
   }
 }
 
-export default Events;
+export default EventsList;
 

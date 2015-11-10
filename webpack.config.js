@@ -10,23 +10,12 @@ module.exports = {
   cache: true,
   entry: {
     index: path.join(srcPath, 'index.js'),
-    common: ['react', 'react-dom', 'react-bootstrap', 'react-router']//, 'alt']
+    common: ['react', 'react-dom', 'jquery', 'react-bootstrap', 'react-router']//, 'alt']
   },
   resolve: {
     root: srcPath,
     extensions: ['', '.js'],
-    modulesDirectories: ['node_modules', 'src'],
-    alias: {
-      // Bind version of jquery
-      jquery: "jquery-2.1.4",
-
-      // Bind version of jquery-ui
-      "jquery-ui": "jquery-ui-1.10.3",
-
-      // jquery-ui doesn't contain a index file
-      // bind module to the complete module
-      "jquery-ui-1.10.3$": "jquery-ui-1.10.3/ui/jquery-ui.js",
-    }
+    modulesDirectories: ['node_modules', 'src']
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -44,9 +33,9 @@ module.exports = {
       // the url-loader uses DataUrls. 
       // the file-loader emits files. 
       { test: /\.(woff|woff2)$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-      { test: /\.ttf$/, loader: "file-loader" },
-      { test: /\.eot$/, loader: "file-loader" },
-      { test: /\.svg$/, loader: "file-loader" },
+      { test: /\.ttf$/, loader: "file-loader?prefix=font/" },
+      { test: /\.eot$/, loader: "file-loader?prefix=font/" },
+      { test: /\.svg$/, loader: "file-loader?prefix=font/" },
 
       // required for react jsx
       { test: /\.js$/, exclude: /(node_modules)/, loader: "babel-loader" },
@@ -64,14 +53,7 @@ module.exports = {
       inject: true,
       template: 'src/index.html'
     }),
-    new webpack.NoErrorsPlugin(),
-    new webpack.ProvidePlugin({
-      // Automtically detect jQuery and $ as free var in modules
-      // and inject the jquery library
-      // This is required by many jquery plugins
-      jQuery: "jquery",
-      $: "jquery"
-    })
+    new webpack.NoErrorsPlugin()
   ],
   node: {
     net: "empty",

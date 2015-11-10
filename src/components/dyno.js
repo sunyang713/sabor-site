@@ -2,8 +2,9 @@ import React from 'react';
 import Event from './event';
 import Cover from './cover';
 import TeamInfo from './team-info';
-import Events from './events';
+import Events from './events-list';
 import Releve from './releve';
+
 
 var token = '1680042688876649|gaW3PaycGVrYQJR8RLpsBMDLIYI';
 
@@ -33,7 +34,7 @@ class Dyno extends React.Component {
       FB.api(
         '/cusabor/events',
         'GET',
-        { access_token: token, fields: 'id' },
+        { access_token: token, fields: 'id', limit: 3 },
         function(response) {
           var ids = []
           for ( let i in response.data )
@@ -77,19 +78,12 @@ class Dyno extends React.Component {
 
 
         <Cover />
+
+        <button>Hi</button>
+​
         <Events FB={ this.state.FB } ids={ this.state.event_ids } token={ token } />
         <TeamInfo />
         <Releve />
-
-
-
-
-
-
-
-
-
-
 
 
 

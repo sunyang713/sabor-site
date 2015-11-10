@@ -1,5 +1,5 @@
 import React from 'react';
-
+require('./event.css')
 
 class Event extends React.Component {
 
@@ -28,7 +28,7 @@ class Event extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="thing">
         <p>Name: { this.state.name }</p>
       </div>
     )
