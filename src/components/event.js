@@ -1,5 +1,5 @@
 import React from 'react';
-require('./event.css')
+
 
 class Event extends React.Component {
 

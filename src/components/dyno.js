@@ -4,21 +4,25 @@ import Cover from './cover';
 import TeamInfo from './team-info';
 import Events from './events-list';
 import Releve from './releve';
-
+import { Button } from 'react-bootstrap';
+import Modal from './lib/modal';
 
 var token = '1680042688876649|gaW3PaycGVrYQJR8RLpsBMDLIYI';
 
 class Dyno extends React.Component {
 
+
   constructor(props) {
     super(props);
     this.state = {
       FB: {},
-      event_ids: [],
-      picture: {}
+      picture: {},
+      modalID: undefined,
+      showModal: false
     }
   }
 
+  /* Initializes and stores FB object */
   componentDidMount() {
     window.fbAsyncInit = function() {
       FB.init({
@@ -26,33 +30,8 @@ class Dyno extends React.Component {
         xfbml   : true,
         version : 'v2.5'
       });
-
       // Store the FB object thing
       this.setState({ FB: FB });
-
-      // Grab all the events
-      FB.api(
-        '/cusabor/events',
-        'GET',
-        { access_token: token, fields: 'id', limit: 3 },
-        function(response) {
-          var ids = []
-          for ( let i in response.data )
-            ids[i] = response.data[i].id
-          this.setState({ event_ids: ids })
-        }.bind(this)
-      );
-
-      // Get the profile picture
-      FB.api(
-        '/cusabor/picture',
-        'GET',
-        { access_token: token, width: '300' },
-        function(response) {
-          this.setState({ picture: response.data })
-        }.bind(this)
-      );
-
     }.bind(this);
 
     (function(d, s, id){
@@ -64,24 +43,63 @@ class Dyno extends React.Component {
     }(document, 'script', 'facebook-jssdk'));
   }
 
+
+
+
+
+
+  closeModal() {
+    this.setState({ showModal: false });
+  }
+
+  openModal(data) {
+    this.setState({ data: data, showModal: true });
+  }
+
+
+
+
+
   render() {
 
-
+    /* the "info" part is kinda terrible... */
+    let data = {
+      title: 'the title',
+      description: 'the description',
+      imgurl: 'urllll',
+      info: [
+        {key: 'time', value: '1:00'},
+        {key: 'location', value: 'Lerner'},
+        {key: 'date', value: 'May 1st'}
+      ]
+    }
 
     return (
       <div>
-        <p>Here is where the dynamic content will reside</p>
 
 
 
+        <Cover FB={ this.state.FB } token={ token } />
+        <p><Button
+          bsStyle="primary"
+          bsSize="large"
+          onClick={this.openModal.bind(this)}
+        >
+          Launch demo modal
+        </Button></p>
 
 
+        <Modal
+          show={ this.state.showModal }
+          open={ this.openModal }
+          close={ this.closeModal.bind(this) }
+          data={ data } />
 
-        <Cover />
-
-        <button>Hi</button>
-​
-        <Events FB={ this.state.FB } ids={ this.state.event_ids } token={ token } />
+        <Events
+          FB={ this.state.FB }
+          openModal={ this.openModal.bind(this) }
+          closeModal={ this.closeModal.bind(this) }
+          token={ token } />
         <TeamInfo />
         <Releve />
 

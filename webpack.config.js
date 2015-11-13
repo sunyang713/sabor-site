@@ -10,11 +10,11 @@ module.exports = {
   cache: true,
   entry: {
     index: path.join(srcPath, 'index.js'),
-    common: ['react', 'react-dom', 'jquery', 'react-bootstrap', 'react-router']//, 'alt']
+    common: ['react', 'react-dom', 'react-bootstrap'] //, 'react-router']//, 'alt']
   },
   resolve: {
     root: srcPath,
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.styl'],
     modulesDirectories: ['node_modules', 'src']
   },
   output: {
@@ -28,6 +28,9 @@ module.exports = {
     loaders: [
       // required to write "require('./style.css')"
       { test: /\.css$/, exclude: /\.useable\.css$/, loader: "style-loader!css-loader" },
+
+      // Stylus loader
+      { test: /\.styl$/, loader: 'style-loader!css-loader!stylus-loader' },
 
       // required for bootstrap icons.
       // the url-loader uses DataUrls. 
@@ -53,7 +56,12 @@ module.exports = {
       inject: true,
       template: 'src/index.html'
     }),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+        "window.jQuery": "jquery"
+    })
   ],
   node: {
     net: "empty",
