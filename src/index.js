@@ -5,16 +5,19 @@ import Navbar from 'components/navbar';
 import Dyno from 'components/dyno';
 import Footer from 'components/footer';
 import 'bootstrap/dist/css/bootstrap.min.css'; // sketchy, inefficient
-// import '../static/css/cover.css'
-import '../static/css/main.css'
+
+import './dev.css';
+
 
 
 class App extends React.Component {
   render() {
     return (
-      <div className="site-wrapper">
+      <div>
         <Navbar />
-        <Dyno />
+        <div className="site-wrapper">
+          <Dyno />
+        </div>
         <Footer />
       </div>
     )
@@ -25,3 +28,4 @@ render(
   <App />,
   document.getElementById('react-app')
 )
+

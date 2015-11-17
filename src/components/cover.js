@@ -15,22 +15,15 @@ class Cover extends React.Component {
   //   };
   // }
 
-  componentDidMount() {
+  // componentDidMount() {
 
-  }
+  // }
 
   render() {
 
-
-
     return (
+
       <div>
-
-
-
-        <ControlledCarousel />
-
-
 
         <Jumbotron>
           <h1>Hello, world!</h1>
@@ -38,6 +31,7 @@ class Cover extends React.Component {
           <p><Button bsStyle="primary">Learn more</Button></p>
         </Jumbotron>
 
+        { carouselInstance }
 
       </div>
     )
@@ -68,21 +62,21 @@ const ControlledCarousel = React.createClass({
     return (
       <Carousel activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect}>
         <CarouselItem>
-          <img className="center-image" width={900} height={500} alt="900x500" src={ require("../../resources/images/eiffel.jpg") }/>
+          <img src={ require("../../resources/images/eiffel.jpg") }/>
           <div className="carousel-caption">
             <h3>First slide label</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </div>
         </CarouselItem>
         <CarouselItem>
-          <img className="center-image" width={900} height={500} alt="900x500" src={ require("../../resources/images/eiffel.jpg") }/>
+          <img src={ require("../../resources/images/eiffel.jpg") }/>
           <div className="carousel-caption">
             <h3>Second slide label</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
         </CarouselItem>
         <CarouselItem>
-          <img className="center-image" width={900} height={500} alt="900x500" src={ require("../../resources/images/eiffel.jpg") }/>
+          <img src={ require("../../resources/images/eiffel.jpg") }/>
           <div className="carousel-caption">
             <h3>Third slide label</h3>
             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -92,4 +86,45 @@ const ControlledCarousel = React.createClass({
     );
   }
 });
+
+
+
+
+
+
+const carouselInstance = (
+  <Carousel>
+    <CarouselItem>
+      <img src={ require("../../resources/images/eiffel.jpg") } />
+      <div className="carousel-caption">
+        <h3>First slide label</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </CarouselItem>
+    <CarouselItem>
+      <img src={ require("../../resources/images/eiffel.jpg") } />
+      <div className="carousel-caption">
+        <h3>Second slide label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </CarouselItem>
+    <CarouselItem>
+      <img src={ require("../../resources/images/eiffel.jpg") } />
+      <div className="carousel-caption">
+        <h3>Third slide label</h3>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </CarouselItem>
+  </Carousel>
+);
+
+
+
+
+
+
+
+
+
+
 

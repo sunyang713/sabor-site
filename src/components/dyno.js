@@ -18,7 +18,8 @@ class Dyno extends React.Component {
       FB: {},
       picture: {},
       modalID: undefined,
-      showModal: false
+      showModal: false,
+      data: {}
     }
   }
 
@@ -52,8 +53,8 @@ class Dyno extends React.Component {
     this.setState({ showModal: false });
   }
 
-  openModal(data) {
-    this.setState({ data: data, showModal: true });
+  openModal(dat) {
+    this.setState({ data: dat, showModal: true });
   }
 
 
@@ -62,38 +63,16 @@ class Dyno extends React.Component {
 
   render() {
 
-    /* the "info" part is kinda terrible... */
-    let data = {
-      title: 'the title',
-      description: 'the description',
-      imgurl: 'urllll',
-      info: [
-        {key: 'time', value: '1:00'},
-        {key: 'location', value: 'Lerner'},
-        {key: 'date', value: 'May 1st'}
-      ]
-    }
-
     return (
       <div>
 
-
-
         <Cover FB={ this.state.FB } token={ token } />
-        <p><Button
-          bsStyle="primary"
-          bsSize="large"
-          onClick={this.openModal.bind(this)}
-        >
-          Launch demo modal
-        </Button></p>
 
 
         <Modal
           show={ this.state.showModal }
-          open={ this.openModal }
           close={ this.closeModal.bind(this) }
-          data={ data } />
+          data={ this.state.data } />
 
         <Events
           FB={ this.state.FB }
@@ -102,7 +81,6 @@ class Dyno extends React.Component {
           token={ token } />
         <TeamInfo />
         <Releve />
-
 
 
 

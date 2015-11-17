@@ -1,15 +1,17 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import './modal.styl';
 
 
 class MyModal extends React.Component {
 
-  defaultProps() {
-    return {
+  constructor(props) {
+    super(props);
+    this.state = {
       data: {
         title: 'Title',
         description: 'Description',
-        imgurl: '',
+        img: '',
         info: [
           { key: 'key1', value: 'value1' },
           { key: 'key2', value: 'value2' }
@@ -21,43 +23,52 @@ class MyModal extends React.Component {
 
   render() {
 
-    // let imgurl = this.props.data.imgurl
     let info = []
-    for (let i in this.props.data.info) // props.info is an array [ {key:'time', value: 111}, {key:'date' value:222}, {key:'description' value:'stuffff'}, {key:'url', value:'www.com'}]
+    /* props.info is an array
+     * [ {key:'time', value: 111}, 
+         {key:'date' value:222},
+         {key:'description' value:'stuffff'},
+         {key:'url', value:'www.com'} ]
+     */
+    for (let i in this.props.data.info)
       info.push(
-        <li key={ this.props.data.info[i].key }>
-          <h4>{ this.props.data.info[i].key }</h4>
-          <p>{ this.props.data.info[i].value }</p>
-        </li>
+        <div key={ this.props.data.info[i].key }>
+          <p>
+            <strong>{ this.props.data.info[i].key }: </strong>
+            { this.props.data.info[i].value }
+          </p>
+        </div>
       )
 
 
-    // TODO: make own actually good looking modal.
-    // return (
-    //   <div show={ this.props.show } className="my-modal">
-
-    //   </div>
-    // )
-
     return (
-      <Modal show={this.props.show} onHide={this.props.close}>
-        <Modal.Header closeButton >
+      <Modal show={ this.props.show } onHide={ this.props.close } >
+
+        <Modal.Header closeButton>
           <Modal.Title>{ this.props.data.title }</Modal.Title>
         </Modal.Header>
+
         <Modal.Body>
-          <ul>
-            { info }
-          </ul>
+          <div className="modal-section">
+            <div className="modal-picture">
+              <img src={ this.props.data.img } height="200" width="200" />
+            </div>
+
+            <div className="modal-info">
+                { info }
+            </div>
+          </div>
 
           <hr />
-
-          <h4>Description</h4>
-          <p>{ this.props.description }</p>
+          
+          <div className="modal-description">
+            <h4>Description</h4>
+            <p>{ this.props.data.description }</p>
+          </div>
 
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={this.props.close}>Close</Button>
-        </Modal.Footer>
+
+
       </Modal>
     )
   }

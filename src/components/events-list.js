@@ -16,7 +16,11 @@ class EventsList extends React.Component {
     this.props.FB.api(
       '/cusabor/events',
       'GET',
-      { access_token: this.props.token, fields: 'id', limit: 3 },
+      {
+        access_token: this.props.token,
+        fields: 'id',
+        "since":"today"
+      },
       function(response) {
         var ids = []
         for ( let i in response.data )
@@ -34,9 +38,15 @@ class EventsList extends React.Component {
     var events = [];
 
     for (var id of this.state.event_ids) {
-      events.push( <Event key={ id } id={ id } FB={ this.props.FB } token={ this.props.token } /> )
+      events.push(
+        <Event
+          key={ id }
+          id={ id }
+          FB={ this.props.FB }
+          token={ this.props.token }
+          openModal={ this.props.openModal } />
+      )
     }
-
 
     return (
       <div>
