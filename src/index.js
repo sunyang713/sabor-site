@@ -1,12 +1,12 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React from 'react'
+import { render } from 'react-dom'
 
-import Navbar from 'components/navbar';
-import Dyno from 'components/dyno';
-import Footer from 'components/footer';
-import 'bootstrap/dist/css/bootstrap.min.css'; // sketchy, inefficient
-
-import './dev.css';
+import Navbar from 'components/navbar'
+import Dyno from 'components/dyno'
+import Footer from 'components/footer'
+import 'bootstrap/dist/css/bootstrap.min.css' // sketchy, inefficient
+import '../static/css/main.css'
+// import './dev.css'
 
 
 
@@ -15,9 +15,7 @@ class App extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className="site-wrapper">
-          <Dyno />
-        </div>
+        <Dyno />
         <Footer />
       </div>
     )

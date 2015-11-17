@@ -6,7 +6,7 @@ class MyNavbar extends React.Component {
   render() {
     return (
       <Navbar fixedTop toggleNavKey={0}>
-        <NavBrand><a href="#">React-Bootstrap</a></NavBrand>
+        <NavBrand><a href="#">Sabor's Site!</a></NavBrand>
         <Nav right eventKey={0}> {/* This is the eventKey referenced */}
           <NavItem eventKey={1} href="#">Link</NavItem>
           <NavItem eventKey={2} href="#">Link</NavItem>

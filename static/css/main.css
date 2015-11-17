@@ -10,3 +10,19 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.btn {
+  border-radius: 0px !important;
+}
+
+.dyno {
+  margin-top: 50px;
+}
+
+@media (min-width: 768px) {
+  .content-wrapper {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+}
+

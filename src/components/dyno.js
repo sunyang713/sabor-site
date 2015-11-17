@@ -44,11 +44,6 @@ class Dyno extends React.Component {
     }(document, 'script', 'facebook-jssdk'));
   }
 
-
-
-
-
-
   closeModal() {
     this.setState({ showModal: false });
   }
@@ -59,29 +54,27 @@ class Dyno extends React.Component {
 
 
 
-
-
   render() {
 
     return (
-      <div>
+      <div className="dyno">
 
         <Cover FB={ this.state.FB } token={ token } />
-
 
         <Modal
           show={ this.state.showModal }
           close={ this.closeModal.bind(this) }
           data={ this.state.data } />
 
-        <Events
-          FB={ this.state.FB }
-          openModal={ this.openModal.bind(this) }
-          closeModal={ this.closeModal.bind(this) }
-          token={ token } />
-        <TeamInfo />
-        <Releve />
-
+        <div className="content-wrapper">
+          <Events
+            FB={ this.state.FB }
+            openModal={ this.openModal.bind(this) }
+            closeModal={ this.closeModal.bind(this) }
+            token={ token } />
+          <TeamInfo />
+          <Releve />
+        </div>
 
 
         <div
@@ -90,8 +83,6 @@ class Dyno extends React.Component {
           data-width="450"
           data-show-faces="true">
         </div>
-
-        <img src={ this.state.picture.url } />
 
       </div>
     )
