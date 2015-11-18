@@ -5,22 +5,6 @@ import './modal.styl';
 
 class MyModal extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: {
-        title: 'Title',
-        description: 'Description',
-        img: '',
-        info: [
-          { key: 'key1', value: 'value1' },
-          { key: 'key2', value: 'value2' }
-        ]
-      },
-    };
-  }
-
-
   render() {
 
     let info = []
@@ -51,7 +35,7 @@ class MyModal extends React.Component {
         <Modal.Body>
           <div className="modal-section">
             <div className="modal-picture">
-              <img src={ this.props.data.img } height="200" width="200" />
+              <img src={ this.props.data.img } height="200" width="250" />
             </div>
 
             <div className="modal-info">

@@ -19,7 +19,8 @@ class EventsList extends React.Component {
       {
         access_token: this.props.token,
         fields: 'id',
-        "since":"today"
+        // "since":"today"
+        "limit":"10"
       },
       function(response) {
         var ids = []

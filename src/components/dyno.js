@@ -19,7 +19,7 @@ class Dyno extends React.Component {
       picture: {},
       modalID: undefined,
       showModal: false,
-      data: {}
+      modalData: {}
     }
   }
 
@@ -48,41 +48,64 @@ class Dyno extends React.Component {
     this.setState({ showModal: false });
   }
 
-  openModal(dat) {
-    this.setState({ data: dat, showModal: true });
+  openModal(data) {
+    this.setState({ modalData: data, showModal: true });
   }
 
 
 
   render() {
 
+
+    var divStyle = {
+      color: 'white',
+      backgroundImage: 'url(' + 'imgUrl' + ')',
+      WebkitTransition: 'all', // note the capital 'W' here
+      msTransition: 'all' // 'ms' is the only lowercase vendor prefix
+    }
+
     return (
       <div className="dyno">
 
         <Cover FB={ this.state.FB } token={ token } />
 
-        <Modal
-          show={ this.state.showModal }
-          close={ this.closeModal.bind(this) }
-          data={ this.state.data } />
+
+        <div className="transparent-block" />
 
         <div className="content-wrapper">
+          <div style={divStyle}>Hello World!</div>
+
           <Events
             FB={ this.state.FB }
             openModal={ this.openModal.bind(this) }
             closeModal={ this.closeModal.bind(this) }
             token={ token } />
+
+
+
           <TeamInfo />
+
+
+
           <Releve />
+
+
+
         </div>
+
+
 
 
         <div
           className="fb-like"
           data-share="true"
           data-width="450"
-          data-show-faces="true">
-        </div>
+          data-show-faces="true" />
+
+        <Modal
+          show={ this.state.showModal }
+          close={ this.closeModal.bind(this) }
+          data={ this.state.modalData } />
 
       </div>
     )
