@@ -9,8 +9,8 @@ module.exports = {
   target: 'web',
   cache: true,
   entry: {
-    index: path.join(srcPath, 'index.js'),
-    common: ['react', 'react-dom', 'react-bootstrap'] //, 'react-router']//, 'alt']
+    common: ['react', 'react-dom', 'react-bootstrap'], //, 'react-router']//, 'alt']
+    index: path.join(srcPath, 'index.js')
   },
   resolve: {
     root: srcPath,
@@ -33,8 +33,8 @@ module.exports = {
       { test: /\.styl$/, loader: 'style-loader!css-loader!stylus-loader' },
 
       // required for bootstrap icons.
-      // the url-loader uses DataUrls. 
-      // the file-loader emits files. 
+      //  url-loader uses DataUrls. 
+      //  file-loader emits files. 
       { test: /\.(woff|woff2)$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
       { test: /\.ttf$/, loader: "file-loader?prefix=font/" },
       { test: /\.eot$/, loader: "file-loader?prefix=font/" },
@@ -67,7 +67,6 @@ module.exports = {
     net: "empty",
     tls: "empty"
   },
-
   debug: true,
   devtool: 'eval-cheap-module-source-map',
   devServer: {
