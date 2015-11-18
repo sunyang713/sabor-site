@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Sabor: The Team">
+    <meta name="description" content="Sabor: Columbia's First Latino Dance Troupe">
     <meta name="author" content="Jonathan Sun">
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="resources/favicon.ico">
 
     <title>Sabor: Columbia's First Latino Dance Troupe</title>
 
@@ -16,7 +16,7 @@
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <!--script src="../assets/js/ie-emulation-modes-warning.js"></script-->
+    <!--script src="../../assets/js/ie-emulation-modes-warning.js"></script-->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -30,11 +30,10 @@
 <!-- NAVBAR
 ================================================== -->
   <body>
-    <div class="back">
     <div class="navbar-wrapper">
       <div class="container">
 
-        <nav class="navbar navbar-inverse navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -50,7 +49,7 @@
               <ul class="nav navbar-nav">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li class="active"><a href="">Relevé</a></li>
+                <li><a href="releve.html">Relevé</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Extras and More coming soon!<span class="caret"></span></a>
@@ -61,7 +60,7 @@
                     <li class="divider"></li>
                     <li class="dropdown-header">Relevé</li>
                     <li><a href="#">Apply</a></li>
-                    <li><a href="#">Relevé 2015</a></li>
+                    <li><a href="#">Releve 2015</a></li>
                   </ul>
                 </li>
               </ul>
@@ -73,65 +72,68 @@
     </div>
 
 
-    <!--div class="container marketing-header">
-        <hr class="featurette-divider">
-        <h1 class="the-team">Relevé</h1>
-        <hr class="featurette-divider">
-    </div-->
-  </div>
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active x-first-slide">
+          <!--img class="first-slide" src="" alt="First slide"-->
+          <div class="container">
+            <!--div class="carousel-caption">
+              <h1>Sabor</h1>
+              <p>Columbia's First and Only Latino Dance Troupe</p><br><br><br><br><br>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+            </div-->
+          </div>
+        </div>
+        <div class="item x-second-slide">
+          <!--img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide"-->
+          <div class="container">
+            <!--div class="carousel-caption">
+              <h1>Another example headline.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+            </div-->
+          </div>
+        </div>
+        <div class="item x-third-slide">
+          <div class="container">
+            <!--div class="carousel-caption">
+              <h1>One more for good measure.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+            </div-->
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
 
 
-
- 
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
+
     <div class="container marketing">
 
+      <!-- Three columns of text below the carousel -->
 
 
       <!-- START THE FEATURETTES -->
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">The Best Spring Experience. <span class="text-muted">For both the team and the students.</span></h2>
-          <p class="lead">Relevé is Sabor's high school community impact initiative. Through this program the team aims annually to evoke the interest of high school students to seek a higher education; mimicking the action defined by the French noun, Relevé strives to motivate students to rise.</p>
-          <p class="lead">Students accepted to the program spend a three-day weekend on Columbia's Campus. They are hosted by members of the team who not only provide them with housing for the weekend but serve as mentors to questions the students might have concerning college life and the application process.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" src="resources/sign.jpg" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7 col-md-push-5">
-          <h2 class="featurette-heading">A weekend of Sabor. <span class="text-muted"><br>A weekend of Dancing.</span></h2>
-          <p class="lead">The students undergo various workshops in financial aid and admissions which are made to provide essential information about how to apply to college and how one goes about seeking and receiving financial assistances. The program also provides a chance for students to learn about different arts through dance workshops and performing arts workshops that include vocal, theatre, spoken word and visual arts.</p>
-          <p class="lead">This program is not only meant to be fun and educational but was established to give under-served students awareness of the opportunities available for pursuing a higher education.</p>
-        </div>
-        <div class="col-md-5 col-md-pull-7">
-          <img class="featurette-image img-responsive center-block" src="resources/releve1.jpg" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">What happens after Relevé? <span class="text-muted"></span></h2>
-          <p class="lead">Sabor is committed to motivating students of under-served backgrounds to seek a higher education; money doesn't have to be a deterrent at achieving one's life goals.</p>
-          <p class="lead">All revenue from their fall performance is used for this project in order to provide the essentials necessary for a successful, informative and enjoyable three-day visit for the Relevé students.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" src="resources/releve3.jpg" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
 
 
       <!-- /END THE FEATURETTES -->
