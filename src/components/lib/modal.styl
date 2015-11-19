@@ -1,3 +1,5 @@
+@require '../../styles/standard.styl'
+
 .modal
   .modal-content
     list-style: none
@@ -10,28 +12,23 @@
 
     .modal-section
       margin: 5px
+      .modal-picture
+        display: inline-block
+        // vertical-align: top
+        img
+          object-fit: cover
 
-    .modal-picture
-      display: inline-block
-      vertical-align: top
-      img
-        object-fit: cover
+      .modal-info
+        display: inline-block
+        margin 0 1em
+        font-size $font-size
 
-    .modal-info
-      display: inline-block
-      margin 0 1em
+    .modal-description
+      text-align: justify
+      margin 0 3em
 
 
     .close
       color: white
       text-shadow: 0 1px 0 white
 
-    .modal-footer
-      a
-        font-size: 21px
-        font-weight: 700
-        line-height: 1
-        color: white
-        text-shadow: 0 1px 0 white
-        &:hover
-          text-decoration none

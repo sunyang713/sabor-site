@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import moment from 'moment'
 
 
 class Event extends React.Component {
@@ -23,18 +24,21 @@ class Event extends React.Component {
       'GET',
       {
         access_token: this.props.token,
-        "fields":"name,description,start_time,place,picture.width(1000)"
+        "fields":"name,description,start_time,end_time,place,picture.width(1000)"
       },
       function(response) {
+        let date = moment(response.start_time).format("dddd, MMM Do")
+        let start_time = moment(response.start_time).format("h:mma")
+        let end_time = response.end_time ? '-' + moment(response.end_time).format("h:mma") : ''
         this.setState({
           data: {
             title: response.name,
             description: response.description,
             img: response.picture.data.url,
             info: [
-              {key: 'time', value: response.start_time},
+              {key: 'date', value: date},
+              {key: 'time', value: start_time + end_time},
               {key: 'location', value: response.place.name},
-              {key: 'date', value: 'May 2st'}
             ]
           },
           calledFB: true
@@ -53,7 +57,7 @@ class Event extends React.Component {
 
     return (
       <div className="event" onClick={ this.handleClick.bind(this) } >
-        <p>{ this.state.data.title }</p>
+        <h3>{ this.state.data.title }</h3>
       </div>
     )
   }

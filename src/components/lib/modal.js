@@ -15,14 +15,15 @@ class MyModal extends React.Component {
          {key:'url', value:'www.com'} ]
      */
     for (let i in this.props.data.info)
-      info.push(
-        <div key={ this.props.data.info[i].key }>
-          <p>
-            <strong>{ this.props.data.info[i].key }: </strong>
-            { this.props.data.info[i].value }
-          </p>
-        </div>
-      )
+      if (this.props.data.info[i].value) // If it has a value ie sometimes they don't set an endtime
+        info.push(
+          <div key={ this.props.data.info[i].key }>
+            <p>
+              <strong>{ this.props.data.info[i].key }: </strong>
+              { this.props.data.info[i].value }
+            </p>
+          </div>
+        )
 
 
     return (
@@ -33,12 +34,12 @@ class MyModal extends React.Component {
         </Modal.Header>
 
         <Modal.Body>
-          <div className="modal-section">
-            <div className="modal-picture">
+          <div className="modal-section row">
+            <div className="modal-picture col-md-6">
               <img src={ this.props.data.img } height="200" width="250" />
             </div>
 
-            <div className="modal-info">
+            <div className="modal-info col-md-6">
                 { info }
             </div>
           </div>

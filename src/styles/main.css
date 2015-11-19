@@ -1,9 +1,3 @@
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Quicksand',sans-serif;
-}
-p, div {
-  font-family: 'Quicksand', sans-serif;
-}
 
 body {
   height: 100%;
@@ -32,7 +26,7 @@ body {
 
 .jumbotron {
   color: white;
-  background: rgba(102,0,0, .95);
+  background: rgba(102,0,0, .95)
 }
 
 .btn {
@@ -41,6 +35,15 @@ body {
 
 .dyno {
   /*margin-top: 50px;*/
+}
+
+.navbar-default {
+  background-color: rgba(102,0,0, .95);
+  border-color: rgb(102,0,0);
+}
+
+.navbar-default .navbar-nav>.active>a {
+  background-color: rgba(102,0,0, .95);
 }
 
 @media (min-width: 768px) {

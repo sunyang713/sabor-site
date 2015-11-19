@@ -9,13 +9,13 @@ module.exports = {
   target: 'web',
   cache: true,
   entry: {
-    common: ['react', 'react-dom', 'react-bootstrap'], //, 'react-router']//, 'alt']
+    common: ['react', 'react-dom', 'react-bootstrap', 'react-router', 'react-router-bootstrap', 'moment'],//, 'alt']
     index: path.join(srcPath, 'index.js')
   },
   resolve: {
     root: srcPath,
     extensions: ['', '.js', '.styl'],
-    modulesDirectories: ['node_modules', 'src']
+    modulesDirectories: ['assets', 'node_modules', 'src', 'components']
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -67,6 +67,7 @@ module.exports = {
     net: "empty",
     tls: "empty"
   },
+
   debug: true,
   devtool: 'eval-cheap-module-source-map',
   devServer: {

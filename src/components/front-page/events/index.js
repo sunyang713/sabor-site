@@ -19,8 +19,8 @@ class EventsList extends React.Component {
       {
         access_token: this.props.token,
         fields: 'id',
-        // "since":"today"
         "limit":"10"
+        // "since":"today"
       },
       function(response) {
         var ids = []
@@ -40,19 +40,22 @@ class EventsList extends React.Component {
 
     for (var id of this.state.event_ids) {
       events.push(
-        <Event
-          key={ id }
-          id={ id }
-          FB={ this.props.FB }
-          token={ this.props.token }
-          openModal={ this.props.openModal } />
+        <li key={ id }>
+          <Event
+            id={ id }
+            FB={ this.props.FB }
+            token={ this.props.token }
+            openModal={ this.props.openModal } />
+        </li>
       )
     }
 
     return (
       <div>
-        <p>Events:</p>
-        { events }
+        <h1>Upcoming Events:</h1>
+        <ul className="events-list">
+          { events }
+        </ul>
       </div>
     )
   }
