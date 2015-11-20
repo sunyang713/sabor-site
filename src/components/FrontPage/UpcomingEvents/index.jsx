@@ -3,6 +3,7 @@ import createFragment from 'react-addons-create-fragment';
 
 import Event from 'components/lib/Event';
 
+
 export default class UpcomingEvents extends React.Component {
 
   constructor(props) {
@@ -20,6 +21,7 @@ export default class UpcomingEvents extends React.Component {
       {
         access_token: this.props.token,
         fields: 'id',
+        "limit":"4",
         "since":"today"
       },
       function(response) {
@@ -51,9 +53,10 @@ export default class UpcomingEvents extends React.Component {
       );
 
     return (
-      <div>
-        <h1>Upcoming Events:</h1>
-        <ul className="events-list">
+      <div className="content-wrapper">
+        <h1>Upcoming Events</h1>
+        <hr />
+        <ul className="events-list list-unstyled">
           { events }
         </ul>
       </div>

@@ -19,7 +19,13 @@ export default class FrontPage extends React.Component {
 
     return (
       <div className="dyno">
-        <Cover FB={ this.props.FB } token={ this.props.token } />
+
+        <Cover
+          FB={ this.props.FB }
+          openModal={ this.props.openModal }
+          closeModal={ this.props.closeModal }
+          token={ this.props.token }
+        />
 
 
         <InfoCard
@@ -27,17 +33,15 @@ export default class FrontPage extends React.Component {
           token={ this.props.token}
         />
 
-        <div className="content-wrapper">
 
 
-          <UpcomingEvents
-            FB={ this.props.FB }
-            openModal={ this.props.openModal }
-            closeModal={ this.props.closeModal }
-            token={ this.props.token }
-          />
+        <UpcomingEvents
+          FB={ this.props.FB }
+          openModal={ this.props.openModal }
+          closeModal={ this.props.closeModal }
+          token={ this.props.token }
+        />
 
-        </div>
 
         <div className="transparent-block" />
 

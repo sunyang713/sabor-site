@@ -13,20 +13,23 @@ export default class Navigation extends React.Component {
           <Navbar.Brand>
             <IndexLinkContainer to="/">
               <a href="#">Sabor</a>
-          </IndexLinkContainer>
+            </IndexLinkContainer>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav pullRight>
+            <IndexLinkContainer to="/">
+              <NavItem eventKey={1} href="#">Home</NavItem>
+            </IndexLinkContainer>
             <LinkContainer to="events">
-              <NavItem eventKey={1} href="#">Events</NavItem>
+              <NavItem eventKey={2} href="#">Events</NavItem>
             </LinkContainer>
             <LinkContainer to="team">
-              <NavItem eventKey={2} href="#">Team</NavItem>
+              <NavItem eventKey={3} href="#">Team</NavItem>
             </LinkContainer>
             <LinkContainer to="releve">
-              <NavItem eventKey={3} href="#">Releve</NavItem>
+              <NavItem eventKey={4} href="#">Releve</NavItem>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>

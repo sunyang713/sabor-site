@@ -3,7 +3,6 @@
 
 /* EXTREMELY IMPORTANT HERE!!! */
 var publicPath = '/cu/sabor/'
-publicPath = '/~jys2124/'
 
 var webpack = require('webpack'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
@@ -14,7 +13,7 @@ module.exports = {
   target: 'web',
   cache: true,
   entry: {
-    common: ['react', 'react-dom', 'react-bootstrap', 'react-router', 'react-router-bootstrap', 'moment', 'react-addons-create-fragment'],//, 'alt']
+    common: ['react', 'react-dom', 'react-bootstrap', 'react-router', 'react-router-bootstrap', 'moment', 'react-addons-create-fragment'],//, 'alt'] // this thing is freaking 5mb
     index: path.join(srcPath, 'index.js')
   },
   resolve: {

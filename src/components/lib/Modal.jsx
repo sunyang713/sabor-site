@@ -17,12 +17,11 @@ export default class MyModal extends React.Component {
          {key:'url', value:'www.com'} ]
      */
     for (let i in this.props.data.info)
-      if (this.props.data.info[i].value) // If it has a value ie sometimes they don't set an endtime
+      if (this.props.data.info[i]) // If it has a value ie sometimes they don't set an endtime
         info.push(
-          <div key={ this.props.data.info[i].key }>
+          <div key={ this.props.data.info[i] }>
             <p>
-              <strong>{ this.props.data.info[i].key }: </strong>
-              { this.props.data.info[i].value }
+              { this.props.data.info[i] }
             </p>
           </div>
         );
@@ -54,8 +53,9 @@ export default class MyModal extends React.Component {
           </div>
 
         </Modal.Body>
-
-
+        <Modal.Footer>
+          <Button onClick={this.props.close}>Close</Button>
+        </Modal.Footer>
       </Modal>
     );
   }

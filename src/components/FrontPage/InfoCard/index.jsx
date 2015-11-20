@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Jumbotron } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 export default class InfoCard extends React.Component {
 
@@ -42,7 +43,9 @@ export default class InfoCard extends React.Component {
         <Jumbotron>
           <div className="content-wrapper">
             <p>{ this.state.about }</p>
-            <p><Button>Learn more</Button></p>
+            <p>
+              <Button href="https://www.facebook.com/cusabor">Learn more</Button>
+            </p>
           </div>
         </Jumbotron>
 

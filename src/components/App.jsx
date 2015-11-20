@@ -3,12 +3,18 @@ import React from 'react';
 import Modal from 'components/lib/modal';
 
 import Navbar from 'components/Navbar';
+import ContactCard from 'components/ContactCard';
 import Footer from 'components/Footer';
 
+import 'bootstrap/dist/css/bootstrap.min.css'; // sketchy, inefficient
+import 'base.styl';
+
+import 'styles/main.css';
+// import 'dev.css';
 
 
-var token = '1680042688876649|gaW3PaycGVrYQJR8RLpsBMDLIYI';
-var appID = '1680042688876649';
+const TOKEN = '1680042688876649|gaW3PaycGVrYQJR8RLpsBMDLIYI';
+const APP_ID = '1680042688876649';
 
 
 export default class App extends React.Component {
@@ -26,7 +32,7 @@ export default class App extends React.Component {
   componentDidMount() {
     window.fbAsyncInit = function() {
       FB.init({
-        appId   : appID,
+        appId   : APP_ID,
         xfbml   : true,
         version : 'v2.5'
       });
@@ -51,12 +57,31 @@ export default class App extends React.Component {
 
 
   render() {
+
+
+
+
+    let backgroundStyle = {
+      content: '""',
+      display: 'block',
+      position: 'fixed',
+      left: '0',
+      right: '0',
+      zindex: '-1',
+      width: '100%',
+      height: '100%',
+      backgroundImage: 'url(' + require('assets/images/eiffel.jpg') + ')',
+      backgroundSize: 'cover'
+    };
+          // <div style={divStyle}>inline style test</div>
+
+
     return (
       <div className="site-wrapper" >
         <Navbar />
 
         <Modal
-          show={ this.state.showModal }
+          show={ this.state.showModal /* sketchy af */}
           close={ this.closeModal.bind(this) }
           data={ this.state.modalData }
         />
@@ -68,10 +93,14 @@ export default class App extends React.Component {
               FB: this.state.FB,
               openModal: this.openModal.bind(this),
               closeModal: this.closeModal.bind(this),
-              token: token
+              token: TOKEN
             }
           ) 
         }
+
+        <ContactCard />
+
+        <div className="transparent-block" />
 
         <Footer />
       </div>

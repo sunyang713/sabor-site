@@ -15,14 +15,6 @@ import Releve from 'components/Releve';
 
 
 
-import 'bootstrap/dist/css/bootstrap.min.css'; // sketchy, inefficient
-import './base.styl';
-
-import 'styles/main.css';
-// import 'dev.css';
-
-
-
 
 // Routes for modals??
 const INDEX = (

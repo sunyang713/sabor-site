@@ -1,8 +1,10 @@
 import React from 'react';
 import Event from 'components/lib/Event';
 
+import './events.styl'
 
-export default class UpcomingEvents extends React.Component {
+
+export default class EventsList extends React.Component {
 
   constructor(props) {
     super(props);
@@ -51,15 +53,17 @@ export default class UpcomingEvents extends React.Component {
       );
     }
 
+
     return (
       <div>
         <div className="transparent-block" />
-        <div className="content-wrapper">
-          <h1>Upcoming Events:</h1>
-          <ul className="events-list">
-            { events }
-          </ul>
-        </div>
+          <div className="content-wrapper">
+            <h1>Events</h1>
+            <hr />
+            <ul className="events-list list-unstyled">
+              { events }
+            </ul>
+          </div>
         <div className="transparent-block" />
       </div>
     );
