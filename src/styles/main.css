@@ -14,7 +14,7 @@ body {
   z-index: -1;
   width: 100%;
   height: 100%;
-  background-image: url('../../assets/images/eiffel.jpg');
+  background-image: url('../assets/images/eiffel.jpg');
   /*background: gray;*/
   background-size: cover;
 }

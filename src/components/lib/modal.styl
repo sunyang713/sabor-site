@@ -1,5 +1,8 @@
 @require '../../styles/standard.styl'
 
+$thefont = 14px
+$thelineheight = $thefont * 1.61803398875
+
 .modal
   .modal-content
     list-style: none
@@ -8,24 +11,26 @@
     background: rgba(102,0,0, .95)
     border-radius: 0px
     li
+      margin: 0
       list-style: none
 
     .modal-section
-      margin: 5px
       .modal-picture
         display: inline-block
         // vertical-align: top
+        width: 50%
+        text-align center
         img
           object-fit: cover
 
       .modal-info
+        width: 50%
         display: inline-block
-        margin 0 1em
-        font-size $font-size
+        margin 0
+        font-size 1.2em
 
     .modal-description
       text-align: justify
-      margin 0 3em
 
 
     .close

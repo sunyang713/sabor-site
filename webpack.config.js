@@ -1,5 +1,10 @@
 'use strict';
 
+
+/* EXTREMELY IMPORTANT HERE!!! */
+var publicPath = '/cu/sabor/'
+publicPath = '/~jys2124/'
+
 var webpack = require('webpack'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   path = require('path'),
@@ -9,17 +14,17 @@ module.exports = {
   target: 'web',
   cache: true,
   entry: {
-    common: ['react', 'react-dom', 'react-bootstrap', 'react-router', 'react-router-bootstrap', 'moment'],//, 'alt']
+    common: ['react', 'react-dom', 'react-bootstrap', 'react-router', 'react-router-bootstrap', 'moment', 'react-addons-create-fragment'],//, 'alt']
     index: path.join(srcPath, 'index.js')
   },
   resolve: {
     root: srcPath,
-    extensions: ['', '.js', '.styl'],
-    modulesDirectories: ['assets', 'node_modules', 'src', 'components']
+    extensions: ['', '.js', '.jsx', '.styl'],
+    modulesDirectories: ['node_modules', 'src']
   },
   output: {
-    path: path.join(__dirname, 'dist'),
-    publicPath: '',
+    path: path.join(__dirname, 'dist' + publicPath),
+    publicPath: publicPath,
     filename: '[name].js',
     library: ['Example', '[name]'],
     pathInfo: true
@@ -42,7 +47,7 @@ module.exports = {
 
       // required for react jsx
       { test: /\.js$/, exclude: /(node_modules)/, loader: "babel-loader" },
-      { test: /\.jsx$/, loader: "babel-loader" },
+      { test: /\.jsx$/, exclude: /(node_modules)/, loader: "babel-loader" },
 
       // misc
       { test: /\.json$/, loader: "json-loader" },

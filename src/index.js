@@ -1,54 +1,45 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { Router, Route, IndexRoute } from 'react-router'
-import createBrowserHistory from 'history/lib/createBrowserHistory' // sketchy af
+import React from 'react';
+import { render } from 'react-dom';
+import { Router, Route, IndexRoute, Redirect } from 'react-router';
+import createHistory from 'history/lib/createHashHistory'; // sketchy af
+let history = createHistory({ queryKey: false });
 
-// import Index from 'components/index'
-import App from 'components/app'
-// import Navbar from 'components/navbar'
+/* Shell */
+import App from 'components/App';
 
 /* Pages */
-import FrontPage from 'components/front-page'
-import Team from 'components/team'
-// import Media from 'components/media'
-// import Events from 'components/front-page/events'
-// import Event from 'components/front-page/events/event'
-import Releve from 'components/releve'
+import FrontPage from 'components/FrontPage';
+import Events from 'components/Events';
+import Team from 'components/Team';
+import Releve from 'components/Releve';
 
 
 
-import 'bootstrap/dist/css/bootstrap.min.css' // sketchy, inefficient
-import './base.styl'
+import 'bootstrap/dist/css/bootstrap.min.css'; // sketchy, inefficient
+import './base.styl';
 
-import 'styles/main.css'
-// import 'dev.css'
+import 'styles/main.css';
+// import 'dev.css';
 
 
-// const routes = (
-//   <Router>
-//     <Route path="/" component={ App }>
-//       <IndexRoute component={ FrontPage }>
-//       <
-//       
-//     </Route>
-//   </Router>
-// )
+
 
 // Routes for modals??
-const routes = (
-  <Router history={ createBrowserHistory() }>
+const INDEX = (
+  <Router history={ history }>
     <Route path="/" component={ App }>
       <IndexRoute component={ FrontPage } />
+      <Route path="events" component={ Events } />
       <Route path="team" component={ Team } />
       <Route path="releve" component={ Releve } />
     </Route>
   </Router>
-)
+);
 
 render(
-  routes,
+  INDEX,
   document.getElementById('react-app')
-)
+);
 
 
 
