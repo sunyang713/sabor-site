@@ -7,7 +7,8 @@ var path = require("path");
 var webpack = require("webpack");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var srcPath = path.join(__dirname, "src");
-var inDevMode = process.env.NODE_ENV === "dev"
+var inDevMode = process.env.NODE_ENV === "dev" || process.env.NODE_ENV === "development";
+
 
 module.exports = {
   target: "web",
@@ -122,22 +123,23 @@ module.exports = {
         "window.jQuery": "jquery"
     }),
     new webpack.DefinePlugin({
-      "env.PROD": process.env.NODE_ENV === "prod" || process.env.NODE_ENV === "production",
-      "env.PRODUCTION": process.env.NODE_ENV === "prod" || process.env.NODE_ENV === "production",
-      "env.DEV": process.env.NODE_ENV === "dev" || process.env.NODE_ENV === "development",
-      "env.DEVELOPMENT": process.env.NODE_ENV === "dev" || process.env.NODE_ENV === "development",
-      "env.SOURCE": process.env.NODE_ENV === "dev" ? JSON.stringify("http://localhost:5000") : JSON.stringify("http://www.columbia.edu/cu/sabor")
+      "env.PROD": !inDevMode,
+      "env.PRODUCTION": !inDevMode,
+      "env.DEV": inDevMode,
+      "env.DEVELOPMENT": inDevMode,
+      "env.SOURCE": inDevMode ? JSON.stringify("http://localhost:5000") : JSON.stringify("http://www.columbia.edu/cu/sabor"),
+      "env.HOST": inDevMode ? JSON.stringify("http://localhost:5000") : JSON.stringify("http://www.columbia.edu/cu/sabor")
     })
   ],
-  // some janky fix for 'request' npm package
-  node: {
-    net: "empty",
-    tls: "empty"
-  },
   debug: inDevMode,
   devtool: inDevMode ? "source-map" : "cheap-module-source-map",
   devServer: {
     contentBase: "./dist",
     historyApiFallback: true
+  },
+  // some janky fix for 'request' npm package
+  node: {
+    net: "empty",
+    tls: "empty"
   }
 };
