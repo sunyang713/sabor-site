@@ -21,13 +21,23 @@ module.exports = {
       "react-router",
       "react-router-bootstrap",
       "moment",
-      "react-addons-create-fragment"
+      "redux",
+      "react-redux",
+      "redux-simple-router",
+      "redux-thunk",
+      "redux-devtools",
+      "redux-devtools-dock-monitor",
+      "redux-devtools-log-monitor"
     ] : [
       "react-lite",
       "react-bootstrap",
       "react-router",
       "react-router-bootstrap",
-      "moment"
+      "moment",
+      "redux",
+      "react-redux",
+      "redux-simple-router",
+      "redux-thunk"
     ],
     index: path.join(srcPath, "index.js")
   },

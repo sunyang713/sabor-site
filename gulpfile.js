@@ -1,3 +1,6 @@
+// TODO: change to use webpack-stream
+//       manually uglify instead of using webpacks thing.
+
 var gulp = require("gulp");
 var gutil = require("gulp-util");
 var webpack = require("webpack");
