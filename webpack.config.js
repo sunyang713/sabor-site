@@ -1,13 +1,13 @@
 "use strict";
 
-/* EXTREMELY IMPORTANT HERE!!! */
-var publicPath = "/cu/sabor/"; // trailing slash needed?
-
 var path = require("path");
 var webpack = require("webpack");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var srcPath = path.join(__dirname, "src");
 var inDevMode = process.env.NODE_ENV === "dev" || process.env.NODE_ENV === "development";
+
+/* EXTREMELY IMPORTANT HERE!!! */
+var publicPath = inDevMode ? "/" : "/cu/sabor/"; // trailing slash needed?
 
 
 module.exports = {
