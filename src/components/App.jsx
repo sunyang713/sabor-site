@@ -3,7 +3,6 @@ import React from 'react';
 import Modal from 'components/lib/modal';
 
 import Navbar from 'components/Navbar';
-import ContactCard from 'components/ContactCard';
 import Footer from 'components/Footer';
 
 import 'bootstrap/dist/css/bootstrap.min.css'; // sketchy, inefficient
@@ -59,8 +58,6 @@ export default class App extends React.Component {
   render() {
 
 
-
-
     let backgroundStyle = {
       content: '""',
       display: 'block',
@@ -98,7 +95,6 @@ export default class App extends React.Component {
           ) 
         }
 
-        <ContactCard />
 
         <div className="transparent-block" />
 

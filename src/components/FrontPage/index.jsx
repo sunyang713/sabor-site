@@ -4,7 +4,9 @@ import { Button, Jumbotron } from 'react-bootstrap';
 import Cover from './Cover';
 import UpcomingEvents from './UpcomingEvents';
 import InfoCard from './InfoCard';
+import ContactCard from './ContactCard';
 
+import './front-page.styl'
 
 export default class FrontPage extends React.Component {
 
@@ -18,7 +20,7 @@ export default class FrontPage extends React.Component {
     // }
 
     return (
-      <div className="dyno">
+      <div className="front-page">
 
         <Cover
           FB={ this.props.FB }
@@ -42,6 +44,10 @@ export default class FrontPage extends React.Component {
           token={ this.props.token }
         />
 
+
+        <div className="transparent-block" />
+
+        <ContactCard />
 
         <div className="transparent-block" />
 

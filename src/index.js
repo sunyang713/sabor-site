@@ -9,7 +9,6 @@ import App from 'components/App';
 
 /* Pages */
 import FrontPage from 'components/FrontPage';
-import Events from 'components/Events';
 import Team from 'components/Team';
 import Releve from 'components/Releve';
 
@@ -21,9 +20,9 @@ const INDEX = (
   <Router history={ history }>
     <Route path="/" component={ App }>
       <IndexRoute component={ FrontPage } />
-      <Route path="events" component={ Events } />
       <Route path="team" component={ Team } />
       <Route path="releve" component={ Releve } />
+      <Redirect from="*" to="/" />
     </Route>
   </Router>
 );

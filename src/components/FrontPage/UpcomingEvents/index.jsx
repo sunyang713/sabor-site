@@ -1,5 +1,5 @@
 import React from 'react';
-import createFragment from 'react-addons-create-fragment';
+// import createFragment from 'react-addons-create-fragment';
 
 import Event from 'components/lib/Event';
 
@@ -20,9 +20,8 @@ export default class UpcomingEvents extends React.Component {
       'GET',
       {
         access_token: this.props.token,
-        fields: 'id',
-        "limit":"4",
-        "since":"today"
+        "fields": "name,cover",
+        "since": Date.now() / 1000 | 0 // Get seconds
       },
       function(response) {
         var ids = [];
@@ -51,13 +50,14 @@ export default class UpcomingEvents extends React.Component {
           />
         </li>
       );
+    events.reverse(); // Order from earliest to latest
 
     return (
-      <div className="content-wrapper">
+      <div className="content-wrapper upcoming-events">
         <h1>Upcoming Events</h1>
         <hr />
         <ul className="events-list list-unstyled">
-          { events }
+          { events.length ? events : <em>No upcoming events</em> }
         </ul>
       </div>
     )

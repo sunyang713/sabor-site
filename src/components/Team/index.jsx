@@ -2,6 +2,8 @@ import React from 'react';
 import boardMembers from 'assets/board_info.json';
 import teamMembers from 'assets/team_info.json';
 
+import { Jumbotron } from 'react-bootstrap';
+
 
 
 export default class Team extends React.Component {
@@ -21,8 +23,13 @@ export default class Team extends React.Component {
     let boardList = [];
     for (let member of boardMembers)
       boardList.push(
-        <li key={ member.name }>
-          <p>{ member.name }</p>
+        <li key={ member.name } className="row">
+          <div className="col-md-6">
+            <p><strong>{ member.boardPosition }</strong></p>
+          </div>
+          <div className="col-md-6">
+            <p>{ member.name }</p>
+          </div>
         </li>
       );
 
@@ -61,6 +68,14 @@ export default class Team extends React.Component {
           </div>
         </div>
         <div className="transparent-block" />
+        <Jumbotron>
+          <div className="content-wrapper">
+            <h1>Interested in joining?</h1>
+            <p>We hold auditions at the beginning of every semester. <a href="https://www.facebook.com/cusabor">Like us on facebook</a> to stay up to date!</p>
+          </div>
+        </Jumbotron>
+        <div className="transparent-block" />
+
       </div>
     );
   }

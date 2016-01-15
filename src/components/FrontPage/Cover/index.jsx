@@ -28,22 +28,23 @@ export default class Cover extends React.Component {
       'GET',
       {
         access_token: this.props.token,
-        "fields":"name,cover",
-        "limit":"1",
-        "since":"today"
+        "fields": "name,cover",
+        "since": Date.now() / 1000 | 0 // Get seconds
       },
       function(response) {
-        let res = response.data[0];
+        if (response.data[0]) {
+          let res = response.data[0];
 
-        /* FACEBOOK SUCK MY DICK */
-        let fullResPic = res.cover.source.replace(/\/[a-z][0-9]+x[0-9]+\//, '/');
+          /* FACEBOOK SUCK MY DICK */
+          let fullResPic = res.cover.source.replace(/\/[a-z][0-9]+x[0-9]+\//, '/');
 
-        this.setState({
-          calledFB: true,
-          name: res.name,
-          event_id: res.id,
-          imgURL: fullResPic
-        });
+          this.setState({
+            calledFB: true,
+            name: res.name,
+            event_id: res.id,
+            imgURL: fullResPic
+          });
+        }
       }.bind(this)
     );
   }
