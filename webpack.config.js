@@ -39,19 +39,9 @@ module.exports = {
   },
   module: {
     loaders: [
-      // required for js
+      // required for js and react jsx
       {
-        test: /\.js$/,
-        exclude: /(node_modules)/,
-        loader: "babel-loader",
-        query: {
-          presets: ["es2015", "stage-0", "react"]
-        }
-      },
-
-      // required for react jsx
-      {
-        test: /\.jsx$/,
+        test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         loader: "babel-loader",
         query: {
@@ -134,6 +124,7 @@ module.exports = {
   debug: inDevMode,
   devtool: inDevMode ? "source-map" : "cheap-module-source-map",
   devServer: {
+    // contentBase: path.join(__dirname, publicPath),
     contentBase: "./dist",
     historyApiFallback: true
   },
