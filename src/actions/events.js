@@ -38,15 +38,14 @@ export function pullEvents() {
         'GET',
         {
           access_token: FB_TOKEN,
-          'fields': 'name,description,start_time,end_time,place,cover',
-          // "since": Date.now() / 1000 | 0 // Get seconds
+          'fields': 'name,description,start_time,end_time,place,cover'
         },
         function(response) {
           const events = response.data;
-          for (event of events) {
-            const { id, name, start_time, end_time, place, cover, description } = event;
+          for (var i = 0; i < events.length; i++) {
+            const { id, name, start_time, end_time, place, cover, description } = events[i];
             const payload = {
-              name: name,
+              title: name,
               imgsrc: cover.source,
               date: moment(start_time).format('dddd, MMM Do'),
               start_time: moment(start_time).format('h:mma'),
@@ -74,3 +73,4 @@ export function pullEvents() {
 
 
 
+          // "since": Date.now() / 1000 | 0 // Get seconds
