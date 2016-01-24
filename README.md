@@ -1,16 +1,18 @@
 [![Stories in Ready](https://badge.waffle.io/sunyang713/sabor-website.png?label=ready&title=Ready)](https://waffle.io/sunyang713/sabor-website)
-# sabor-website
-Sabor: Columbia University's First and Only Latino Dance Troupe
+# Sabor's Website
 
 minimum, barebones client-side-only javascript application. constructed through careful research and inclusion of only the top and most necessary packages.
+
+Lol jk this is has a buttload of packages which is really frustrating.
 
  - npm
  - webpack
  - babel
+ - gulp
 
  - react
- - react-router, history
- - react-bootstrap, react-router-bootstrap
+ - react-router, history, scroll-behavior
+ - react-bootstrap, react-router-bootstrap jk we're kiling this
 
 
  - jquery
@@ -18,11 +20,11 @@ minimum, barebones client-side-only javascript application. constructed through 
 
  - stylus
 
- - adheres to Airbnb styling
+ - adheres to Airbnb styling. nah adhering to /my/ styling.
 
 
 future:
- - flux (alt)
+ - flux (alt) nope. redux.
  - gulp (to run uglify, and deploy possibly)
 
 
@@ -34,7 +36,7 @@ future:
 
 
 
-# Envrionment Setup
+# Setup
 
 Install node.js with which npm will come prepackaged: https://nodejs.org/en/
 
@@ -44,7 +46,7 @@ $ npm install
 ```
 Run the app.
 ```
-$ npm run watch
+$ gulp
 ```
 
 This will run the webpack development server.
@@ -59,7 +61,7 @@ $ export NODE_ENV=development
 
 Make a new branch. Name your branch the name of your new intended feature, prefixed with your initials and a slash.
 ```
-$ git checkout -b nz/my-new-feature
+$ git checkout -b js/my-new-feature
 ```
 
 Make your changes. `commit` frequently. `git add`'s `-p` option is encouraged (interactive add). Commit messages should be in the imperative present tense.
@@ -88,63 +90,58 @@ $ gulp test
 
 When finished, push to a NEW branch on github.
 ```
-$ git push -u origin nz/my-new-feature
+$ git push -u origin js/my-new-feature
 ```
 
 Make a pull request, tag someone in a comment or poke someone on slack for review. Merge and delete branch when done.
 
 
 
-
-# Dependencies
-*Npm* manages the packages.
-
-The client is built with *webpack*.
-
-The code uses ECMAScript 2015 (ES6) syntax which is compiled with *babel*.
-
-The client is written primarily in *React.js*.
-
-The (pseudo) FLUX Architecture is managed with *Redux*.
-
-Routing is managed with *react-router* (along with redux-simple-router).
-
-*Parse* is used to make calls to the Parse backend.
-
-An (unused) eslint configuration is in place for general code styling and hygeine.
-
-Sublime Text is recommended with package control installed and babel snippets.
+# Architecture
+## Developing and Building 
+*npm* manages the packages. The code uses ECMAScript 2015 (ES6) syntax which is compiled with *babel*. The javascript modules are built and combined with *webpack*. *gulp* is the task runner that streamlines command line imperatives. An *eslint* configuration is in place for general code styling and hygeine.
 
 
 
+## Application Architecture
+The client is written primarily in *React.js*. Some additional utilities and modules:
+ - react-modal
+ - react-fadethrough (made my me!!)
+ - react-router (along with history)
+ - react-addons-update
 
-# Docs/References
+The (pseudo) FLUX Architecture is managed with *Redux*. Additional utilities and modules:
+ - react-redux
+ - thunk
+ - redux-simple-router
+ - redux-devtools
 
-React-Router Docs
-https://github.com/rackt/react-router/tree/master/docs
-
-Parse-React Docs
-https://github.com/ParsePlatform/ParseReact
-
-general eslint rules:
-http://eslint.org/docs/rules/
-
-eslint-react rules
-https://github.com/yannickcr/eslint-plugin-react/tree/master/docs/rules
-
-sublime text 3, package control, babel & stylus snippets, sublimelinter & sublimelinter-eslint, editorconfig.
-https://packagecontrol.io/installation
+A Few other standalone modules utilities and modules:
+ - jquery
+ - moment
+ - lodash
+ - immutable (used in isolation with the redux system, soon to be deprecated)
 
 
-eslint-react rules:
-https://github.com/yannickcr/eslint-plugin-react/tree/master/lib/rules
+## Styling
+"I can throw in some styles rite quick at the end, easy." Never make the mistake of making styling an after-thought. Styling is just as, if not more, time-consuming as core implementation.
 
-FLUX action standard:
-https://github.com/acdlite/flux-standard-action
+*Stylus* is the chosen preprocessor. It's objectively better than Sass or Less. I've injected *nib* mixins for convenience.
 
-Redux-DevTools:
-https://github.com/gaearon/redux-devtools
+*postcss* is the big new thing. It's faster and allows better customization. Utilities and modules:
+ - cssnext (includes autoprefixer)
+ - rucksack (literally magic)
+ - lost (grid system)
 
+An extremely important opinionated pattern I've established is global vs modulated styles. Stylus stylesheets can only be used with *react-css-modules* and will be namespaced (isolated) to the component into which they were imported. Standard CSS stylesheets can be used as usual, with all of its frustrating idiosyncrasies. This is intentional to promote more sane object oriented CSS. However, global utility styles are definitely useful, which is why I've still allowed it.
+
+
+
+## Suggested dev tools
+Sublime Text 3 is recommended with package control installed. Here are some good packages:
+ - babel snippets.
+ - stylus snippets
+ - eslint
 
 
 
