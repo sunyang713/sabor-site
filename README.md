@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/sunyang713/sabor-website.png?label=ready&title=Ready)](https://waffle.io/sunyang713/sabor-website)
 # sabor-website
 Sabor: Columbia University's First and Only Latino Dance Troupe
 
