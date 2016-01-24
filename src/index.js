@@ -2,9 +2,12 @@
 
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, Route, IndexRoute } from 'react-router'
+import { Router, Route, Redirect, IndexRoute } from 'react-router'
 import { Provider } from 'react-redux'
-import createHistory from 'history/lib/createHashHistory'
+import createHistory from 'history/lib/createBrowserHistory'
+// import { createHistory } from 'history'
+// import createHistory from 'history/lib/createHashHistory'
+import useScroll from 'scroll-behavior/lib/useStandardScroll'
 import configureStore from 'store/configureStore'
 
 // TODO: use fbgraph, add like/share buttons
@@ -21,25 +24,26 @@ import DevTools from 'containers/DevTools'
 /* Global styles */
 import 'assets/css/normalize.css'
 import 'assets/css/skeleton.css'
-// import 'assets/styles/global'
+import 'assets/styles/global.css'
 
 
 const App = ({ children }) => children
-
-const hashHistory = createHistory({ queryKey: false })
+// const history = createHistory({ queryKey: false })
+const history = useScroll(createHistory)()
 
 const INDEX = (
-  <Provider store={ configureStore(hashHistory) }>
+  <Provider store={ configureStore(history) }>
     <div>
-      <Router history={ hashHistory }>
+      <Router history={ history }>
         <Route path="/" component={ App }>
           <IndexRoute component={ Home } />
+          <Redirect from="home" to="/" />
           <Route path="team" component={ Team } />
           <Route path="releve" component={ Releve } />
           <Route path="*" component={ NotFound } />
         </Route>
       </Router>
-      { IN_DEV_MODE ? <DevTools /> : null }
+      { IN_DEV_MODE && false ? <DevTools /> : null }
     </div>
   </Provider>
 )

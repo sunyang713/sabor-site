@@ -35,7 +35,8 @@ module.exports = {
       "redux-devtools-dock-monitor",
       "redux-devtools-log-monitor",
       "redux-simple-router",
-      "redux-thunk"
+      "redux-thunk",
+      "scroll-behavior"
     ],
     index: path.join(srcPath, "index.js")
   },
