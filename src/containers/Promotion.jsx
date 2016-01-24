@@ -3,9 +3,9 @@ import reduxify from 'store/reduxify'
 import * as latestEventActions from 'actions/latestEvent'
 import * as modalActions from 'actions/modal'
 import Event from 'components/Event'
-import Promotion from 'components/Promotion'
+import FacebookBanner from 'components/FacebookBanner'
 
-class LatestEventContainer extends React.Component {
+class PromotionContainer extends React.Component {
   constructor(props) {
     super(props)
     this.props.latestEventActions.pullLatestEvent()
@@ -24,12 +24,12 @@ class LatestEventContainer extends React.Component {
         description={ latestEvent.description }
         modalActions={ modalActions }
       />
-    ) : <Promotion />
+    ) : <FacebookBanner />
   }
 }
 
 export default reduxify({
-  component: LatestEventContainer,
+  component: PromotionContainer,
   state: 'latestEvent',
   actions: { latestEventActions, modalActions }
 })

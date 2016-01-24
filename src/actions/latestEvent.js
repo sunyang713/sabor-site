@@ -22,7 +22,7 @@ export function pullLatestEvent() {
     fbapi({
       url: '/cusabor/events',
       fields: 'name,description,start_time,end_time,place,cover',
-      // additional: { since: Date.now() / 1000 | 0 },
+      additional: { since: Date.now() / 1000 | 0 },
       callback: function(response) {
         const event = response.data[0];
         if (event) {
@@ -31,11 +31,11 @@ export function pullLatestEvent() {
             exists: true,
             title: name,
             imgsrc: cover.source,
-            date: moment(start_time).format('dddd, MMM Do'),
-            start_time: moment(start_time).format('h:mma'),
-            end_time: moment(end_time).format('h:mma'),
+            date: moment(start_time).format("dddd, MMM Do"),
+            start_time: moment(start_time).format("h:mma"),
+            end_time: moment(end_time).format("h:mma"),
             place: place.name,
-            rsvp: 'https://www.facebook.com/' + id,
+            rsvp: "https://www.facebook.com/" + id,
             description: description
           };
           dispatch(setLatestEvent(payload));

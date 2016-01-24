@@ -1,12 +1,29 @@
 import React from 'react'
+import CSSModules from 'react-css-modules'
+import styles from 'assets/styles/modal.styl'
 
-export default class ModalContent extends React.Component {
+class ModalContent extends React.Component {
+
+  static propTypes = {
+    content: React.PropTypes.shape({
+      title: React.PropTypes.string,
+      info: React.PropTypes.arrayOf(
+        React.PropTypes.arrayOf(
+          React.PropTypes.string
+        )
+      ),
+      imgsrc: React.PropTypes.string,
+      description: React.PropTypes.string
+    }),
+    onClose: React.PropTypes.func
+  };
+
   render() {
     const { content, onClose } = this.props
-    const { name, info, description, imgsrc } = content
+    const { title, info, description, imgsrc } = content
     return (
       <div>
-        <h2>{ name }</h2>
+        <h2>{ title }</h2>
         <img src={ imgsrc } />
         <div>
           {
@@ -23,8 +40,12 @@ export default class ModalContent extends React.Component {
         <div>
           <p>{ description }</p>
         </div>
-        <button onClick={ onClose }>{ 'Close' }</button>
+        <div className="u-pull-right">
+          <button onClick={ onClose }>{ 'Close' }</button>
+        </div>
       </div>
     )
   }
 }
+
+export default CSSModules(ModalContent, styles)

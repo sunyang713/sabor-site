@@ -2,7 +2,7 @@ import React from 'react'
 import reduxify from 'store/reduxify'
 import * as eventsActions from 'actions/events'
 import * as modalActions from 'actions/modal'
-import Events from 'components/Events'
+import EventsList from 'components/EventsList'
 
 class EventsListContainer extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class EventsListContainer extends React.Component {
 
   render() {
     return (
-      <Events
+      <EventsList
         events={ this.props.events }
         modalActions={ this.props.modalActions }
       />

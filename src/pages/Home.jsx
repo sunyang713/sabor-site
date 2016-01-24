@@ -1,8 +1,10 @@
 import React from 'react'
 
 /* Containers */
-import LatestEvent from 'containers/LatestEvent'
+// import Promotion from 'containers/Promotion'
+import Blurb from 'containers/Blurb'
 import Modal from 'containers/Modal'
+import Navbar from 'containers/Navbar'
 
 /* Components */
 import Cover from 'components/Cover'
@@ -16,8 +18,18 @@ export default class Home extends React.Component {
         <Modal />
         <Cover />
         <hr />
-        <LatestEvent />
+        <Navbar />
+        <hr />
+        <Blurb />
         <Footer />
+        <div className="transparent-block" />
+        <div className="transparent-block" />
+        <div className="transparent-block" />
+        <div className="transparent-block" />
+        <div className="transparent-block" />
+        <div className="transparent-block" />
+        <div className="transparent-block" />
+        <div className="transparent-block" />
       </div>
     )
   }
