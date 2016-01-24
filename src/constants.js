@@ -20,3 +20,5 @@ export const NEXT = 'NEXT'
 
 export const SET_LATEST_EVENT = 'SET_LATEST_EVENT'
 export const SET_EXISTING = 'SET_EXISTING'
+
+export const SET_BLURB = 'SET_BLURB'
