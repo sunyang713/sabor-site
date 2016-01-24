@@ -9,19 +9,22 @@ import configureStore from 'store/configureStore'
 
 // TODO: use fbgraph, add like/share buttons
 
-/* Containers */
-import App from 'containers/App' // primary shell
-import Home from 'containers/Home'
-// import Events from 'containers/Events'
-// import Media from 'containers/Media'
+/* Pages */
+import Home from 'pages/Home'
+import Team from 'pages/Team'
+import Releve from 'pages/Releve'
+import NotFound from 'pages/NotFound'
+
 import DevTools from 'containers/DevTools'
 
-/* Components */
-// import Team from 'components/Team';
-// import Releve from 'components/Releve';
-import NotFound from 'components/NotFound'
+
+/* Global styles */
+import 'assets/css/normalize.css'
+import 'assets/css/skeleton.css'
+// import 'assets/styles/global'
 
 
+const App = ({ children }) => children
 
 const hashHistory = createHistory({ queryKey: false })
 
@@ -31,6 +34,8 @@ const INDEX = (
       <Router history={ hashHistory }>
         <Route path="/" component={ App }>
           <IndexRoute component={ Home } />
+          <Route path="team" component={ Team } />
+          <Route path="releve" component={ Releve } />
           <Route path="*" component={ NotFound } />
         </Route>
       </Router>

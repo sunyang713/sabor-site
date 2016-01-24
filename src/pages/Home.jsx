@@ -2,23 +2,22 @@ import React from 'react'
 
 /* Containers */
 import LatestEvent from 'containers/LatestEvent'
-import Team from 'containers/Team'
+import Modal from 'containers/Modal'
 
 /* Components */
 import Cover from 'components/Cover'
-import Releve from 'components/Releve'
+import Footer from 'components/Footer'
 
 // TODO: add line breaks for txt files.
 export default class Home extends React.Component {
   render() {
     return (
       <div>
+        <Modal />
         <Cover />
         <hr />
         <LatestEvent />
-        <hr />
-        <Team />
-        <Releve />
+        <Footer />
       </div>
     )
   }
