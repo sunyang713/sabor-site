@@ -1,32 +1,25 @@
 import React from 'react'
-import { pushPath } from 'redux-simple-router'
-import reduxify from 'toolbox/reduxify'
-import * as modalActions from 'actions/modal'
 
+/* Containers */
+import LatestEvent from 'containers/LatestEvent'
+import Team from 'containers/Team'
 
-class Home extends React.Component {
+/* Components */
+import Cover from 'components/Cover'
+import Releve from 'components/Releve'
+
+// TODO: add line breaks for txt files.
+export default class Home extends React.Component {
   render() {
-    const { modal, actions, children } = this.props
-    // const childProps = {
-    //   title: modal.title,
-    //   info: modal.info,
-    //   img: modal.img,
-    //   description: modal.description
-    // }
-    // const RouteHandler = React.cloneElement(
-    //   children,
-    //   childProps
-    // )
     return (
-      <div className="site-wrapper" >
-        { children }
+      <div>
+        <Cover />
+        <hr />
+        <LatestEvent />
+        <hr />
+        <Team />
+        <Releve />
       </div>
     )
   }
 }
-
-export default reduxify({
-  component: Home,
-  reducer: 'modal',
-  actions: { pushPath }
-})
