@@ -1,50 +1,39 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import merge from './merge'
-import pick from './pick'
 import apply from './apply'
 
 /**
  * Reduxifies a component.
  *
- * @param reducers  - An array of reducer names. The component will
- *                    be given access to these will be the states.
+ * @param state     - The name of the desired state. The component will
+ *                    be given read-access to this state.
  * @param actions   - An array of actions, or a single actionset. The component will
  *                    be allowed to execute these actions.
  * @param component - The component to be connected.
  * @return the connected component
  */
-export default function reduxify({ reducer, reducers, actions, component }) {
-  let mapStatesToProps = Array.isArray(reducers) ? // janky check for reducer vs reducers
-    (state) => pick(reducers, state)
-  :
-    (state) => ({ [reducer]: state[reducer] })
+export default function reduxify({ state, actions, component }) {
 
-  let mapDispatchesToProps = Array.isArray(actions) ?
-    (dispatch) => ({
-      actions: bindActionCreators(merge.apply(null, actions), dispatch)
-    })
-  :
-    (dispatch) => ({
-      actions: bindActionCreators(actions, dispatch)
-    })
+  // the component will subscribe to Redux store updates
+  var mapStateToProps = (STATE) => ({
+    [state]: STATE[state].toJS()
+  })
+
+  // the component will be provided actions
+  if (actions)
+    var mapDispatchToProps = (dispatch) => apply(
+      actions,
+      (action) => bindActionCreators(action, dispatch)
+    )
 
   return connect(
-    mapStatesToProps,
-    mapDispatchesToProps
+    mapStateToProps,
+    mapDispatchToProps
   )(component)
-}
-// TODO allow no actions
 
-// this one separates actions to props.actions1, props.actions2 etc
-export function reduxifyy({ reducers, actions, component }) {
-  let mapStatesToProps = (state) => pick(reducers, state)
-  let mapDispatchesToProps = (dispatch) => apply(
-    actions,
-    (action) => bindActionCreators(action, dispatch)
-  )
-  return connect(
-    mapStatesToProps,
-    mapDispatchesToProps
-  )(component)
 }
+
+  // let mapStatesToProps = (state) => apply(
+  //   pick(states, state),
+  //   (state) => state.toJS()
+  // )
