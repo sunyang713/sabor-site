@@ -11,3 +11,12 @@ export const ADD_EVENTS = 'ADD_EVENTS'
 export const SET_EVENTS = 'SET_EVENTS'
 
 export const STORE = 'STORE'
+
+export const SET_IMAGE = 'SET_IMAGE'
+export const INCREMENT = 'INCREMENT'
+export const RESET = 'RESET'
+
+export const NEXT = 'NEXT'
+
+export const SET_LATEST_EVENT = 'SET_LATEST_EVENT'
+export const SET_EXISTING = 'SET_EXISTING'
