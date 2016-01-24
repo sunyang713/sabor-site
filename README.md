@@ -5,35 +5,6 @@ minimum, barebones client-side-only javascript application. constructed through 
 
 Lol jk this is has a buttload of packages which is really frustrating.
 
- - npm
- - webpack
- - babel
- - gulp
-
- - react
- - react-router, history, scroll-behavior
- - react-bootstrap, react-router-bootstrap jk we're kiling this
-
-
- - jquery
- - momentjs
-
- - stylus
-
- - adheres to Airbnb styling. nah adhering to /my/ styling.
-
-
-future:
- - flux (alt) nope. redux.
- - gulp (to run uglify, and deploy possibly)
-
-
-
-
-
-
-
-
 
 
 # Setup
