@@ -11,35 +11,17 @@ import configureStore from 'store/configureStore'
 
 /* Containers */
 import App from 'containers/App' // primary shell
+import Home from 'containers/Home'
 // import Events from 'containers/Events'
 // import Media from 'containers/Media'
 import DevTools from 'containers/DevTools'
 
 /* Components */
-import Home from 'components/Home'
 // import Team from 'components/Team';
 // import Releve from 'components/Releve';
 import NotFound from 'components/NotFound'
 
-/* Global styles */
-import 'assets/css/normalize.css'
-import 'assets/css/skeleton.css'
 
-// const INDEX = (
-//   <Provider store={ store }>
-//     <div>
-//       <Router history={ history }>
-//         <Route path="/" component={ App }>
-//           <IndexRoute component={ Home } />
-//           <Route path="team" component={ Team } />
-//           <Route path="releve" component={ Releve } />
-//           <Route path="*" component={ NotFound } />
-//         </Route>
-//       </Router>
-//       <DevTools />
-//     </div>
-//   </Provider>
-// )
 
 const hashHistory = createHistory({ queryKey: false })
 
