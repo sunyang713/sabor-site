@@ -7,6 +7,7 @@ import {
   SET_MODAL_DESCRIPTION
 } from 'constants'
 
+
 export function showModal() {
   return {
     type: SHOW_MODAL
@@ -18,6 +19,11 @@ export function closeModal() {
     type: CLOSE_MODAL
   }
 }
+
+export function handleClose() {
+  return closeModal()
+}
+
 
 export function setModalContent(content) {
   return {
