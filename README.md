@@ -1,4 +1,6 @@
 [![Stories in Ready](https://badge.waffle.io/sunyang713/sabor-website.png?label=ready&title=Ready)](https://waffle.io/sunyang713/sabor-website)
+[![Build Status](https://travis-ci.org/sunyang713/sabor-website.svg?branch=master)](https://travis-ci.org/sunyang713/sabor-website)
+
 # Sabor's Website
 
 minimum, barebones client-side-only javascript application. constructed through careful research and inclusion of only the top and most necessary packages.
