@@ -81,22 +81,15 @@ The (pseudo) FLUX Architecture is managed with *Redux*. Additional utilities and
  - redux-simple-router
  - redux-devtools
 
-A Few other standalone modules utilities and modules:
- - jquery
+A few standalone modules utilities and modules:
  - moment
- - lodash
  - immutable (used in isolation with the redux system, soon to be deprecated)
 
 
 ## Styling
 "I can throw in some styles rite quick at the end, easy." Never make the mistake of making styling an after-thought. Styling is just as, if not more, time-consuming as core implementation.
 
-*Stylus* is the chosen preprocessor. It's objectively better than Sass or Less. I've injected *nib* mixins for convenience.
-
-*postcss* is the big new thing. It's faster and allows better customization. Utilities and modules:
- - cssnext (includes autoprefixer)
- - rucksack (literally magic)
- - lost (grid system)
+*Stylus* is the chosen preprocessor. It's objectively better than Sass or Less.
 
 An extremely important opinionated pattern I've established is global vs modulated styles. Stylus stylesheets can only be used with *react-css-modules* and will be namespaced (isolated) to the component into which they were imported. Standard CSS stylesheets can be used as usual, with all of its frustrating idiosyncrasies. This is intentional to promote more sane object oriented CSS. However, global utility styles are definitely useful, which is why I've still allowed it.
 
