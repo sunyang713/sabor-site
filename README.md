@@ -17,9 +17,9 @@ Install npm packages.
 ```
 $ npm install
 ```
-Run the app.
+Start the app.
 ```
-$ gulp
+$ npm start
 ```
 
 This will run the webpack development server.
@@ -46,20 +46,8 @@ $ git add ./stuff/morestuff/my-untracked-file
 $ git commit -m "Implement my new WORKING sub-feature-1"
 ...
 $ git commit -m "Implement my new WORKING sub-feature-2"
-...
-$ git commit -m "Implement my new WORKING sub-feature-3"
 ```
 
-Test. jk, we don't have testing yet.
-
-```
-$ gulp test
-```
-
-Fix your mistakes. Test again.
-```
-$ gulp test
-```
 
 When finished, push to a NEW branch on github.
 ```
@@ -68,6 +56,10 @@ $ git push -u origin js/my-new-feature
 
 Make a pull request, tag someone in a comment or poke someone on slack for review. Merge and delete branch when done.
 
+# Deployment
+Travis will automatically deploy the 'production' branch. Never update this branch until you've tested thoroughly.
+
+Use github to make a pull request from master to production.
 
 
 # Architecture
