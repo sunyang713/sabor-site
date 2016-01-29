@@ -1,21 +1,14 @@
 import React from 'react'
 import reduxify from 'store/reduxify'
-import { routeActions } from 'redux-simple-router'
-import * as blurbActions from 'actions/blurb'
+import { routeActions } from 'react-router-redux'
 import Blurb from 'components/Blurb'
 
 class BlurbContainer extends React.Component {
-  constructor(props) {
-    super(props)
-    this.props.blurbActions.pullBlurb()
-  }
-
 
   // TODO fix this
   render() {
     return (
       <Blurb
-        text={ this.props.blurb.blurb }
         push={ this.props.routeActions.push }
       />
     )
@@ -24,6 +17,6 @@ class BlurbContainer extends React.Component {
 
 export default reduxify({
   component: BlurbContainer,
-  state: 'blurb',
-  actions: { blurbActions, routeActions }
+  state: 'none',
+  actions: { routeActions }
 })

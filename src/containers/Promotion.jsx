@@ -3,7 +3,6 @@ import reduxify from 'store/reduxify'
 import * as latestEventActions from 'actions/latestEvent'
 import * as modalActions from 'actions/modal'
 import Event from 'components/Event'
-import FacebookBanner from 'components/FacebookBanner'
 
 class PromotionContainer extends React.Component {
   constructor(props) {
@@ -13,7 +12,7 @@ class PromotionContainer extends React.Component {
 
   render() {
     const { latestEvent, modalActions } = this.props
-    return latestEvent.exists && false ? (
+    return latestEvent.exists ? (
       <Event
         title={ latestEvent.title }
         imgsrc={ latestEvent.imgsrc }
@@ -24,7 +23,7 @@ class PromotionContainer extends React.Component {
         description={ latestEvent.description }
         modalActions={ modalActions }
       />
-    ) : <FacebookBanner />
+    ) : <div />
   }
 }
 

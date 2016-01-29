@@ -24,7 +24,6 @@ class TeamListContainer extends React.Component {
   render() {
     return (
       <Team
-        className="container"
         boardMembers={ boardMembers }
         boardImages={ boardImages }
         modalActions={ this.props.modalActions }

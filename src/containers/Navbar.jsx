@@ -1,12 +1,12 @@
 import React from 'react'
-import { routeActions } from 'redux-simple-router'
+import { routeActions } from 'react-router-redux'
 import reduxify from 'store/reduxify'
 import Navbar from 'components/Navbar'
 
 class NavbarContainer extends React.Component {
   render() {
-    const links = ['/home', '/team', '/releve']
-    const names = ['Home', 'Team', 'Releve'] // TODO make this better
+    const links = ['/home', '/team', '/join', '/releve']
+    const names = ['Home', 'Team', 'Join', 'Releve'] // TODO make this better
     return (
       <Navbar
         push={ this.props.routeActions.push }
