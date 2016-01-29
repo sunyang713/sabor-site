@@ -1,5 +1,6 @@
 import React from 'react'
 import ThumbnailCard from 'components/lib/ThumbnailCard'
+import teamMembers from 'assets/team_info.json';
 
 
 export default class Team extends React.Component {
@@ -59,12 +60,38 @@ export default class Team extends React.Component {
 
 
   render() {
+    let teamListCol1 = [];
+    for (let member of teamMembers)
+      teamListCol1.push(
+        <li key={ member }>
+          <p>{ member }</p>
+        </li>
+      );
+
+    let teamListCol2 = teamListCol1.splice(teamListCol1.length / 2, teamListCol1.length);
+
+    // const styles = {
+    //   list
+    // }
+
     return (
-      <div className={ this.props.className }>
+      <div>
         <h1>{ 'Team' }</h1>
         <div>
         { this.renderRows() }
         </div>
+        <div className="row">
+          <div className="six columns">
+            <ul className="list-unstyled">
+              { teamListCol1 }
+            </ul>
+          </div>
+          <div className="six columns">
+            <ul className="list-unstyled">
+              { teamListCol2 }
+            </ul>
+          </div>
+        </div>  
       </div>
     )
   }

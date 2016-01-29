@@ -9,16 +9,21 @@ export default class Blurb extends React.Component {
   render() {
 
     return (
-      <div className="container">
-        <h1>{ this.props.text }</h1>
-        <p>
+      <div className="section">
+        <div className="container">
+          <h3 className="section-heading">
+            { 'Blurb' }
+          </h3>
+          <p className="section-description">
+            { "Sabor is Columbia University's First Latino Dance Troupe. Established in 2003, Sabor performs salsa, bachata, merengue, and many other styles of dance." }
+          </p>
           <a className="button button-primary" href="https://www.facebook.com/cusabor">
-            { 'Follow us on Facebook' }
+            { 'Follow us' }
           </a>
-          <button onClick={ this.handleClick() }>
+          <a className="button" onClick={ this.handleClick() }>
             { 'Learn More' }
-          </button>
-        </p>
+          </a>
+        </div>
       </div>
     )
   }

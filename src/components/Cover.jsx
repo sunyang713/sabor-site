@@ -2,9 +2,22 @@ import React from 'react'
 // import FadeThrough from 'components/FadeThrough'
 import FadeThrough from 'react-fadethrough'
 import config from 'assets/config.json'
-import images from 'assets/images/cover'
 import title from 'assets/images/title.png'
 import merge from 'toolbox/merge'
+
+// import images from 'assets/images/cover'
+let images = []
+let done = false
+let i = 1
+while (!done) {
+  try {
+    images.push(require('assets/images/cover/' + i))
+    i++
+  } catch (e) {
+    done = true
+  }
+}
+
 
 export default class Cover extends React.Component {
 
