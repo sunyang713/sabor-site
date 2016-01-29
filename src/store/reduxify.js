@@ -32,8 +32,3 @@ export default function reduxify({ state, actions, component }) {
   )(component)
 
 }
-
-  // let mapStatesToProps = (state) => apply(
-  //   pick(states, state),
-  //   (state) => state.toJS()
-  // )
