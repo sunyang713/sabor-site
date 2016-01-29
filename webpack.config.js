@@ -4,39 +4,41 @@ var path = require("path");
 var webpack = require("webpack");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var postcss = require("postcss");
 var poststylus = require("poststylus");
-var rucksack = require("rucksack-css");
-var cssnext = require("postcss-cssnext");
-var lost = require("lost");
-// var autoprefixer = require("autoprefixer");
+var autoprefixer = require("autoprefixer");
 var srcPath = path.join(__dirname, "src");
 var inDevMode = process.env.NODE_ENV === "dev" || process.env.NODE_ENV === "development";
 
 /* EXTREMELY IMPORTANT HERE!!! */
-var publicPath = inDevMode ? "/" : "/cu/sabor/"; // trailing slash needed?
+var publicPath = inDevMode ? "/" : "/~jys2124/"; // trailing slash needed?
 
 
 module.exports = {
-  target: "web",
-  cache: true,
+  resolve: {
+    alias: {
+      // "react": "react-lite",
+      // "react-dom": "react-lite",
+      // "facebook": "http://connect.facebook.net/en_US/sdk.js"
+      "fbsdk": path.join(srcPath, "fbsdk")
+    },
+    root: srcPath,
+    extensions: ["", ".js", ".jsx", ".styl", ".jpg", ".JPG", ".jpeg", ".JPEG", ".png", ".PNG"],
+    modulesDirectories: ["node_modules", "src"]
+  },
+
   entry: {
     common: [
       "moment",
       "history",
+      "immutable",
       "react",
       "react-dom",
-      "react-addons-update",
       "react-modal",
       "react-router",
       "react-redux",
       "redux",
-      "redux-devtools",
-      "redux-devtools-dock-monitor",
-      "redux-devtools-log-monitor",
-      "redux-simple-router",
-      "redux-thunk",
-      "scroll-behavior"
+      "react-router-redux",
+      "redux-thunk"
     ],
     index: path.join(srcPath, "index.js")
   },
@@ -48,69 +50,38 @@ module.exports = {
   },
   module: {
     loaders: [
-      // required for .js and .jsx
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /(node_modules)/,
-        loader: "babel-loader",
-        query: {
-          presets: ["es2015", "stage-0", "react"] // TODO: don"t need stage-0?
-        }
-      },
+      { test: /\.(js|jsx)$/, include: srcPath, loader: "babel" },
 
-      // required for .css
-      { test: /\.css$/, exclude: /\.useable\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader") },
-      // { test: /\.css$/, exclude: /\.useable\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader") },
+      { test: /\.css$/, exclude: /\.useable\.css$/, loader: ExtractTextPlugin.extract("style", "css!postcss") },
 
-      // required to for .styl
-      // { test: /\.styl$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!stylus-loader") },
-      { test: /\.styl$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus-loader") },
+      { test: /\.styl$/, loader: ExtractTextPlugin.extract("style", "css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus") },
 
-      // required for bootstrap icons
-      //   url-loader uses DataUrls
-      //   file-loader emits files
-      { test: /\.(woff|woff2)$/, loader: "url-loader?prefix=font/&limit=10000&mimetype=application/font-woff" },
-      { test: /\.ttf$/, loader: "file-loader?prefix=font/" },
-      { test: /\.eot$/, loader: "file-loader?prefix=font/" },
-      { test: /\.svg$/, loader: "file-loader?prefix=font/" },
+      { test: /\.json$/, loader: "json" },
 
-      // requierd for .txt
-      { test: /\.txt$/, loader: "raw-loader"},
+      { test: /\.png$/, loader: "url?limit=100000" },
 
-      // required for .json
-      { test: /\.json$/, loader: "json-loader" },
+      { test: /\.jpg$/, loader: "file" },
 
-      // required for .png
-      { test: /\.png$/, loader: "url-loader?limit=100000" },
-
-      // required for .jpg
-      { test: /\.jpg$/, loader: "file-loader" },
-
-      // eslint-loader
-      // { test: /\.(js|jsx)$/, exclude: /(node_modules)/, loader: "eslint-loader" },
+      // I have no idea what I'm doing
+      { test: /fbsdk/, loader: 'exports?FB!script' }
     ]
   },
-  resolve: {
-    // alias: {
-      // Unfortunately, this breaks the react-modal.
-      // "react": true ? "react" : "react-lite",
-      // "react-dom": true ? "react-dom" : "react-lite",
 
-      // Bind version of jquery
-      // jquery: "jquery-2.1.4",
-
-      // Bind version of jquery-ui
-      // "jquery-ui": "jquery-ui-1.10.5",
-
-      // jquery-ui doesn"t contain a index file
-      // bind module to the complete module
-      // "jquery-ui-1.10.5$": "jquery-ui-1.10.5/ui/jquery-ui.js"
-    // },
-    root: srcPath,
-    extensions: ["", ".js", ".jsx", ".styl", ".jpg", ".JPG", ".jpeg", ".JPEG", ".png", ".PNG"],
-    modulesDirectories: ["node_modules", "src"]
+  // misc plugins
+  stylus: {
+    use: [
+      poststylus([
+        "autoprefixer"
+      ])
+    ]
   },
+  postcss: [
+    autoprefixer
+  ],
+
+  // webpack plugins
   plugins: [
+    new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]), // saves ~100k from build
     new webpack.optimize.CommonsChunkPlugin("common", "common.js"),
     new HtmlWebpackPlugin({
       inject: "body",
@@ -123,49 +94,37 @@ module.exports = {
       { allChunks: true }
     ),
     new webpack.NoErrorsPlugin(),
-    // new webpack.ProvidePlugin({
-    //     $: "jquery",
-    //     jQuery: "jquery",
-    //     "window.jQuery": "jquery"
-    // }),
+    new webpack.ProvidePlugin({
+      FB: "fbsdk",
+      "window.FB": "fbsdk"
+    }),
     new webpack.DefinePlugin({
       "process.env": {
-        NODE_ENV: JSON.stringify(inDevMode ? "development" : "production")
+        NODE_ENV: inDevMode ? JSON.stringify("development") : JSON.stringify("production")
       },
       "IN_DEV_MODE": inDevMode
     })
   ],
 
-  // Random crap plugin stuff
-  stylus: {
-    use: [
-      require("nib")(),
-      poststylus([
-        // autoprefixer({ browsers: ["last 2 versions"] }),
-        cssnext(),
-        "rucksack-css"
-      ])
-    ],
-    import: ["~nib/lib/nib/index.styl"]
-  },
-  postcss: [
-    // autoprefixer({ browsers: ["last 2 versions"] }),
-    cssnext,
-    lost,
-    rucksack
-  ],
-
+  // dev options
   debug: inDevMode,
-  devtool: inDevMode ? "source-map" : "cheap-module-source-map",
+  devtool: "source-map",
   devServer: {
-    // contentBase: path.join(__dirname, publicPath),
     contentBase: "./dist",
-    historyApiFallback: true
-  },
-  // some janky fix for "request" npm package
-  node: {
-    net: "empty",
-    tls: "empty"
+    historyApiFallback: {
+      index: publicPath
+    }
   }
-};
+}
+
+
+    // new webpack.optimize.DedupePlugin(),
+    // new webpack.optimize.OccurenceOrderPlugin(),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   minimize: true,
+    //   compress: {
+    //     warnings: false
+    //   },
+    //   sourceMap: false,
+    // }),
 
