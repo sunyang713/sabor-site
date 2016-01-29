@@ -1,17 +1,15 @@
 import { combineReducers } from 'redux'
-import { routeReducer } from 'redux-simple-router'
+import { routeReducer as routing } from 'react-router-redux'
 import events from './events'
 import modal from './modal'
 import latestEvent from './latestEvent'
-import blurb from './blurb'
 import none from './none'
 
 const rootReducer = combineReducers({
-  routing: routeReducer,
+  routing,
   events,
   modal,
   latestEvent,
-  blurb,
   none
 })
 

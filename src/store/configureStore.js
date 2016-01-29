@@ -1,5 +1,16 @@
-/* <process.env.NODE_ENV> from Webpack's DefinePlugin */
-if (process.env.NODE_ENV === 'production')
-  module.exports = require('./configureStore.prod')
-else
-  module.exports = require('./configureStore.dev')
+import { createStore, applyMiddleware, compose } from 'redux'
+import { syncHistory } from 'react-router-redux'
+import thunk from 'redux-thunk'
+import reducers from 'reducers'
+
+export default function configureStore(history) {
+  const reduxRouterMiddleware = syncHistory(history)
+
+  const finalCreateStore = compose(
+    // Middleware you want to use in production:
+    applyMiddleware(reduxRouterMiddleware, thunk),
+    // Other store enhancers if you use any
+  )(createStore)
+
+  return finalCreateStore(reducers)
+}

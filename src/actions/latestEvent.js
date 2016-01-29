@@ -1,5 +1,5 @@
 import { SET_LATEST_EVENT, SET_EXISTING } from 'constants'
-import { fbapi } from 'actions/fbapi'
+import fbapi from 'toolbox/fbapi'
 import moment from 'moment'
 
 export function setLatestEvent(event) {
@@ -22,7 +22,7 @@ export function pullLatestEvent() {
     fbapi({
       url: '/cusabor/events',
       fields: 'name,description,start_time,end_time,place,cover',
-      additional: { since: Date.now() / 1000 | 0 },
+      // additional: { since: Date.now() / 1000 | 0 },
       callback: function(response) {
         const event = response.data[0];
         if (event) {
