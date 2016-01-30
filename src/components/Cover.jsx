@@ -1,7 +1,6 @@
 import React from 'react'
 // import FadeThrough from 'components/FadeThrough'
 import FadeThrough from 'react-fadethrough'
-import config from 'assets/config.json'
 import title from 'assets/images/title.png'
 import merge from 'toolbox/merge'
 
@@ -45,7 +44,7 @@ export default class Cover extends React.Component {
     return (
       <div style={ imageStyle }>
         <FadeThrough
-          delay={ config.coverInterval }
+          delay={ 5000 }
           height={ '100vh' }
           width={ '100vw' }
         >
