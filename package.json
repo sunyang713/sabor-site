@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/sunyang713/sabor-website#readme",
   "dependencies": {
+    "es6-promise": "^3.0.2",
     "history": "^1.13.1",
     "immutable": "^3.7.6",
     "moment": "^2.10.6",

@@ -8,6 +8,7 @@ var poststylus = require("poststylus");
 var autoprefixer = require("autoprefixer");
 var srcPath = path.join(__dirname, "src");
 var inDevMode = process.env.NODE_ENV === "dev" || process.env.NODE_ENV === "development";
+require('es6-promise').polyfill();
 
 /* EXTREMELY IMPORTANT HERE!!! */
 var publicPath = inDevMode ? "/" : "/~jys2124/"; // trailing slash needed?
