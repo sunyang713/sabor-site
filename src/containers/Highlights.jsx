@@ -1,7 +1,7 @@
 import React from 'react'
 import reduxify from 'store/reduxify'
 import { routeActions } from 'react-router-redux'
-import Highlight from 'components/highlight'
+import Highlight from 'components/Highlight'
 import teamImg from 'assets/images/highlights/team'
 import releveImg from 'assets/images/highlights/releve'
 import joinImg from 'assets/images/highlights/join'
