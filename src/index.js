@@ -12,7 +12,7 @@ import Releve from 'pages/Releve'
 import NotFound from 'pages/NotFound'
 
 /* Global styles */
-import 'assets/css/normalize.css'
+import 'normalize.css'
 import 'assets/css/skeleton.css'
 import 'assets/css/custom.css'
 
