@@ -1,8 +1,8 @@
 import React from 'react'
-// import FadeThrough from 'components/FadeThrough'
+import CSSModules from 'react-css-modules'
 import FadeThrough from 'react-fadethrough'
 import title from 'assets/images/title.png'
-import merge from 'toolbox/merge'
+import styles from 'assets/styles/cover.styl'
 
 // import images from 'assets/images/cover'
 let images = []
@@ -13,36 +13,17 @@ while (!done) {
     images.push(require('assets/images/cover/' + i))
     i++
   } catch (e) {
-    done = true
+    done = true // sketchy af
   }
 }
 
 
-export default class Cover extends React.Component {
-
+class Cover extends React.Component {
   render() {
-    const imageStyle = {
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      height: '100vh',
-      width: '100vw',
-      display: 'flex'
-    }
-    const titleStyle = {
-      backgroundImage: 'url(' + title + ')',
-      backgroundSize: 'contain',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      margin: '0 auto',
-      height: '50%',
-      width: '50%',
-      position: 'relative',
-      top: '50%',
-      transform: 'translateY(-50%)',
-      filter: 'drop-shadow(10px 10px 8px black)'
-    }
+    const logo = { backgroundImage: 'url(' + title + ')' }
+    // dodgy duplicate styling outside and inside
     return (
-      <div style={ imageStyle }>
+      <div styleName="image">
         <FadeThrough
           delay={ 8000 }
           height={ '100vh' }
@@ -52,10 +33,14 @@ export default class Cover extends React.Component {
           images.map(
             (image) => (
               <div
-                style={ merge({ backgroundImage: 'url(' + image + ')' }, imageStyle) }
+                style={ { backgroundImage: 'url(' + image + ')' } }
+                styleName="image"
                 key={ image }
               >
-                <div style={ titleStyle } />
+                <div
+                  style={ logo }
+                  styleName="logo"
+                />
               </div>
             )
           )
@@ -66,5 +51,5 @@ export default class Cover extends React.Component {
   }
 }
 
-
+export default CSSModules(Cover, styles)
 

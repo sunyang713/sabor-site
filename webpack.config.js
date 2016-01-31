@@ -8,7 +8,7 @@ var poststylus = require("poststylus");
 var autoprefixer = require("autoprefixer");
 var srcPath = path.join(__dirname, "src");
 var inDevMode = process.env.NODE_ENV === "dev" || process.env.NODE_ENV === "development";
-require('es6-promise').polyfill();
+require("es6-promise").polyfill();
 
 /* EXTREMELY IMPORTANT HERE!!! */
 var publicPath = inDevMode ? "/" : "/~jys2124/"; // trailing slash needed?
@@ -54,9 +54,11 @@ module.exports = {
     loaders: [
       { test: /\.(js|jsx)$/, include: srcPath, loader: "babel" },
 
-      { test: /\.css$/, exclude: /\.useable\.css$/, loader: ExtractTextPlugin.extract("style", "css!postcss") },
+      // { test: /\.css$/, exclude: /\.useable\.css$/, loader: ExtractTextPlugin.extract("style", "css!postcss") },
+      { test: /\.css$/, exclude: /\.useable\.css$/, loader: "style!css!postcss" },
 
-      { test: /\.styl$/, loader: ExtractTextPlugin.extract("style", "css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus") },
+      // { test: /\.styl$/, loader: ExtractTextPlugin.extract("style", "css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus") },
+      { test: /\.styl$/, loader: "style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus" },
 
       { test: /\.json$/, loader: "json" },
 
@@ -64,8 +66,8 @@ module.exports = {
 
       { test: /\.jpg$/, loader: "file" },
 
-      // I have no idea what I'm doing
-      { test: /fbsdk/, loader: 'exports?FB!script' },
+      // I have no idea what I"m doing
+      { test: /fbsdk/, loader: "exports?FB!script" },
 
 
 

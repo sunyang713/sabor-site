@@ -15,7 +15,6 @@ import NotFound from 'pages/NotFound'
 import 'normalize.css'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/css/bootstrap-theme.css'
 import 'assets/css/custom.css'
 
 const App = ({ children }) => children
