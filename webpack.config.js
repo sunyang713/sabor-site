@@ -35,7 +35,6 @@ module.exports = {
       "moment",
       "react",
       "react-dom",
-      "react-modal",
       "react-redux",
       "react-router",
       "react-router-redux",

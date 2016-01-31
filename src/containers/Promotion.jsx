@@ -1,7 +1,6 @@
 import React from 'react'
 import reduxify from 'store/reduxify'
 import * as latestEventActions from 'actions/latestEvent'
-import * as modalActions from 'actions/modal'
 import Event from 'components/Event'
 
 class PromotionContainer extends React.Component {
@@ -11,7 +10,7 @@ class PromotionContainer extends React.Component {
   }
 
   render() {
-    const { latestEvent, modalActions } = this.props
+    const { latestEvent } = this.props
     return latestEvent.exists ? (
       <Event
         title={ latestEvent.title }
@@ -21,7 +20,6 @@ class PromotionContainer extends React.Component {
         end_time={ latestEvent.end_time }
         place={ latestEvent.place }
         description={ latestEvent.description }
-        modalActions={ modalActions }
       />
     ) : <div />
   }
@@ -30,5 +28,5 @@ class PromotionContainer extends React.Component {
 export default reduxify({
   component: PromotionContainer,
   state: 'latestEvent',
-  actions: { latestEventActions, modalActions }
+  actions: { latestEventActions }
 })
