@@ -29,16 +29,16 @@ module.exports = {
 
   entry: {
     common: [
-      "moment",
       "history",
       "immutable",
+      "moment",
       "react",
       "react-dom",
       "react-modal",
-      "react-router",
       "react-redux",
-      "redux",
+      "react-router",
       "react-router-redux",
+      "redux",
       "redux-thunk"
     ],
     index: path.join(srcPath, "index.js")
