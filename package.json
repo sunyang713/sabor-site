@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/sunyang713/sabor-website#readme",
   "dependencies": {
+    "bootstrap": "^3.3.6",
     "es6-promise": "^3.0.2",
     "history": "^1.17.0",
     "immutable": "^3.7.6",
@@ -26,6 +27,7 @@
     "moment": "^2.10.6",
     "normalize.css": "^3.0.3",
     "react": "^0.14.3",
+    "react-bootstrap": "^0.28.2",
     "react-dom": "^0.14.2",
     "react-fadethrough": "^1.1.9",
     "react-redux": "^4.0.6",

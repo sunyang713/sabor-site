@@ -13,10 +13,10 @@ import NotFound from 'pages/NotFound'
 
 /* Global styles */
 import 'normalize.css'
-import 'assets/css/skeleton.css'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap-theme.css'
 import 'assets/css/custom.css'
-
-
 
 const App = ({ children }) => children
 const history = createHistory({ queryKey: false })

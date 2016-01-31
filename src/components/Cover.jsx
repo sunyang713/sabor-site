@@ -44,7 +44,7 @@ export default class Cover extends React.Component {
     return (
       <div style={ imageStyle }>
         <FadeThrough
-          delay={ 5000 }
+          delay={ 8000 }
           height={ '100vh' }
           width={ '100vw' }
         >

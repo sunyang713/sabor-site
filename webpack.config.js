@@ -34,6 +34,7 @@ module.exports = {
       "jquery",
       "moment",
       "react",
+      "react-bootstrap",
       "react-dom",
       "react-redux",
       "react-router",
@@ -64,7 +65,21 @@ module.exports = {
       { test: /\.jpg$/, loader: "file" },
 
       // I have no idea what I'm doing
-      { test: /fbsdk/, loader: 'exports?FB!script' }
+      { test: /fbsdk/, loader: 'exports?FB!script' },
+
+
+
+      { test: /\.(woff|woff2)$/, loader:"url?prefix=font/&limit=5000&mimetype=application/font-woff" },
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file?prefix=font/" },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" }
+
+      // { test: /\.(woff|woff2)$/, loader: "url-loader?prefix=font/&limit=10000&mimetype=application/font-woff" },
+      // { test: /\.ttf$/, loader: "file-loader?prefix=font/" },
+      // { test: /\.eot$/, loader: "file-loader?prefix=font/" },
+      // { test: /\.svg$/, loader: "file-loader?prefix=font/" },
+
+
     ]
   },
 
