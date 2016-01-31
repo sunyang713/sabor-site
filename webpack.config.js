@@ -31,6 +31,7 @@ module.exports = {
     common: [
       "history",
       "immutable",
+      "jquery",
       "moment",
       "react",
       "react-dom",
@@ -96,6 +97,9 @@ module.exports = {
     ),
     new webpack.NoErrorsPlugin(),
     new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery",
       FB: "fbsdk",
       "window.FB": "fbsdk"
     }),
