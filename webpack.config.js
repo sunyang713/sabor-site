@@ -85,7 +85,7 @@ module.exports = {
     new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]), // saves ~100k from build
     new webpack.optimize.CommonsChunkPlugin("common", "common.js"),
     new HtmlWebpackPlugin({
-      inject: "body",
+      // inject: "body",
       favicon: path.join(srcPath, "assets/images/favicon.png"),
       hash: inDevMode,
       template: path.join(srcPath, "assets/index.html")

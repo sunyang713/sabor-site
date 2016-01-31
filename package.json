@@ -20,7 +20,7 @@
   "homepage": "https://github.com/sunyang713/sabor-website#readme",
   "dependencies": {
     "es6-promise": "^3.0.2",
-    "history": "^1.13.1",
+    "history": "^1.17.0",
     "immutable": "^3.7.6",
     "moment": "^2.10.6",
     "react": "^0.14.3",
@@ -28,7 +28,7 @@
     "react-fadethrough": "^1.1.9",
     "react-modal": "^0.6.1",
     "react-redux": "^4.0.6",
-    "react-router": "^1.0.0",
+    "react-router": "^1.0.3",
     "react-router-redux": "^2.0.2",
     "redux": "^3.0.5",
     "redux-thunk": "^1.0.3"
@@ -41,11 +41,11 @@
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
     "babel-preset-stage-0": "^6.1.18",
-    "css-loader": "^0.22.0",
+    "css-loader": "^0.23.1",
     "exports-loader": "^0.6.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.4",
-    "html-webpack-plugin": "^1.6.2",
+    "html-webpack-plugin": "^2.7.2",
     "json-loader": "^0.5.3",
     "postcss": "^5.0.14",
     "postcss-loader": "^0.8.0",
@@ -53,10 +53,10 @@
     "react-css-modules": "^3.6.8",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",
-    "stylus": "^0.52.4",
+    "stylus": "^0.53.0",
     "stylus-loader": "^1.4.2",
     "url-loader": "^0.5.6",
-    "webpack": "^1.12.6",
+    "webpack": "^1.12.12",
     "webpack-dev-server": "^1.12.1"
   }
 }
