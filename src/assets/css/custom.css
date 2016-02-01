@@ -53,6 +53,12 @@
   }
 }
 
+@media (min-width: 768px) {
+  body {
+    padding-top: 50px;
+  }
+}
+
 /* Bigger than 1000 */
 @media (min-width: 1000px) {
   .section {
