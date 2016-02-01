@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 DIST="dist/"
 TARGET="~/public_html/"
