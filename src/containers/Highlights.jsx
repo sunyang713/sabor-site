@@ -9,7 +9,7 @@ import joinImg from 'assets/images/highlights/join'
 class Highlights extends React.Component {
   render() {
     return (
-      <div className="section">
+      <div>
         <Highlight
           text={ 'Meet the Team' }
           imgsrc={ teamImg }

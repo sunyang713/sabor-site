@@ -5,7 +5,7 @@ export default class Footer extends React.Component {
     return (
       <footer>
         <div className="container">
-          <div className="u-pull-left">
+          <div className="pull-left">
             <p>
               &copy;{ '2015 Sabor' }
               &middot;
@@ -14,7 +14,7 @@ export default class Footer extends React.Component {
               <a href="http://twitter.com/SaborTweets">{ 'twitter' }</a>
             </p>
           </div>
-          <div className="u-pull-right">
+          <div className="pull-right">
             <a href="http://jonathansun.me">{ 'Site designed by Jonathan' }</a>
           </div>
         </div>

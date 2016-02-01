@@ -1,3 +1,12 @@
+.coloured-backdrop
+  background radial-gradient(closest-side, rgb(255,102,102), white)
+
+.center
+  display inline-block
+  margin 0 auto
+
+.description
+  max-width 554px
 
 .event
   &:hover
@@ -9,4 +18,17 @@
   background-size contain
   background-position center
   background-repeat no-repeat
-  height 500px
+  height auto
+  width 100%
+
+
+.image
+  width auto
+  transition all 1s
+  &:hover
+    cursor pointer
+    transition all 1s
+    transform:scale(1.1)
+
+.link
+  display inline-block

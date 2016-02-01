@@ -9,9 +9,12 @@ node_js:
 script:
   - npm run build
 
+after_success:
+  - ./DEPLOY.sh
+
 deploy:
   provider: script
-  script: DEPLOY.sh
+  script: ./DEPLOY.sh
   on:
     branch: js/refactor
 

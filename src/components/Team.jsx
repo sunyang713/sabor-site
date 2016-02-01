@@ -3,6 +3,21 @@ import ThumbnailCard from 'components/lib/ThumbnailCard'
 import teamMembers from 'assets/team_info.json';
 
 
+// an array of 'members'. each member is an array['name','position','bio']
+import boardMembers from 'assets/board_info.json'
+
+// An image array whose indices match with each member in <boardMembers>.
+//      If image doesn't exist, will be substituted with placeholder.
+const boardImages = boardMembers.map(
+  member => {
+    try {
+      return require('assets/images/board-members/' + member[0] + '.jpg')
+    } catch (e) {
+      return require('assets/images/placeholder.png')
+    }
+  }
+)
+
 export default class Team extends React.Component {
 
   handleClick(member, imgsrc) {

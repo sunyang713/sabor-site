@@ -1,4 +1,5 @@
 import React from 'react'
+import CSSModules from 'react-css-modules'
 
 /* Containers */
 import LatestEvent from 'containers/LatestEvent'
@@ -10,20 +11,28 @@ import Highlights from 'containers/Highlights'
 import Cover from 'components/Cover'
 import Footer from 'components/Footer'
 
+import imgsrc from 'assets/images/home-parallax.png'
+import styles from 'assets/styles/home'
 
 
 // TODO: add line breaks for txt files.
-export default class Home extends React.Component {
+class Home extends React.Component {
   render() {
+    const imageStyle = {
+      backgroundImage: 'url(' + imgsrc + ')'
+    }
     return (
-      <div>
+      <div style={ imageStyle } styleName="image">
         <Cover />
         <Navbar home />
         <Blurb />
         <LatestEvent />
         <Highlights />
+        <div styleName="parallax" />
         <Footer />
       </div>
     )
   }
 }
+
+export default CSSModules(Home, styles)

@@ -11,14 +11,13 @@ class Highlight extends React.Component {
     const { imgsrc, text } = this.props
     const imageStyle = { backgroundImage: 'url(' + imgsrc + ')' }
     return (
-      <div>
+      <div className="container-fluid">
         <div
           styleName="image"
-          className="u-max-full-width"
           style={ imageStyle }
           onClick={ this.handleClick() }
         >
-          <h4 styleName="text" className="u-pull-right">{ text }</h4>
+          <h4 styleName="text" className="pull-right">{ text }</h4>
         </div>
       </div>
     )

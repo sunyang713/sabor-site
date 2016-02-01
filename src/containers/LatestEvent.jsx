@@ -10,8 +10,7 @@ class LatestEventContainer extends React.Component {
   }
 
   render() {
-    const { latestEvent } = this.props
-    console.log(latestEvent)
+    const { latestEvent, routeActions } = this.props
     return latestEvent.exists ? (
       <Event
         title={ latestEvent.title }
@@ -21,6 +20,7 @@ class LatestEventContainer extends React.Component {
         end_time={ latestEvent.end_time }
         place={ latestEvent.place }
         description={ latestEvent.description }
+        link={ latestEvent.link }
       />
     ) : <div />
   }
