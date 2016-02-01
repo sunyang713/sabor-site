@@ -9,6 +9,8 @@ node_js:
 script:
   - npm run build
 
+before_deploy:
+  - export JS_PKG_FILE=$(ls dist/*.js)
 deploy:
   provider: script
   script: scripts/deploy.sh
