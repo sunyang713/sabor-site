@@ -1,7 +1,7 @@
 import React from 'react'
 
 /* Containers */
-import Promotion from 'containers/Promotion'
+import LatestEvent from 'containers/LatestEvent'
 import Blurb from 'containers/Blurb'
 import Navbar from 'containers/Navbar'
 import Highlights from 'containers/Highlights'
@@ -18,14 +18,10 @@ export default class Home extends React.Component {
     return (
       <div>
         <Cover />
-        <hr />
-        <Navbar />
+        <Navbar home />
         <Blurb />
-        <hr />
-        <Promotion />
-        <hr />
+        <LatestEvent />
         <Highlights />
-        <hr />
         <Footer />
       </div>
     )
