@@ -16,6 +16,9 @@
   margin-bottom: 1.2rem;
 }
 
+body {
+  padding-top: 50px;
+}
 
 /* Bigger than 550 */
 @media (min-width: 550px) {
@@ -55,7 +58,7 @@
 
 @media (min-width: 768px) {
   body {
-    padding-top: 50px;
+    padding-top: 0px;
   }
 }
 
