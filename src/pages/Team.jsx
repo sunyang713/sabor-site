@@ -12,7 +12,7 @@ export default class Team extends React.Component {
     return (
       <div>
         <hr />
-        <Navbar withLogo />
+        <Navbar />
         <hr />
         <h1>{ 'Meet the team' }</h1>
 

@@ -11,7 +11,7 @@ export default class Releve extends React.Component {
     return (
       <div>
         <hr />
-        <Navbar withLogo />
+        <Navbar />
         <hr />
         <h1>{ 'Releve' }</h1>
         <Footer />

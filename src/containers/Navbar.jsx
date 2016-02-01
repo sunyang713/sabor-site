@@ -5,14 +5,13 @@ import Navbar from 'components/Navbar'
 
 class NavbarContainer extends React.Component {
   render() {
-    const links = ['/home', '/team', '/join', '/releve']
-    const names = ['Home', 'Team', 'Join', 'Releve'] // TODO make this better
+    const links = ['Home', 'Team', 'Join', 'Releve'] // TODO make this better
     return (
       <Navbar
         push={ this.props.routeActions.push }
         links={ links }
-        names={ names }
         withLogo={ this.props.withLogo }
+        home={ this.props.home }
       />
     )
   }

@@ -51,7 +51,7 @@ export function pullEvents() {
               start_time: moment(start_time).format('h:mma'),
               end_time: moment(end_time).format('h:mma'),
               place: place.name,
-              rsvp: 'https://www.facebook.com/' + id,
+              link: 'https://www.facebook.com/' + id,
               description: description
             };
             dispatch(addEvent(payload));

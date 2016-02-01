@@ -9,7 +9,7 @@ const initialState = Immutable.Map({
   start_time: '',
   end_time: '',
   place: '',
-  rsvp: '',
+  link: '',
   description: ''
 })
 
