@@ -4,7 +4,8 @@ DIST="../dist/"
 TARGET="~/public_html/"
 USER="jys2124"
 
-chmod +x "../$JS_PKG_FILE"
+chmod +x "../dist/index.js"
+chmod +x "../dist/common.js"
 # Transfer files
 expect -c "
    spawn bash -c \"scp $DIST* $USER@cunix.cc.columbia.edu:$TARGET\"
