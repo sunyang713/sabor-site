@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-DIST="dist/"
+DIST="../dist/"
 TARGET="~/public_html/"
 USER="jys2124"
 
