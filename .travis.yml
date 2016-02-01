@@ -12,6 +12,7 @@ script:
 deploy:
   provider: script
   script: scripts/deploy.sh
+  file_glob: true
   on:
     branch: js/refactor
 
