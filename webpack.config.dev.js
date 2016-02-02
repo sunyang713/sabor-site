@@ -49,14 +49,14 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
     publicPath: "/",
-    filename: "[name]-[hash].js",
+    filename: "[name].js",
     pathInfo: true
   },
   module: {
     loaders: [
       { test: /\.(js|jsx)$/, include: srcPath, exclude: /(node_modules)/, loader: "babel" },
-      { test: /\.css$/, exclude: /\.useable\.css$/, loader: "style!css!postcss" },
-      { test: /\.styl$/, loader: "style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus" },
+      { test: /\.css$/, exclude: /\.useable\.css$/, loader: ExtractTextPlugin.extract("style", "css!postcss") },
+      { test: /\.styl$/, loader: ExtractTextPlugin.extract("style", "css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus") },
       { test: /\.json$/, loader: "json" },
       { test: /\.png$/, loader: "url?limit=100000" },
       { test: /\.jpg$/, loader: "file" },
@@ -78,13 +78,8 @@ module.exports = {
   postcss: [autoprefixer],
   // webpack plugins
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]), // saves ~100k from build
-    new webpack.optimize.CommonsChunkPlugin("common", "common.js"),
     new ExtractTextPlugin(
-      "[name]-[hash].css",
+      "[name].css",
       { allChunks: true }
     ),
     new HtmlWebpackPlugin({
@@ -92,6 +87,12 @@ module.exports = {
       hash: true,
       template: path.join(srcPath, "assets/index.html")
     }),
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV": JSON.stringify("development"),
+      "__DEV__": true
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
@@ -99,9 +100,7 @@ module.exports = {
       FB: "fbsdk",
       "window.FB": "fbsdk"
     }),
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("development"),
-      "__DEV__": true
-    })
+    new webpack.optimize.CommonsChunkPlugin("common", "common.js"),
+    new webpack.optimize.OccurenceOrderPlugin()
   ]
 }
