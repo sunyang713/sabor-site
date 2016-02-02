@@ -13,22 +13,17 @@
     border 1px solid grey
     cursor pointer
 
-.event-image
-  background linear-gradient(to bottom, rgba(255,255,255,0), rgba(0,0,0,0.5))
-  background-size contain
-  background-position center
-  background-repeat no-repeat
-  height auto
-  width 100%
-
-
-.image
-  width auto
-  transition all 1s
-  &:hover
-    cursor pointer
-    transition all 1s
-    transform:scale(1.1)
-
 .link
   display inline-block
+
+.image
+  width 100%
+
+@media (min-width: 768px)
+  .image
+    width auto
+    transition all 1s
+    &:hover
+      cursor pointer
+      transition all 1s
+      transform:scale(1.1)

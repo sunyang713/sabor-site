@@ -11,6 +11,9 @@ import Team from 'pages/Team'
 import Releve from 'pages/Releve'
 import NotFound from 'pages/NotFound'
 
+/* Redux DevTools */
+import DevTools from 'containers/DevTools'
+
 /* Global styles */
 import 'normalize.css'
 import 'bootstrap'
@@ -22,19 +25,31 @@ const history = createHistory({ queryKey: false })
 
 const INDEX = (
   <Provider store={ configureStore(history) }>
-    <Router history={ history }>
-      <Route path="/" component={ App }>
-        <IndexRoute component={ Home } />
-        <Redirect from="home" to="/" />
-        <Route path="team" component={ Team } />
-        <Route path="releve" component={ Releve } />
-        <Route path="*" component={ NotFound } />
-      </Route>
-    </Router>
+    <div>
+      <Router history={ history }>
+        <Route path="/" component={ App }>
+          <IndexRoute component={ Home } />
+          <Redirect from="home" to="/" />
+          <Route path="team" component={ Team } />
+          <Route path="releve" component={ Releve } />
+          <Route path="*" component={ NotFound } />
+        </Route>
+      </Router>
+      { __DEV__ ? <DevTools /> : null }
+    </div>
   </Provider>
 )
 
-render(
-  INDEX,
-  document.getElementById('content')
-)
+
+if (__DEV__) {
+  const RedBox = require('redbox-react')
+  try {
+    render(INDEX, document.getElementById('root'))
+  } catch (e) {
+    render(<RedBox error={ e } />, document.getElementById('root'))
+  }
+} else {
+  React.render(INDEX, document.getElementById('root'))
+}
+
+

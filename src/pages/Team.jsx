@@ -11,7 +11,9 @@ export default class Team extends React.Component {
   render() {
     return (
       <div>
+        <hr />
         <Navbar />
+        <hr />
         <h1>{ 'Meet the team' }</h1>
 
         <Footer />
