@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "gulp",
-    "build": "npm run clean && npm run build:webpack",
+    "build": "npm run clean && npm run build:gulp",
     "build:gulp": "cross-env NODE_ENV=production gulp build",
     "build:webpack": "cross-env NODE_ENV=production webpack --progress --profile --colors --config ./webpack.config.prod.js",
     "clean": "rimraf dist",

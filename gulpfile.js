@@ -22,15 +22,15 @@ gulp.task("build", ["webpack:build"]);
  * Build. One and done.
  */
 gulp.task("webpack:build", function() {
-  return gulp.src("./src/index.js")
-    .pipe(webpackStream(webpackConfig, function(err, stats) {
+  return gulp.src("src/index.js")
+    .pipe(webpackStream(webpackConfig, null, function(err, stats) {
       if (err) throw new gutil.PluginError("webpack:build", err);
       gutil.log("[webpack:build]", stats.toString({
         colors: true
       }));
       // callback();
     }))
-    .pipe(gulp.dest("./dist/"));
+    .pipe(gulp.dest("dist/"));
 });
 
 /**
