@@ -11,8 +11,6 @@ var srcPath = path.join(__dirname, "src");
 module.exports = {
   resolve: {
     alias: {
-      "react": "react-lite",
-      "react-dom": "react-lite",
       // "facebook": "http://connect.facebook.net/en_US/sdk.js"
       "fbsdk": path.join(srcPath, "fbsdk")
     },
