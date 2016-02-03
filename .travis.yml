@@ -13,7 +13,7 @@ before_deploy:
   - export JS_PKG_FILE=$(ls dist/*.js)
 deploy:
   provider: script
-  script: scripts/deploy.sh
+  script: deploy.sh
   file_glob: true
   on:
     branch: js/refactor
