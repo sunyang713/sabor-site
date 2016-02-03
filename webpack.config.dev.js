@@ -4,19 +4,21 @@ var path = require("path");
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
+var WriteFilePlugin = require('write-file-webpack-plugin');
 var poststylus = require("poststylus");
 var autoprefixer = require("autoprefixer");
 var srcPath = path.join(__dirname, "src");
 
 module.exports = {
   debug: true,
-  devtool: "cheap-module-eval-source-map",
+  devtool: "#cheap-module-eval-source-map",
   devServer: {
     colors: true,
     contentBase: "./dist",
     historyApiFallback: true,
     hot: true,
-    inline: true
+    inline: true,
+    outputPath: path.join(__dirname, './dist')
   },
   resolve: {
     alias: {
@@ -28,9 +30,7 @@ module.exports = {
     modulesDirectories: ["node_modules", "src"]
   },
   entry: {
-    ev: "eventsource-polyfill", // necessary for hot reloading with IE
-    devServer: "webpack-hot-middleware/client",
-    common: [
+    commons: [
       "history",
       "immutable",
       "jquery",
@@ -42,9 +42,17 @@ module.exports = {
       "react-router",
       "react-router-redux",
       "redux",
-      "redux-thunk"
+      "redux-devtools",
+      "redux-devtools-dock-monitor",
+      "redux-devtools-log-monitor",
+      "redux-thunk",
+      "redbox-react"
     ],
-    index: path.join(srcPath, "index.js")
+    index: [
+      "eventsource-polyfill", // necessary for hot reloading with IE
+      "webpack-hot-middleware/client",
+      path.join(srcPath, "index.js"),
+    ]
   },
   output: {
     path: path.join(__dirname, "dist"),
@@ -54,9 +62,9 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.(js|jsx)$/, include: srcPath, exclude: /(node_modules)/, loader: "babel" },
+      { test: /\.(js|jsx)$/, include: srcPath, loader: "babel" },
       { test: /\.css$/, exclude: /\.useable\.css$/, loader: ExtractTextPlugin.extract("style", "css!postcss") },
-      { test: /\.styl$/, loader: ExtractTextPlugin.extract("style", "css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus") },
+      { test: /\.styl$/, loader: ExtractTextPlugin.extract("style", "css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus") },
       { test: /\.json$/, loader: "json" },
       { test: /\.png$/, loader: "url?limit=100000" },
       { test: /\.jpg$/, loader: "file" },
@@ -87,6 +95,7 @@ module.exports = {
       hash: true,
       template: path.join(srcPath, "assets/index.html")
     }),
+    new WriteFilePlugin(),
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify("development"),
       "__DEV__": true
@@ -100,7 +109,10 @@ module.exports = {
       FB: "fbsdk",
       "window.FB": "fbsdk"
     }),
-    new webpack.optimize.CommonsChunkPlugin("common", "common.js"),
-    new webpack.optimize.OccurenceOrderPlugin()
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "commons",
+      filename: "commons.js"
+    })
   ]
 }

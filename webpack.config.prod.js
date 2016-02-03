@@ -21,7 +21,7 @@ module.exports = {
     modulesDirectories: ["node_modules", "src"]
   },
   entry: {
-    common: [
+    commons: [
       "history",
       "immutable",
       "jquery",
@@ -33,7 +33,8 @@ module.exports = {
       "react-router",
       "react-router-redux",
       "redux",
-      "redux-thunk"
+      "redux-thunk",
+      "redbox-react"
     ],
     index: path.join(srcPath, "index.js")
   },
@@ -41,13 +42,12 @@ module.exports = {
     path: path.join(__dirname, "dist"),
     publicPath: "/~jys2124/",
     filename: "[name]-[hash].js",
-    pathInfo: false
   },
   module: {
     loaders: [
-      { test: /\.(js|jsx)$/, include: srcPath, exclude: /(node_modules)/, loader: "babel" },
-      { test: /\.css$/, exclude: /\.useable\.css$/, loader: ExtractTextPlugin.extract("style!css!postcss") },
-      { test: /\.styl$/, loader: ExtractTextPlugin.extract("style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus") },
+      { test: /\.(js|jsx)$/, include: srcPath, loader: "babel" },
+      { test: /\.css$/, exclude: /\.useable\.css$/, loader: ExtractTextPlugin.extract("style", "css!postcss") },
+      { test: /\.styl$/, loader: ExtractTextPlugin.extract("style", "css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus") },
       { test: /\.json$/, loader: "json" },
       { test: /\.png$/, loader: "url?limit=100000" },
       { test: /\.jpg$/, loader: "file" },
@@ -82,6 +82,7 @@ module.exports = {
       "process.env.NODE_ENV": JSON.stringify("production"),
       "__DEV__": false
     }),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]), // saves ~100k from build
     new webpack.NoErrorsPlugin(),
     new webpack.ProvidePlugin({
@@ -91,7 +92,10 @@ module.exports = {
       FB: "fbsdk",
       "window.FB": "fbsdk"
     }),
-    new webpack.optimize.CommonsChunkPlugin("common", "common.js"),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "commons",
+      filename: "commons.js"
+    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -101,6 +105,5 @@ module.exports = {
     })
   ]
 }
-
 
 

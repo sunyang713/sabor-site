@@ -8,7 +8,7 @@ export default function configureStore(history) {
 
   const finalCreateStore = compose(
     // Middleware you want to use in production:
-    applyMiddleware(reduxRouterMiddleware, thunk),
+    applyMiddleware(reduxRouterMiddleware, thunk)
     // Other store enhancers if you use any
   )(createStore)
 

@@ -40,7 +40,6 @@ const INDEX = (
   </Provider>
 )
 
-
 if (__DEV__) {
   const RedBox = require('redbox-react')
   try {
@@ -51,5 +50,3 @@ if (__DEV__) {
 } else {
   React.render(INDEX, document.getElementById('root'))
 }
-
-
