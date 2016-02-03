@@ -1,11 +1,10 @@
-#!/usr/bin/env sh
+#!bin/bash sh
 
 DIST="dist/"
 TARGET="~/public_html/"
 USER="jys2124"
 
-chmod +x "dist/index.js"
-chmod +x "dist/common.js"
+chmod +x dist/*.js
 # Transfer files
 expect -c "
    spawn bash -c \"scp $DIST* $USER@cunix.cc.columbia.edu:$TARGET\"

@@ -49,13 +49,19 @@ module.exports = {
       { test: /\.css$/, exclude: /\.useable\.css$/, loader: ExtractTextPlugin.extract("style", "css!postcss") },
       { test: /\.styl$/, loader: ExtractTextPlugin.extract("style", "css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus") },
       { test: /\.json$/, loader: "json" },
-      { test: /\.png$/, loader: "url?limit=100000" },
-      { test: /\.jpg$/, loader: "file" },
+
+      {
+        test: /.*\.(gif|png|jpe?g|svg)$/i,
+        loaders: [
+          'file?hash=sha512&digest=hex&name=[hash].[ext]',
+          'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
+        ]
+      },
+
       { test: /fbsdk/, loader: "exports?FB!script" },
-      { test: /\.(woff|woff2)$/, loader:"url?prefix=font/&limit=5000&mimetype=application/font-woff" },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file?prefix=font/" },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" }
+      { test: /\.(woff|woff2)$/, loader:"url?prefix=font/&limit=5000" },
+      { test: /\.ttf$/, loader: "url?limit=10000" },
+      { test: /\.eot$/, loader: "file?prefix=font/" },
     ]
   },
   // misc plugins
