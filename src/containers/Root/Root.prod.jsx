@@ -3,7 +3,7 @@ import createBrowserHistory from 'history/lib/createBrowserHistory' // have no i
 import useScroll from 'scroll-behavior/lib/useSimpleScroll'
 import { Provider } from 'react-redux'
 import configureStore from 'store/configureStore'
-import configureRoutes from 'configureRoutes'
+import configureRoutes from './configureRoutes'
 
 const browserHistory = useScroll(createBrowserHistory())()
 
