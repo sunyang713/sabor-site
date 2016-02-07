@@ -6,11 +6,13 @@ import LatestEvent from 'containers/LatestEvent'
 import Blurb from 'containers/Blurb'
 import Navbar from 'containers/Navbar'
 import Highlights from 'containers/Highlights'
+import FooterCard from 'containers/FooterCard'
 
 /* Components */
 import Cover from 'components/Cover'
 import Footer from 'components/Footer'
 
+/* Assets */
 import imgsrc from 'assets/images/home-parallax.png'
 import styles from 'assets/styles/home'
 
@@ -29,6 +31,7 @@ class Home extends React.Component {
         <LatestEvent />
         <Highlights />
         <div styleName="parallax" />
+        <FooterCard />
         <Footer />
       </div>
     )
