@@ -24,7 +24,7 @@ class Blurb extends React.Component {
 
           <div className="center-block">
             <ButtonToolbar styleName="center-buttons">
-              <Button bsStyle="primary" href="https://www.facebook.com/cusabor">{ 'Follow us' }</Button>
+              <Button bsStyle="danger" href="https://www.facebook.com/cusabor">{ 'Follow us' }</Button>
               <Button onClick={ this.handleClick() }>{ 'Learn more' }</Button>
             </ButtonToolbar>
           </div>

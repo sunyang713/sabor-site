@@ -19,6 +19,13 @@ while (!done) {
 
 
 class Cover extends React.Component {
+
+  handleScroll() {
+    $('html, body').animate({
+      scrollTop: window.innerHeight
+    }, 1000)
+  }
+
   render() {
     const logo = { backgroundImage: 'url(' + title + ')' }
     // dodgy duplicate styling outside and inside
@@ -46,6 +53,7 @@ class Cover extends React.Component {
           )
         }
         </FadeThrough>
+        <div styleName="scroll-button" onClick={ this.handleScroll }>{ 'v' }</div>
       </div>
     )
   }
@@ -53,3 +61,5 @@ class Cover extends React.Component {
 
 export default CSSModules(Cover, styles)
 
+
+// TODO use omsehting other than 'v' for the scroll button
