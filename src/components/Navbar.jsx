@@ -5,6 +5,7 @@ import logo from 'assets/images/logo.png'
 import { Nav, Navbar, NavItem } from 'react-bootstrap'
 
 // TODO FIX THIS
+// put Hrs as borders/navbar spacers here, so can be responsive and disappear on mobile.
 class NavigationBar extends React.Component {
 
   handleClick(path) {
@@ -101,8 +102,8 @@ class NavigationBar extends React.Component {
 
   render() {
     return (
-      <div styleName={ this.props.home ? "fixed-top-responsive" : "fixed-top-responsive container-fluid" }>
-        <Navbar>
+      <div styleName={ this.props.home ? "fixed-top-responsive tight" : "fixed-top-responsive container-fluid" }>
+        <Navbar styleName={ this.props.home ? "tight" : "" }>
           <Navbar.Header>
             {
               this.props.home ?

@@ -17,7 +17,7 @@ class Highlight extends React.Component {
           style={ imageStyle }
           onClick={ this.handleClick() }
         >
-          <h4 styleName="text" className="pull-right">{ text }</h4>
+          <h3 styleName="text" className="pull-right">{ text }</h3>
         </div>
       </div>
     )

@@ -13,7 +13,7 @@ class Blurb extends React.Component {
   render() {
 
     return (
-      <div className="section">
+      <div className="section solid">
         <div className="container">
           <h3 className="section-heading">
             { "Columbia's Hottest Performers" }
