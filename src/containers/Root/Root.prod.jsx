@@ -1,11 +1,11 @@
 import React from 'react'
-import createBrowserHistory from 'history/lib/createBrowserHistory' // have no idea which api version this will work in. fuck rackt.
+import createHashHistory from 'history/lib/createHashHistory'
 import useScroll from 'scroll-behavior/lib/useSimpleScroll'
 import { Provider } from 'react-redux'
 import configureStore from 'store/configureStore'
 import configureRoutes from './configureRoutes'
 
-const browserHistory = useScroll(createBrowserHistory)()
+const browserHistory = useScroll(createHashHistory)({ queryKey: false })
 
 export default (
   <Provider store={ configureStore(browserHistory) }>
