@@ -3,13 +3,115 @@
 
 # Sabor's Website
 
-minimum, barebones client-side-only pseudo-dynamic (but really static) javascript application. constructed through careful research and inclusion of only the top and most necessary packages.
+Minimum, barebones client-side-only pseudo-dynamic (but really static) javascript application. constructed through careful research and inclusion of only the top and most necessary packages.
 
 Lol jk this is has a buttload of packages which is really frustrating.
 
-New webmaster of Sabor? [Start here!](#setup)
+New webmaster of Sabor? [Start here!](#Getting-Started)
 
-# Getting started
+### Getting started
+
+In order to be able to work on the website, you'll need to become familiar with a few things at minimum:
+ - HTML/CSS
+ - The UNIX Environment
+The following is a basic runthrough of the two topics,
+
+#### HTML
+`HTML` stands for *hyper text markup language*. This is how website pages are 'programmed' or designed. A single file represents a single page - multiple files means multiple pages. `index.html` must be the name of your home page. Here is an example html file:
+
+##### index.html
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="content">
+      <h1>Welcome to Sabor's Website!</h1>
+      <p>Sabor is Columbia University's First Latino Dance Troupe</p>
+      <img src="./my-images-folder/team-photo.jpg"></img>
+    </div>
+  </body>
+</html>
+```
+Any time you visit any website, google, facebook, Columbia.edu, your browser is downloading a file that looks like the one above. Your web-browser (chrome, safari, firefox) is then able to read the file and display the content with colors or whatever to you, the user. The angle bracketed characters surrounding the content are 'tags.' There are only a handful of tags that you really need to know, for example `<p>` is for simple text. `<h1>` is a 'heading' tag. `<div>` is just a virtual boxing tag (you'll use this a lot).
+
+#### CSS
+`CSS` stands for *Cascading Style Sheets*. `HTML` alone only defines organization and content. `CSS` allows you to add colors, create more sophisticated arrangments, adjust font styles, and much more. For example:
+
+
+##### my-custom-styles.css
+```css
+.blue-stuff {
+  font-color: blue;
+}
+.my-box {
+  border: 1px dotted black;
+  width: 500px;
+  height: 200px;
+}
+```
+
+##### index.html
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="content">
+      <h1>Welcome to Sabor's Website!</h1>
+      <p class="blue-stuff">Sabor is Columbia University's First Latino Dance Troupe</p>
+      <div class="my-box">
+        <p>Here is my box</p>
+      </div>
+      <img src="./images/team-photo.jpg"></img>
+    </div>
+  </body>
+</html>
+```
+
+You then indicate with `class` which tags have which styles. You can combine styles too with `class="blue-stuff my-box"`. Styling is a whole world of its own, so be sure to set aside a lot of time on any project dedicated to it.
+
+
+#### UNIX
+Unix is a popular operating system, originally developed by Bell Laboratories in 1969, and written in the C programming language......
+
+Blah blah, the best way to understand is to use it. If you have a Mac, this is easy, simply open your 'terminal' application (it's built-in). If you're on windows, what I like to do is take the laptop/computer outside and place it carefully in the woods. Then buy a mac.
+
+Just kidding, download [git for windows](https://git-for-windows.github.io)
+
+You can also follow the PC section of [this tutorial](http://learn.adicu.com/setup/) for a more involved setup.
+
+In either case, what you're doing is preparing and starting the 'command prompt.' Before you could navigate your computer folders with pointing and clicking on images, you needed to move around via this command prompt. It might seem harder, but you'll get used to it very fast. In addition, the command prompt gives you many different commands that you wouldn't be able to perform otherwise.
+
+Here are some basic commands. The `$` indicates the prompt, or where you will type. It's not what you type in. The stuff after `#` are just comments I'm making to explain the command, you wouldn't type this in either.
+
+```bash
+$ pwd            # "print working directory"
+/home/users/Jonathan
+$ cd Documents/  # "change directory" to Documents
+$ pwd
+/home/users/Jonathan/Documents/
+$ ls             # list all the files in this directory
+resume.pdf    essay2.docx    porn.txt    school-2016/
+```
+
+You basically only need to know `cd` and `ls`.
+
+
+The remaining instructions for developing Sabor's website assumes you have reasonable familiarity with UNIX and HTML/CSS. The above briefing is not meant to be a tutorial for either topic, but simply to provide some context. There are a lot of good online tutorials, but in my opinion, following any online tutorial is exhausting and you forget everything within the day. You just gotta do it.
+
+
+
+
+
+### Your first time
+Now we can get started. You're going to download the entirety of the website to your computer so you can develop and work offline. You'll make your changes and test them incrementally. When you're ready and satisfied with your changes, you'll deploy it to the live website.
+
+Use your command prompt and navigate to a location where you'll want to store the files.
+
+```bash
+$ cd ~/workspace/
+```
+
+Now you're going to use `git`.
 
 Install node.js with which npm will come prepackaged: https://nodejs.org/en/
 
