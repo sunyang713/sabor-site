@@ -21,11 +21,9 @@ $ npm start
 
 This will run the webpack development server. Open `http://localhost:8080`.
 
-# Development
-[Standard](https://github.com/sunyang713/sabor-website/wiki/Getting-Started#making-changes)
+### [Development](https://github.com/sunyang713/sabor-website/wiki/Getting-Started#making-changes)
 
-# Deployment
-[How to deploy](https://github.com/sunyang713/sabor-website/wiki/Deployment)
+### [Deployment](https://github.com/sunyang713/sabor-website/wiki/Deployment)
 
 
 # Architecture
