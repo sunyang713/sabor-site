@@ -11,7 +11,7 @@ script:
 
 deploy:
   provider: script
-  script: scripts/deploy.sh
+  script: deploy.sh
   file_glob: true
   on:
     branch: production
