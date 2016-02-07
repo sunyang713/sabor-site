@@ -1,4 +1,4 @@
-import { ADD_EVENT, SET_EVENTS } from 'constants'
+import { ADD_EVENT, SET_EVENTS } from './constants'
 import { FB_APP_ID, FB_TOKEN } from 'KEYCHAIN'
 import moment from 'moment'
 

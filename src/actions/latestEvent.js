@@ -1,4 +1,4 @@
-import { SET_LATEST_EVENT, SET_EXISTING } from 'constants'
+import { SET_LATEST_EVENT, SET_EXISTING } from './constants'
 import fbapi from 'toolbox/fbapi'
 import moment from 'moment'
 
