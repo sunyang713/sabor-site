@@ -46,7 +46,8 @@ module.exports = {
       "redux-devtools-dock-monitor",
       "redux-devtools-log-monitor",
       "redux-thunk",
-      "redbox-react"
+      "redbox-react",
+      "scroll-behavior"
     ],
     index: [
       "eventsource-polyfill", // necessary for hot reloading with IE

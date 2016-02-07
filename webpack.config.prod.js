@@ -32,7 +32,7 @@ module.exports = {
       "react-router-redux",
       "redux",
       "redux-thunk",
-      "redbox-react"
+      "scroll-behavior"
     ],
     index: path.join(srcPath, "index.js")
   },
