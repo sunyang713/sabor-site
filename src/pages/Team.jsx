@@ -13,7 +13,9 @@ export default class Team extends React.Component {
   render() {
     return (
       <div>
+        <hr />
         <Navbar />
+        <hr />
         <BoardList />
         <TeamList />
         <Footer />

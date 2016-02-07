@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development npm run watch",
+    "deploy": "npm run prod:build && sh ./deploy.sh",
     "prod:watch": "cross-env NODE_ENV=production npm run watch",
     "prod:build": "cross-env NODE_ENV=production npm run build",
     "watch": "npm run clean && gulp",
