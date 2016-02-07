@@ -1,12 +1,11 @@
 #!bin/bash sh
 
 TARGET="/www/data/cu/sabor/"
-USER="UNI"
 
 chmod +x dist/*.js
 # Transfer files
 expect -c "
-   spawn bash -c \"scp dist/* $USER@cunix.cc.columbia.edu:$TARGET\"
+   spawn bash -c \"scp dist/* $UNI@cunix.cc.columbia.edu:$TARGET\"
    expect password: { send $PASSWORD\r }
    expect eof
 "
