@@ -1,5 +1,5 @@
 import Immutable from 'immutable'
-import { SET_LATEST_EVENT, SET_EXISTING } from 'constants'
+import { SET_LATEST_EVENT, SET_EXISTING } from 'actions/constants'
 
 const initialState = Immutable.Map({
   exists: false,

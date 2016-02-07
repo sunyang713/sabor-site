@@ -1,5 +1,5 @@
 import { List, fromJS } from 'immutable'
-import { ADD_EVENT, SET_EVENTS } from 'constants'
+import { ADD_EVENT, SET_EVENTS } from 'actions/constants'
 
 const initialState = List()
 
