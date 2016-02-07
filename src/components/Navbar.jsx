@@ -15,8 +15,8 @@ class NavigationBar extends React.Component {
 
   renderLinks() {
     return this.props.links.map((link, index) => (
-      <NavItem eventKey={ index } onClick={ this.handleClick('/' + link) }>
-        <div key={ link + index } className="text-uppercase">
+      <NavItem key={ link + index } eventKey={ index } onClick={ this.handleClick('/' + link) }>
+        <div className="text-uppercase">
           { link }
         </div>
       </NavItem>
@@ -26,8 +26,8 @@ class NavigationBar extends React.Component {
 
   renderHomeLinks() {
     return this.props.links.map((link, index) => (
-      <NavItem eventKey={ index } onClick={ this.handleClick('/' + link) }>
-        <div key={ link + index } className="text-uppercase" styleName="nav-item-spacer">
+      <NavItem key={ link + index } eventKey={ index } onClick={ this.handleClick('/' + link) }>
+        <div className="text-uppercase" styleName="nav-item-spacer">
           { link }
         </div>
       </NavItem>
@@ -70,8 +70,8 @@ class NavigationBar extends React.Component {
           <Nav>
             {
               this.props.links.map((link, index) => (
-                <NavItem eventKey={ index } onClick={ this.handleClick('/' + link) }>
-                  <div key={ link + index } className="text-uppercase" styleName="nav-item-spacer">
+                <NavItem key={ link + index } eventKey={ index } onClick={ this.handleClick('/' + link) }>
+                  <div className="text-uppercase" styleName="nav-item-spacer">
                     { link }
                   </div>
                 </NavItem>
@@ -89,8 +89,8 @@ class NavigationBar extends React.Component {
       <Nav pullRight>
         {
           this.props.links.map((link, index) => (
-            <NavItem eventKey={ index } onClick={ this.handleClick('/' + link) }>
-              <div key={ link + index } className="text-uppercase">
+            <NavItem key={ link + index } eventKey={ index } onClick={ this.handleClick('/' + link) }>
+              <div className="text-uppercase">
                 { link }
               </div>
             </NavItem>
