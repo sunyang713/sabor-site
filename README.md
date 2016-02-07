@@ -3,15 +3,20 @@
 
 # Sabor's Website
 
-minimum, barebones client-side-only javascript application. constructed through careful research and inclusion of only the top and most necessary packages.
+minimum, barebones client-side-only pseudo-dynamic (but really static) javascript application. constructed through careful research and inclusion of only the top and most necessary packages.
 
 Lol jk this is has a buttload of packages which is really frustrating.
+
+New webmaster of Sabor? [Start here!](#setup)
+
+# Getting started
+
+Install node.js with which npm will come prepackaged: https://nodejs.org/en/
 
 
 
 # Setup
 
-Install node.js with which npm will come prepackaged: https://nodejs.org/en/
 
 Install npm packages.
 ```
