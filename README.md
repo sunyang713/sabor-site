@@ -51,14 +51,8 @@ A few standalone utilities and modules:
 
 
 ### Styling
-"I can throw in some styles rite quick at the end, easy." Never make the mistake of making styling an after-thought. Styling is just as, if not more, time-consuming as core implementation.
-
-*Stylus* is the chosen preprocessor. It's objectively better than Sass or Less.
-
-*Bootstrap* is the CSS framework. *React-Bootstrap* is also installed to integrate the javascript portion of bootstrap as modules.
-
-An extremely important opinionated pattern I've established is global vs modulated styles. Stylus stylesheets can only be used with *react-css-modules* and will be namespaced (isolated) to the component into which they were imported. Standard CSS stylesheets can be used as usual, with all of its frustrating idiosyncrasies. This is intentional to promote more sane object oriented CSS. However, global utility styles are definitely useful, which is why I've still allowed it.
-
+ - *Stylus* is the chosen preprocessor.
+ - *Bootstrap* is the CSS framework. *React-Bootstrap* is also installed to integrate the javascript portion of bootstrap as modules.
 
 
 ## Suggested dev tools
