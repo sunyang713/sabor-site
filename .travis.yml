@@ -7,12 +7,12 @@ node_js:
   - "node"
 
 script:
-  - npm run build
+  - npm run prod:build
 
 deploy:
   provider: script
   script: scripts/deploy.sh
   file_glob: true
   on:
-    branch: js/refactor
+    branch: production
 
