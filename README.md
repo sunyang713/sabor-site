@@ -58,7 +58,7 @@ When you've thoroughly tested all of your new features, and you're confident you
 $ export UNI=abc1212
 $ export PASSWORD=mY_v3rY_g00d_P45SWoRD
 ```
-NEVER commit and push code with your password in it.
+*NEVER commit and push code with your password in it.*
 
 Execute the deployment script.
 ```
