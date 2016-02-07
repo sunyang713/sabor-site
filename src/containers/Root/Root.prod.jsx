@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import configureStore from 'store/configureStore'
 import configureRoutes from './configureRoutes'
 
-const browserHistory = useScroll(createBrowserHistory())()
+const browserHistory = useScroll(createBrowserHistory)()
 
 export default (
   <Provider store={ configureStore(browserHistory) }>
