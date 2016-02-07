@@ -27,10 +27,6 @@ This will run the webpack development server.
 Open `http://localhost:8080`.
 
 # Development
-Set the environment variable `NODE_ENV` to `development`. This will enable certain developer tools in the app.
-```
-$ export NODE_ENV=development
-```
 
 Make a new branch. Name your branch the name of your new intended feature, prefixed with your initials and a slash.
 ```
@@ -57,39 +53,49 @@ $ git push -u origin js/my-new-feature
 Make a pull request, tag someone in a comment or poke someone on slack for review. Merge and delete branch when done.
 
 # Deployment
-Travis will automatically deploy the 'production' branch. Never update this branch until you've tested thoroughly.
+When you've thoroughly tested all of your new features, and you're confident you want to deploy, you'll need to do a couple things. First you need to set the environment variable `UNI` to be your UNI. Then you need to set the environment variable `PASSWORD` to your password.
+```
+$ export UNI=abc1212
+$ export PASSWORD=mY_v3rY_g00d_P45SWoRD
+```
+NEVER commit and push code with your password in it.
 
-Use github to make a pull request from master to production.
+Execute the deployment script.
+```
+$ npm run deploy
+```
+
+
 
 
 # Architecture
-## Developing and Building 
-*npm* manages the packages. The code uses ECMAScript 2015 (ES6) syntax which is compiled with *babel*. The javascript modules are built and combined with *webpack*. *gulp* is the task runner that streamlines command line imperatives. An *eslint* configuration is in place for general code styling and hygeine.
 
+## Core Technology
+ - ECMAScript 2015 (ES6) syntax
+ - React.js
 
-
-## Application Architecture
 The client is written primarily in *React.js*. Some additional utilities and modules:
- - react-modal
  - react-fadethrough (made my me!!)
  - react-router (along with history)
- - react-addons-update
 
 The (pseudo) FLUX Architecture is managed with *Redux*. Additional utilities and modules:
  - react-redux
  - thunk
- - redux-simple-router
+ - react-router-redux
  - redux-devtools
 
 A few standalone modules utilities and modules:
+ - jquery
  - moment
- - immutable (used in isolation with the redux system, soon to be deprecated)
+ - immutable (used in isolation with the redux system, specifically the reducers, ideally soon to be deprecated)
 
 
 ## Styling
 "I can throw in some styles rite quick at the end, easy." Never make the mistake of making styling an after-thought. Styling is just as, if not more, time-consuming as core implementation.
 
 *Stylus* is the chosen preprocessor. It's objectively better than Sass or Less.
+
+*Bootstrap* is the CSS framework. *React-Bootstrap* is also installed to integrate the javascript portion of bootstrap as modules.
 
 An extremely important opinionated pattern I've established is global vs modulated styles. Stylus stylesheets can only be used with *react-css-modules* and will be namespaced (isolated) to the component into which they were imported. Standard CSS stylesheets can be used as usual, with all of its frustrating idiosyncrasies. This is intentional to promote more sane object oriented CSS. However, global utility styles are definitely useful, which is why I've still allowed it.
 
