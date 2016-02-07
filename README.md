@@ -3,6 +3,15 @@
 
 # Sabor's Website
 
+readme and wiki todo: 
+ - standard/basic tasks, i.e., board list update, team list update, board-images
+ - how to develop tips (mdn for js and css, documentation for everything else)
+ - how to add a new page
+ - styling wiki
+ - react wiki
+ - redux wiki
+ - webpack and gulp wiki (hint: don't)
+
 Minimum, barebones client-side-only pseudo-dynamic (but really static) javascript application. constructed through careful research and inclusion of only the top and most necessary packages.
 
 Lol jk this is has a buttload of packages which is really frustrating.
