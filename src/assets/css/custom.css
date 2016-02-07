@@ -9,6 +9,16 @@
   background: white;
 }
 
+.transparent-block {
+  height: 200px;
+  background: transparent;
+}
+
+.solid_block {
+  height: 200px;
+  background: white;
+}
+
 /* Sections
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .section {
