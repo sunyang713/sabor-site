@@ -22,45 +22,10 @@ $ npm start
 This will run the webpack development server. Open `http://localhost:8080`.
 
 # Development
-
-Make a new branch. Name your branch the name of your new intended feature, prefixed with your initials and a slash.
-```
-$ git checkout -b js/my-new-feature
-```
-
-Make your changes. `commit` frequently. `git add`'s `-p` option is encouraged (interactive add). Commit messages should be in the imperative present tense.
-```
-$ git add -p
-...
-$ git add ./stuff/morestuff/my-untracked-file
-...
-$ git commit -m "Implement my new WORKING sub-feature-1"
-...
-$ git commit -m "Implement my new WORKING sub-feature-2"
-```
-
-
-When finished, push to a NEW branch on github.
-```
-$ git push -u origin js/my-new-feature
-```
-
-Make a pull request, tag someone in a comment or poke someone on slack for review. Merge and delete branch when done.
+[Standard](https://github.com/sunyang713/sabor-website/wiki/Getting-Started#making-changes)
 
 # Deployment
-When you've thoroughly tested all of your new features, and you're confident you want to deploy, you'll need to do a couple things. First you need to set the environment variable `UNI` to be your UNI. Then you need to set the environment variable `PASSWORD` to your password.
-```
-$ export UNI=abc1212
-$ export PASSWORD=mY_v3rY_g00d_P45SWoRD
-```
-*NEVER commit and push code with your password in it.*
-
-Execute the deployment script.
-```
-$ npm run deploy
-```
-
-
+[How to deploy](https://github.com/sunyang713/sabor-website/wiki/Deployment)
 
 
 # Architecture
