@@ -19,7 +19,7 @@ class Blurb extends React.Component {
             { "Columbia's Hottest Performers" }
           </h3>
           <p className="section-description">
-            { "Sabor is Columbia University's First Latino Dance Troupe. Established in 2003, Sabor performs salsa, bachata, merengue, and many other styles of dance." }
+            { this.props.text }
           </p>
 
           <div className="center-block">
