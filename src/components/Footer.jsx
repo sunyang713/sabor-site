@@ -3,7 +3,7 @@ import React from 'react'
 export default class Footer extends React.Component {
   render() {
     return (
-      <footer>
+      <footer style={ { background: '#D3D3D3', border: '1px solid #D3D3D3' } }>
         <div className="container">
           <div className="pull-left">
             <p>
