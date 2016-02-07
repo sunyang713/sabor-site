@@ -10,7 +10,7 @@ Lol jk this is has a buttload of packages which is really frustrating.
 New webmaster of Sabor? [Start here!](https://github.com/sunyang713/sabor-website/wiki/Getting-Started)
 
 
-# Setup
+### Setup
 
 
 Install npm packages and run the `start` script.
