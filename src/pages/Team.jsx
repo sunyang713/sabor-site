@@ -4,6 +4,8 @@ import React from 'react'
 import Navbar from 'containers/Navbar'
 // import TeamList from 'containers/TeamList'
 
+import BoardList from 'components/BoardList'
+import TeamList from 'components/TeamList'
 import Footer from 'components/Footer'
 
 // TODO: add line breaks for txt files.
@@ -14,8 +16,8 @@ export default class Team extends React.Component {
         <hr />
         <Navbar />
         <hr />
-        <h1>{ 'Meet the team' }</h1>
-
+        <BoardList />
+        <TeamList />
         <Footer />
       </div>
     )
