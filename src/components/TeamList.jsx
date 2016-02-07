@@ -19,21 +19,23 @@ export default class TeamList extends React.Component {
     let teamListCol2 = teamListCol1.splice(teamListCol1.length / 2, teamListCol1.length);
 
     return (
-      <div className="container text-center">
-        <h1>{ 'Full Roster' }</h1>
-        <hr />
-        <div className="row">
-          <div className="col-md-offset-2 col-md-4 ">
-            <ul className="list-unstyled">
-              { teamListCol1 }
-            </ul>
-          </div>
-          <div className="col-md-4">
-            <ul className="list-unstyled">
-              { teamListCol2 }
-            </ul>
-          </div>
-        </div>  
+      <div className="section">
+        <div className="container text-center">
+          <h1>{ 'Full Roster' }</h1>
+          <hr />
+          <div className="row">
+            <div className="col-md-offset-2 col-md-4 ">
+              <ul className="list-unstyled">
+                { teamListCol1 }
+              </ul>
+            </div>
+            <div className="col-md-4">
+              <ul className="list-unstyled">
+                { teamListCol2 }
+              </ul>
+            </div>
+          </div>  
+        </div>
       </div>
     )
   }
