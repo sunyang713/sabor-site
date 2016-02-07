@@ -1,12 +1,13 @@
 import React from 'react'
 
-
+import CSSModules from 'react-css-modules'
 
 // an array of 'members'. each member is an array['name','position','bio']
 import boardMembers from 'assets/board_list.json'
+import styles from 'assets/styles/board-list.styl'
 
 
-export default class BoardList extends React.Component {
+class BoardList extends React.Component {
   constructor(props) {
     super(props)
     // An image array whose indices match with each member in <boardMembers>.
@@ -27,7 +28,7 @@ export default class BoardList extends React.Component {
         {
           boardMembers.map(
             (member, index) => (
-              <div key={ member.name } className="row">
+              <div key={ member.name } className="row" styleName="board-member">
                 <img
                   src={ member.imgsrc }
                   width="200"
@@ -48,3 +49,5 @@ export default class BoardList extends React.Component {
     )
   }
 }
+
+export default CSSModules(BoardList, styles)
