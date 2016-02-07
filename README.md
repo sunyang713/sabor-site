@@ -28,10 +28,12 @@ This will run the webpack development server. Open `http://localhost:8080`.
 
 # Architecture
 
-## Core Technology
+### Core Technology
  - ECMAScript 2015 (ES6) syntax
  - React.js
 
+
+### Utilities and Modules
 The client is written primarily in *React.js*. Some additional utilities and modules:
  - react-fadethrough (made my me!!)
  - react-router (along with history)
@@ -42,13 +44,13 @@ The (pseudo) FLUX Architecture is managed with *Redux*. Additional utilities and
  - react-router-redux
  - redux-devtools
 
-A few standalone modules utilities and modules:
+A few standalone utilities and modules:
  - jquery
  - moment
  - immutable (used in isolation with the redux system, specifically the reducers, ideally soon to be deprecated)
 
 
-## Styling
+### Styling
 "I can throw in some styles rite quick at the end, easy." Never make the mistake of making styling an after-thought. Styling is just as, if not more, time-consuming as core implementation.
 
 *Stylus* is the chosen preprocessor. It's objectively better than Sass or Less.
