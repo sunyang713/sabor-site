@@ -1,38 +1,24 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Router, Route, IndexRoute, Redirect } from 'react-router';
-import createHistory from 'history/lib/createHashHistory'; // sketchy af
-let history = createHistory({ queryKey: false });
+import React from 'react'
+import { render } from 'react-dom'
+import createHistory from 'history/lib/createHashHistory'
+import { Provider } from 'react-redux'
+import configureStore from 'store/configureStore'
 
-/* Shell */
-import App from 'components/App';
+/* Global styles */
+import 'normalize.css'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'assets/css/custom.css'
 
-/* Pages */
-import FrontPage from 'components/FrontPage';
-import Team from 'components/Team';
-import Releve from 'components/Releve';
+import ROOT from 'containers/Root'
 
-
-
-
-// Routes for modals??
-const INDEX = (
-  <Router history={ history }>
-    <Route path="/" component={ App }>
-      <IndexRoute component={ FrontPage } />
-      <Route path="team" component={ Team } />
-      <Route path="releve" component={ Releve } />
-      <Redirect from="*" to="/" />
-    </Route>
-  </Router>
-);
-
-render(
-  INDEX,
-  document.getElementById('react-app')
-);
-
-
-
-
-
+if (__DEV__) {
+  const RedBox = require('redbox-react')
+  try {
+    render(ROOT, document.getElementById('root'))
+  } catch (e) {
+    render(<RedBox error={ e } />, document.getElementById('root'))
+  }
+} else {
+  React.render(ROOT, document.getElementById('root'))
+}
