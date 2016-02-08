@@ -1,7 +1,7 @@
-import Immutable from 'immutable'
 import { SET_LATEST_EVENT, SET_EXISTING } from 'actions/constants'
+import update from 'react-addons-update'
 
-const initialState = Immutable.Map({
+const initialState = {
   exists: false,
   title: '',
   imgsrc: '',
@@ -11,15 +11,15 @@ const initialState = Immutable.Map({
   place: '',
   link: '',
   description: ''
-})
+}
 
 // TODO specify what an 'EVENT' looks like....
 export default function events(state = initialState, action) {
   switch (action.type) {
   case SET_LATEST_EVENT:
-    return Immutable.fromJS(action.payload.event)
+    return action.payload.event
   case SET_EXISTING:
-    return state.set('exists', true)
+    return udpate(state, {exists: {$set: true}})
   default:
     return state
   }

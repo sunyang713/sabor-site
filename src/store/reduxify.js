@@ -16,7 +16,7 @@ export default function reduxify({ state, actions, component }) {
 
   // the component will subscribe to Redux store updates
   var mapStateToProps = (STATE) => ({
-    [state]: STATE[state].toJS()
+    [state]: STATE[state]
   })
 
   // the component will be provided actions
