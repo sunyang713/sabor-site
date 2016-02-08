@@ -42,7 +42,7 @@ class NavigationBar extends React.Component {
     return (
       <Navbar.Brand>
         <a href="" onClick={ this.handleClick('/home') }>
-          <div style={ imageStyle } styleName="image" />
+          { 'Sabor' }
         </a>
       </Navbar.Brand>
     )
@@ -55,8 +55,8 @@ class NavigationBar extends React.Component {
     const imageStyle = { backgroundImage: 'url(' + logo + ')' }
     return (
       <Navbar.Brand>
-        <a href="" onClick={ this.handleClick('/home') }>
-          <div style={ imageStyle } styleName="image responsive-brand" />
+        <a href="" onClick={ this.handleClick('/home') } styleName="responsive-brand">
+          { 'Sabor' }
         </a>
       </Navbar.Brand>
     )

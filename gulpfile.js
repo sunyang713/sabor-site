@@ -4,12 +4,14 @@ var path = require("path");
 var gulp = require("gulp");
 var gutil = require("gulp-util");
 var express = require("express");
+var browserSync = require("browser-sync").create();
 var webpack = require("webpack");
 var webpackStream = require("webpack-stream");
 var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpackHotMiddleware = require("webpack-hot-middleware");
-var webpackConfig = process.env.NODE_ENV === "development" ? require("./webpack.config.dev") : require("./webpack.config.prod");
-var browserSync = require("browser-sync").create();
+var webpackConfig = process.env.NODE_ENV === "production" ?
+  require("./webpack.config.prod")
+: require("./webpack.config.dev");
 
 
 // The development server (the recommended option for development)
@@ -109,6 +111,7 @@ gulp.task("browser-sync", function() {
     // keep the server alive or continue?
     // callback();
     console.log("Listening at http://localhost:8080");
+    console.log("Compiling ... Wait for 'bundle is VALID'");
   });
 });
 

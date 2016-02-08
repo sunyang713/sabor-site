@@ -17,7 +17,7 @@ class Highlights extends React.Component {
           push={ this.props.routeActions.push }
         />
         <Highlight
-          text={ 'Releve' }
+          text={ 'Relevé' }
           imgsrc={ releveImg }
           path={ 'releve' }
           push={ this.props.routeActions.push }

@@ -7,11 +7,12 @@ export default class Footer extends React.Component {
         <div className="container">
           <div className="pull-left">
             <p>
-              &copy;{ '2015 Sabor' }
+              &copy;
+              { ' 2016 Sabor ' }
               &middot;
-              <a href="https://www.facebook.com/cusabor">{ 'facebook' }</a>
+              <a href="https://www.facebook.com/cusabor">{ ' facebook ' }</a>
               &middot;
-              <a href="http://twitter.com/SaborTweets">{ 'twitter' }</a>
+              <a href="http://twitter.com/SaborTweets">{ ' twitter' }</a>
             </p>
           </div>
           <div className="pull-right">
