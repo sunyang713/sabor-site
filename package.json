@@ -28,7 +28,6 @@
     "bootstrap": "^3.3.6",
     "es6-promise": "^3.0.2",
     "history": "^1.17.0",
-    "immutable": "^3.7.6",
     "jquery": "^2.2.0",
     "moment": "^2.10.6",
     "normalize.css": "^3.0.3",

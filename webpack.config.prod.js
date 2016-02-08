@@ -21,10 +21,10 @@ module.exports = {
   entry: {
     commons: [
       "history",
-      "immutable",
       "jquery",
       "moment",
       "react",
+      "react-addons-update",
       "react-bootstrap",
       "react-dom",
       "react-redux",
