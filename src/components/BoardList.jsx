@@ -14,7 +14,7 @@ class BoardList extends React.Component {
     //      If image doesn't exist, will be substituted with placeholder.
     boardMembers.forEach((member) => {
       try {
-        member['imgsrc'] = require('assets/images/board-members/' + member.name + '.jpg')
+        member['imgsrc'] = require('assets/images/board-members/' + member.name)
       } catch (e) {
         member['imgsrc'] = require('assets/images/placeholder.png')
       }
