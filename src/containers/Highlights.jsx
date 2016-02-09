@@ -34,7 +34,7 @@ class Highlights extends React.Component {
 }
 
 export default reduxify({
-  component: Highlights,
+  container: Highlights,
   selector: 'none',
   actions: { routeActions }
 })

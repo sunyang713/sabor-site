@@ -3,24 +3,24 @@ import { connect } from 'react-redux'
 import apply from 'toolbox/apply'
 
 /**
- * Reduxifies a component.
+ * Reduxifies a container.
  *
  * @param selector  - The name of the desired selector. The selector
- *                    selects what part of the state is given to the component,
+ *                    selects what part of the state is given to the container,
  *                    which will then have read-access-only.
- * @param actions   - An array of actions, or a single actionset. The component will
+ * @param actions   - An array of actions, or a single actionset. The container will
  *                    be allowed to execute these actions.
- * @param component - The component to be connected.
- * @return the connected component
+ * @param container - The container to be connected.
+ * @return the connected container
  */
-export default function reduxify({ selector, actions, component }) {
+export default function reduxify({ selector, actions, container }) {
 
-  // the component will subscribe to Redux store updates
+  // the container will subscribe to Redux store updates
   var mapStateToProps = (state) => ({
     [selector]: state[selector]
   })
 
-  // the component will be provided actions
+  // the container will be provided actions
   if (actions)
     var mapDispatchToProps = (dispatch) => apply(
       actions,
@@ -30,6 +30,6 @@ export default function reduxify({ selector, actions, component }) {
   return connect(
     mapStateToProps,
     mapDispatchToProps
-  )(component)
+  )(container)
 
 }
