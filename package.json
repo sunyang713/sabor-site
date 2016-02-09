@@ -8,7 +8,7 @@
     "dev": "npm run dev:watch",
     "tests": "npm run test && npm run lint",
 
-    "deploy": "npm run test && npm run lint && npm run prod:build && sh ./deploy.sh",
+    "deploy": "npm run prod:build && sh ./deploy.sh",
 
     "dev:watch": "cross-env NODE_ENV=development npm run watch",
     "dev:build": "cross-env NODE_ENV=development npm run build",
