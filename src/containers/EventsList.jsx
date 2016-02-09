@@ -21,7 +21,7 @@ class EventsListContainer extends React.Component {
 }
 
 export default reduxify({
-  component: EventsListContainer,
+  container: EventsListContainer,
   selector: 'events',
   actions: { eventsActions, modalActions }
 })

@@ -22,7 +22,7 @@ class BlurbContainer extends React.Component {
 }
 
 export default reduxify({
-  component: BlurbContainer,
+  container: BlurbContainer,
   selector: 'blurb',
   actions: { blurbActions, routeActions }
 })

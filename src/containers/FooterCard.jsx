@@ -12,7 +12,7 @@ class FooterCardContainer extends React.Component {
 }
 
 export default reduxify({
-  component: FooterCardContainer,
+  container: FooterCardContainer,
   selector: 'none',
   actions: { routeActions }
 })
