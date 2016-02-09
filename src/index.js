@@ -1,14 +1,9 @@
+/* global __DEV__ */
 import React from 'react'
 import { render } from 'react-dom'
 import createHistory from 'history/lib/createHashHistory'
 import { Provider } from 'react-redux'
 import configureStore from 'store/configureStore'
-
-/* Global styles */
-import 'normalize.css'
-import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'assets/css/custom.css'
 
 import ROOT from 'containers/Root'
 
