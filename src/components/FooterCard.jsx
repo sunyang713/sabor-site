@@ -38,7 +38,7 @@ class FooterCard extends React.Component {
           </div>
           <div className="container section-description">
             <p>{ 'For all other questions or inquires, please e-mail us at' }</p>
-            <p><em>{ 'sabor_board (at) columbia (dot) edu' }</em></p>
+            <p><em>{ 'sabor (dot) board (atsign) columbia (dot) edu' }</em></p>
           </div>
         </div>
       </div>
