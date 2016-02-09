@@ -23,6 +23,6 @@ class BlurbContainer extends React.Component {
 
 export default reduxify({
   component: BlurbContainer,
-  state: 'blurb',
+  selector: 'blurb',
   actions: { blurbActions, routeActions }
 })

@@ -1,2 +1,1 @@
-import Immutable from 'immutable'
-export default (state = Immutable.Map({})) => state
+export default (state = {}) => state

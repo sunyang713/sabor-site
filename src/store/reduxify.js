@@ -5,18 +5,19 @@ import apply from 'toolbox/apply'
 /**
  * Reduxifies a component.
  *
- * @param state     - The name of the desired state. The component will
- *                    be given read-access to this state.
+ * @param selector  - The name of the desired selector. The selector
+ *                    selects what part of the state is given to the component,
+ *                    which will then have read-access-only.
  * @param actions   - An array of actions, or a single actionset. The component will
  *                    be allowed to execute these actions.
  * @param component - The component to be connected.
  * @return the connected component
  */
-export default function reduxify({ state, actions, component }) {
+export default function reduxify({ selector, actions, component }) {
 
   // the component will subscribe to Redux store updates
-  var mapStateToProps = (STATE) => ({
-    [state]: STATE[state].toJS()
+  var mapStateToProps = (state) => ({
+    [selector]: state[selector]
   })
 
   // the component will be provided actions

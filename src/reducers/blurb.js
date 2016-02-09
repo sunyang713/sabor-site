@@ -1,15 +1,15 @@
-import Immutable from 'immutable'
 import { SET_BLURB } from 'actions/constants'
+import update from 'react-addons-update'
 
-const initialState = Immutable.Map({
+const initialState = {
   text: ''
-})
+}
 
 // TODO specify what an 'EVENT' looks like....
 export default function events(state = initialState, action) {
   switch (action.type) {
   case SET_BLURB:
-    return state.set('text', action.payload.blurb)
+    return update(state, {text: {$set: action.payload.blurb}})
   default:
     return state
   }
