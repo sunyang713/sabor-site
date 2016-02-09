@@ -19,7 +19,7 @@ export default function events(state = initialState, action) {
   case SET_LATEST_EVENT:
     return action.payload.event
   case SET_EXISTING:
-    return udpate(state, {exists: {$set: true}})
+    return update(state, {exists: {$set: true}})
   default:
     return state
   }
