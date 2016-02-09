@@ -18,6 +18,6 @@ class NavbarContainer extends React.Component {
 
 export default reduxify({
   component: NavbarContainer,
-  state: 'none',
+  selector: 'none',
   actions: { routeActions }
 })

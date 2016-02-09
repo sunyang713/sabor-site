@@ -24,6 +24,6 @@ class DescriptionContainer extends React.Component {
 
 export default reduxify({
   component: DescriptionContainer,
-  state: 'description',
+  selector: 'description',
   actions: { descriptionActions, routeActions }
 })

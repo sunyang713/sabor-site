@@ -28,6 +28,6 @@ class LatestEventContainer extends React.Component {
 
 export default reduxify({
   component: LatestEventContainer,
-  state: 'latestEvent',
+  selector: 'latestEvent',
   actions: { latestEventActions }
 })
