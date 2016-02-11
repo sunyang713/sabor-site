@@ -21,7 +21,7 @@ export default function configureStore(history) {
 
   if (module.hot)
     module.hot.accept('reducers', () =>
-      store.replaceReducer(require('reducers')/*.default if you use Babel 6+ */)
+      store.replaceReducer(require('reducers').default)
     )
 
   return store
