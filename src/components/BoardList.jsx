@@ -29,13 +29,15 @@ class BoardList extends React.Component {
           boardMembers.map(
             (member, index) => (
               <div key={ member.name } className="row" styleName="board-member">
-                <img
-                  src={ member.imgsrc }
-                  width="200"
-                  height="200"
-                  className="col-md-3 img-responsive img-circle"
-                  alt={ member.name }
-                />
+                <div className="col-md-3">
+                  <img
+                    src={ member.imgsrc }
+                    width="150"
+                    height="150"
+                    className="img-circle"
+                    alt={ member.name }
+                  />
+                </div>
                 <div className="col-md-8 text-left">
                   <h3>{ member.name }</h3>
                   <p><strong>{ member.position }</strong></p>
