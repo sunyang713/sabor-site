@@ -16,7 +16,7 @@ export default class Footer extends React.Component {
             </p>
           </div>
           <div className="pull-right">
-            <a href="http://jonathansun.me">{ 'Site designed by Jonathan' }</a>
+            <a href="https://github.com/sunyang713/sabor-website">{ 'Site designed by Jonathan' }</a>
           </div>
         </div>
       </footer>
