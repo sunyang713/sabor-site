@@ -35,6 +35,9 @@ node_modules
 # Static build
 dist
 
+# Publish
+.publish
+
 # Cancer
 .DS_Store
 

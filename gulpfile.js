@@ -3,6 +3,7 @@
 var path = require("path");
 var gulp = require("gulp");
 var gutil = require("gulp-util");
+var gh_pages = require('gulp-gh-pages');
 var express = require("express");
 var browserSync = require("browser-sync").create();
 var webpack = require("webpack");
@@ -19,6 +20,11 @@ gulp.task("default", ["browser-sync"]);
 
 // Production build
 gulp.task("build", ["webpack:build"]);
+
+gulp.task("gh", ["webpack:build:gh"]);
+
+// Deploy to gh-pages
+gulp.task("deploy", ["git:deploy"]);
 
 /**
  * Build. One and done.
@@ -113,6 +119,29 @@ gulp.task("browser-sync", function() {
     console.log("Listening at http://localhost:8080");
     console.log("Compiling ... Wait for 'bundle is VALID'");
   });
+});
+
+/*
+ * Deployment.
+ */
+gulp.task("git:deploy", function() {
+  return gulp.src('./dist/**/*')
+    .pipe(gh_pages());
+});
+
+/**
+ * Build for gh-pages
+ */
+gulp.task("webpack:build:gh", function() {
+  return gulp.src("src/index.js")
+    .pipe(webpackStream(require("./webpack.config.gh"), null, function(err, stats) {
+      if (err) throw new gutil.PluginError("webpack:build:gh", err);
+      gutil.log("[webpack:build:gh]", stats.toString({
+        colors: true
+      }));
+      // callback();
+    }))
+    .pipe(gulp.dest("dist/"));
 });
 
 
