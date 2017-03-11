@@ -1,6 +1,9 @@
 import Vue from 'vue'
+import App from 'App'
+import router from 'router'
 
 new Vue({
   el: '#root',
-  render: h => h('div', ['hello world!'])
+  router,
+  render: h => h(App)
 })
