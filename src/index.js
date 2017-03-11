@@ -1,16 +1,9 @@
-/* global __DEV__ */
-import React from 'react'
-import { render } from 'react-dom'
+import Vue from 'vue'
+import App from 'App'
+import router from 'router'
 
-import ROOT from 'containers/Root'
-
-if (__DEV__) {
-  const RedBox = require('redbox-react')
-  try {
-    render(ROOT, document.getElementById('root'))
-  } catch (e) {
-    render(<RedBox error={ e } />, document.getElementById('root'))
-  }
-} else {
-  React.render(ROOT, document.getElementById('root'))
-}
+new Vue({
+  el: '#root',
+  router,
+  render: h => h(App)
+})
