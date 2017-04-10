@@ -49,4 +49,4 @@ deploy:
     branch: production
     condition: 
     - $NODE_ENV = "production"
-    - $PUBLIC_PATH = "/~jys2124/"
+    - $PUBLIC_PATH = "/cu/sabor/"
