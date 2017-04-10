@@ -15,6 +15,12 @@ const TeamPage = resolve => {
   })
 }
 
+const NewsletterSubscriptionPage = resolve => {
+  require.ensure(['pages/NewsletterSubscription'], () => {
+    resolve(require('pages/NewsletterSubscription'))
+  })
+}
+
 const NotFoundPage = resolve => {
   require.ensure(['pages/NotFound'], () => {
     resolve(require('pages/NotFound'))
@@ -24,6 +30,7 @@ const NotFoundPage = resolve => {
 export const routes = [
   { path: '/', name: 'Home', component: HomePage, showInNav: true },
   { path: '/team', name: 'Team', component: TeamPage, showInNav: true },
+  { path: '/subscribe', name: 'Newsletter Subscription', component: NewsletterSubscriptionPage, showInNav: false },
   { path: '*', component: NotFoundPage, showInNav: true }
 ]
 
