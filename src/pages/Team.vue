@@ -43,7 +43,7 @@
               <i class="fa fa-2x fa-fw fa-quote-left align-middle" aria-hidden="true"></i><span class="align-middle">{{ quote.text }}</span><i class="fa fa-2x fa-fw fa-quote-right align-middle" aria-hidden="true"></i>
             </p><!-- /.h4 -->
             <footer class="blockquote-footer text-white">
-              {{ quote.name }}
+              {{ quote.name }},
               <cite :title="quote.name">{{ quote.source }}</cite>
             </footer>
           </blockquote><!-- /.blockquote -->
@@ -60,7 +60,6 @@
         <li v-for="member in roster"
           :key="member.name"
           :class="{
-            'font-weight-bold': member.quote === quote.text,
             'fade-on-hover': member.quote
           }"
           :title="member.flavor"
