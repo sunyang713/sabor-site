@@ -1,47 +1,116 @@
 <template>
   <div>
-    <navbar></navbar>
+
+    <!-- NAVBAR
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <nav class="navbar navbar-light navbar-toggleable-md bg-faded">
+      <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand font-weight-bold" href="/">Sabor</a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <router-link v-for="route in routes" v-if="route.showInNav"
+              tag="li"
+              :key="route.path"
+              :to="route.path"
+              :exact="route.path === '/'"
+              class="nav-item">
+              <a class="nav-link">{{ route.name }}</a>
+            </router-link>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- PAGE VIEW
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <router-view></router-view>
-    <sabor-footer></sabor-footer>
+
+
+    <!-- FOOTER
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <footer class="footer bg-inverse text-white py-5">
+      <div class="container">
+        <div class="copyright py-4">
+          <div class="float-md-left">
+            <p>&copy; Copyright 2017 Sabor. All Rights Reserved.</p>
+          </div>
+          <div class="float-md-right">
+            <a href="https://www.facebook.com/cusabor">
+              <i class="fa fa-lg fa-fw fade-on-hover fa-facebook"></i>
+            </a>
+            <a href="https://twitter.com/sabortweets">
+              <i class="fa fa-lg fa-fw fade-on-hover fa-twitter"></i>
+            </a>
+            <a href="https://instagram.com/cusabor">
+              <i class="fa fa-lg fa-fw fade-on-hover fa-instagram "></i>
+            </a>
+            <a href="https://github.com/sunyang713/sabor-website">
+              <i class="fa fa-lg fa-fw fade-on-hover fa-github"></i>
+            </a>
+            <span>Created by <a href="https://www.linkedin.com/in/jonathansun0/">Jonathan Sun</a></span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
   </div>
 </template>
 
 <script>
-import Navbar from 'components/Navbar'
-import SaborFooter from 'components/Footer'
+import { routes } from 'router'
 
 export default {
-  components: {
-    Navbar,
-    SaborFooter
+  data () {
+    return {
+      routes
+    }
   }
 }
+
 </script>
 
 <style>
 
 /* GLOBAL STYLES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-
 html {
   position: relative;
   min-height: 100%;
-  font-size: 14px;
 }
 
-@media (min-width: 576px) {
+@media (max-width: 576px) {
   html {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
 body {
   /* Margin bottom by footer height */
-  /*margin-bottom: 60px;*/
+  margin-bottom: 160px;
 }
 
-.sabor-formatted-text {
+@media (max-width: 768px) {
+  body {
+    /* Margin bottom by footer height */
+    margin-bottom: 203px;
+  }
+}
+
+
+.formatted-text {
   white-space: pre-wrap;
+}
+
+.parallax-image {
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-color: transparent;
+  height: 20rem;
 }
 
 .btn-transparent {
@@ -54,6 +123,16 @@ body {
   color: inherit;
   filter: invert(15%);
 }
+
+.fade-on-hover {
+  opacity: 1;
+  transition: opacity .25s ease-in-out;
+}
+
+.fade-on-hover:hover {
+  opacity: 0.5;
+}
+
 
 /* Make the bootstrap display headings smaller for smaller screens */
 @media (max-width: 991px) {
@@ -73,11 +152,50 @@ body {
 
 /* Vuejs css fade transition */
 .v-fade-enter-active, .v-fade-leave-active {
-  transition: opacity 1s
+  transition: opacity 1s;
 }
 .v-fade-enter, .v-fade-leave-to {
-  opacity: 0
+  opacity: 0;
 }
 
+/* Vuejs css fade transition */
+.v-fade-overlay-enter-active, .v-fade-overlay-leave-active {
+  transition: opacity 2s;
+}
+.v-fade-overlay-enter, .v-fade-overlay-leave-to {
+  opacity: 0;
+  position: absolute; /* YESSS!!! */
+}
+
+/* NAVBAR
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Un-constrict the sides of the navbar in smaller screens */
+@media (max-width: 576px) {
+  .navbar .container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+
+/* FOOTER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  /*height: 60px;*/
+}
+
+.footer .copyright {
+  /* for when there's links to add above */
+  /*border-top: .05rem solid #e5e5e5;*/
+}
+
+.footer a {
+  color: white;
+}
 
 </style>

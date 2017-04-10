@@ -1,7 +1,8 @@
-const { resolve } = require('path')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+var { resolve } = require('path')
+var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   context: resolve('src'),
@@ -10,15 +11,15 @@ module.exports = {
       'vue',
       'vue-router',
       'es6-promise',
-      'whatwg-fetch'
+      'whatwg-fetch',
+      'moment'
     ],
     main: '.'
   },
   output: {
     filename: 'js/[name].bundle.js?[chunkhash:5]',
     path: resolve('dist'),
-    pathinfo: process.env.NODE_ENV !== 'production',
-    publicPath: process.env.PUBLIC_PATH ? process.env.PUBLIC_PATH : '/'
+    publicPath: process.env.PUBLIC_PATH
   },
   module: {
     rules: [{
@@ -31,7 +32,10 @@ module.exports = {
       options: {
         loaders: {
           css: ExtractTextPlugin.extract({
-            use: 'css-loader',
+            use: {
+              loader: 'css-loader',
+              options: { url: false }
+            },
             fallback: 'vue-style-loader'
           })
         }
@@ -49,16 +53,18 @@ module.exports = {
     modules: [ 'src', 'node_modules' ]
   },
   plugins: [
+    new CopyWebpackPlugin([{
+      from: resolve('assets')
+    }]),
     new HtmlWebpackPlugin({
-      template: resolve('src', 'assets', 'template.ejs'),
+      template: resolve('compiler', 'template.ejs'),
       test: 'lol'
     }),
     new ExtractTextPlugin('css/[name].css?[chunkhash:5]'),
+    new webpack.EnvironmentPlugin(JSON.parse(process.env.npm_config_secret)),
     new webpack.DefinePlugin({
-      'process.env.FB_ACCESS_TOKEN': JSON.stringify(
-        process.env.FB_ACCESS_TOKEN || process.env.npm_package_config_FB_ACCESS_TOKEN
-      ),
-      'process.env.PUBLIC_PATH': process.env.PUBLIC_PATH && JSON.stringify(process.env.PUBLIC_PATH)
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.PUBLIC_PATH': JSON.stringify(process.env.PUBLIC_PATH)
     }),
     new webpack.ProvidePlugin({
       // Shim fetch & Promise
@@ -68,6 +74,7 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: 'js/[name].bundle.js?[chunkhash:5]'
-    })
+    }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]), // saves ~100k from build
   ]
 }

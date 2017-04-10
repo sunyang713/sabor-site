@@ -3,7 +3,9 @@ var baseConfig = require('./webpack.config.base')
 
 module.exports = Object.assign(baseConfig, {
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    overlay: true,
+    stats: 'minimal'
   },
-  devtool: 'inline-source-map'
+  devtool: 'source-map'
 })

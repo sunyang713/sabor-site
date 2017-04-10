@@ -45,6 +45,6 @@ dist
 # Mac OSX
 .DS_Store
 
-# npm package.json
-package.json
+# .npmrc - secrets
+.npmrc
 
