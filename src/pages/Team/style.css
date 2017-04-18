@@ -1,0 +1,62 @@
+
+/* TEAM PAGE
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.hero {
+  background-image: url('./images/hero-background.jpg');
+  background-size: cover;
+  background-position: center center;
+}
+
+/* BOARD
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.board .card {
+  height: 40rem;
+}
+
+.board .card-img {
+  object-fit: cover;
+}
+
+.board .card-img-overlay {
+  opacity: 0;
+  background-color: transparent;
+  transition: background .25s, opacity .25s ease-in-out;
+}
+
+.board .card:hover .card-img-overlay {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* QUOTE
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.quote {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* ROSTER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.roster .list-unstyled {
+  columns: 3;
+}
+
+.roster .member {
+  color: black;
+}
+
+.roster .fade-on-hover:hover {
+  cursor: pointer;
+}
+
+/* JOIN
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.join {
+  background-image: url('./images/join-background.jpg');
+  background-size: cover;
+}

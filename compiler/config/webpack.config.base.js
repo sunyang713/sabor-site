@@ -6,16 +6,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   context: resolve('src'),
-  entry: {
-    vendor: [
-      'vue',
-      'vue-router',
-      'es6-promise',
-      'whatwg-fetch',
-      'moment'
-    ],
-    main: '.'
-  },
+  entry: '.',
   output: {
     filename: 'js/[name].bundle.js?[chunkhash:5]',
     path: resolve('dist'),
@@ -32,11 +23,9 @@ module.exports = {
       options: {
         loaders: {
           css: ExtractTextPlugin.extract({
-            use: {
-              loader: 'css-loader',
-              options: { url: false }
-            },
-            fallback: 'vue-style-loader'
+            fallback: 'vue-style-loader',
+            use: 'css-loader',
+            publicPath: '../' // fuck you sokra https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27
           })
         }
       }
@@ -44,7 +33,7 @@ module.exports = {
       test: /\.(gif|png|jpe?g|svg)$/i,
       loader: 'file-loader',
       options: {
-        name: 'assets/[name].[ext]?[hash:5]'
+        name: 'images/[name].[ext]?[hash:5]'
       }
     }]
   },
@@ -53,14 +42,6 @@ module.exports = {
     modules: [ 'src', 'node_modules' ]
   },
   plugins: [
-    new CopyWebpackPlugin([{
-      from: resolve('assets')
-    }]),
-    new HtmlWebpackPlugin({
-      template: resolve('compiler', 'template.ejs'),
-      test: 'lol'
-    }),
-    new ExtractTextPlugin('css/[name].css?[chunkhash:5]'),
     new webpack.EnvironmentPlugin(JSON.parse(process.env.npm_config_secret)),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
@@ -71,10 +52,24 @@ module.exports = {
       Promise: 'es6-promise',
       fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
     }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/), // saves ~100k from build
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: 'js/[name].bundle.js?[chunkhash:5]'
+      minChunks: module => module.context && module.context.indexOf('node_modules') !== -1
     }),
-    new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]), // saves ~100k from build
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest'
+    }),
+    new ExtractTextPlugin({
+      filename: 'css/[name].css?[contenthash:5]',
+      allChunks: true // https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/120
+    }),
+    new HtmlWebpackPlugin({
+      template: resolve('compiler', 'template.ejs'),
+      test: 'lol'
+    }),
+    new CopyWebpackPlugin([{
+      from: resolve('assets')
+    }])
   ]
 }

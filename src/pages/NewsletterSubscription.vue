@@ -45,7 +45,7 @@
             </div><!-- /.form-group .col-md -->
           </div><!-- /.row -->
           <div class="form-group">
-            <button type="button" class="btn btn-info" @click="subscribe">Subscribe!</button>
+            <button type="button" class="btn btn-info">Subscribe!</button>
             <transition name="v-fade">
               <small
                 v-if="newsletterSubscriptionHelpMessage"

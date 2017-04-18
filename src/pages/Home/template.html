@@ -1,0 +1,188 @@
+<div id="home-page">
+
+  <!-- HERO
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="hero">
+    <transition name="v-fade-overlay">
+      <img class="hero-img" :src="heroImage" :key="heroImageIndex">
+    </transition>
+    <img class="logo" src="./images/logo.png">
+  </div><!-- /.hero -->
+
+  <!-- BLURB
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <section class="section blurb">
+    <div class="container text-center">
+      <p class="lead">{{ blurb }}</p>
+    </div><!-- /.container-->
+  </section><!-- /.blurb -->
+
+  <!-- DANCE STYLES
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <section class="section dance-styles">
+    <div class="container text-white">
+      <h1 class="display-4 text-center">Sabor's Styles</h1>
+      <hr class="my-4">
+      <div class="row mb-md-5">
+        <div class="col-md-4 px-md-4">
+          <h2 class="font-weight-normal"><i class="sprite sprite-salsa"></i>Salsa</h2>
+          <p class="text-white">Where our technical talent shines brightest. Stylish and fun.</p>
+        </div><!-- /.col-md-4 -->
+        <div class="col-md-4 px-md-4">
+          <h2 class="font-weight-normal"><i class="sprite sprite-bachata"></i>Bachata</h2>
+          <p class="text-white">Where our sensuality unfurls and exposes itself. Sexy and sensitive.</p>
+        </div><!-- /.col-md-4 -->
+        <div class="col-md-4 px-md-4">
+          <h2 class="font-weight-normal"><i class="sprite sprite-merengue"></i>Merengue</h2>
+          <p class="text-white">Where our pace picks up and our energy heats up. Exciting and spicy.</p>
+        </div><!-- /.col-md-4 -->
+      </div><!-- /.row -->
+      <div class="row mb-md-5">
+        <div class="col-md-4 px-md-4">
+          <h2 class="font-weight-normal"><i class="sprite sprite-dancehall"></i>Dancehall</h2>
+          <p>Where our bodies tell you what we want in the dark. Fierce and hot.</p>
+        </div><!-- /.col-md-4 -->
+        <div class="col-md-4 px-md-4">
+          <h2 class="font-weight-normal"><i class="sprite sprite-afro-cuban"></i>Afro-Cuban</h2>
+          <p>Where our past meets our future. Authentic and precise.</p>
+        </div><!-- /.col-md-4 -->
+        <div class="col-md-4 px-md-4">
+          <h2 class="font-weight-normal"><i class="sprite sprite-more"></i>...and much more</h2>
+          <p>Our skills include Caribbean, African, and other relatives of Latin dance.</p>
+        </div><!-- /.col-md-4 -->
+      </div><!-- /.row -->
+      <router-link to="dance-styles">Come and learn more about our dances &rsaquo;</router-link>
+    </div><!-- /.container -->
+  </section><!-- /.dance-styles -->
+
+  <!-- LATEST EVENT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <section class="section event" v-if="event">
+    <div class="container">
+      <div class="card">
+        <div class="card-header text-center" v-if="event.isNew">New!</div>
+          <div class="card-img-overlay-wrapper">
+            <img class="card-img-top" :src="event.image" alt="Event image">
+            <div class="card-img-overlay">
+              <h4 class="card-title display-4">{{ event.name }}</h4>
+            </div><!-- /.card-img-overlay -->
+          </div><!-- /.card-img-overlay-wrapper -->
+        <div class="card-block">
+          <h5 class="font-weight-normal">{{ event.startDate }}, {{ event.startTime }}&nbsp;&ndash; {{ event.endTime }}</h5>
+          <h5 class="font-weight-normal"><a :href="event.locationLink">{{ event.location }}</a></h5>
+          <hr class="my-3">
+          <p class="card-text formatted-text text-justify">{{ event.description }}</p>
+          <div class="text-center">
+            <a class="btn btn-info" :href="event.link">Learn more</a>
+            <router-link class="btn btn-secondary" to="/events">More events</router-link>
+          </div><!-- .text-center -->
+        </div><!-- /.card-block -->
+        <div class="card-footer text-muted text-center">
+          {{ event.relativeTimeMessage }}
+        </div><!-- /.card-footer -->
+      </div><!-- /.card -->
+    </div><!-- /.container -->
+  </section><!-- /.event -->
+
+  <!-- LATEST POSTS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <section class="section posts" v-if="posts">
+    <div class="container text-center">
+      <h1 class="display-4 text-center">Latest from Sabor</h1>
+      <hr class="my-4">
+      <div class="row">
+        <div class="col-md" v-for="post in posts" :key="post.url">
+          <div class="card text-left mb-4">
+            <img class="card-img-top" :src="post.image" :alt="post.image">
+            <div class="card-block">
+              <p class="formatted-text">{{ post.description }}</p>
+              <a class="btn btn-secondary" :href="post.url" role="button">View &raquo;</a>
+            </div><!-- /.card-block -->
+            <div class="card-footer">
+              <small class="text-muted">{{ post.time }}</small>
+            </div><!-- /.card-footer -->
+          </div><!-- /.card -->
+        </div><!-- /.col-md -->
+      </div><!-- /.row -->
+      <router-link to="media">Check out more recent media here &rsaquo;</router-link>
+    </div><!-- /.container -->
+  </section><!-- /.media -->
+
+  <!-- RELEVE
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <section class="section releve bg-warning text-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-7 text-center text-md-left">
+          <h2>Relevé &middot; Our award-winning outreach</h2>
+          <p>Every spring, we host a three-day program for underserved but ambitious high school students. We provide workshops in both the performing arts and college admissions amidst a weekend of dancing.</p>
+          <router-link class="btn btn-transparent" to="releve">Learn more or apply for Relevé &rsaquo;</router-link>
+        </div><!-- /.col-md-7 -->
+        <div class="col-md-5">
+          <img class="img-fluid" src="./images/kings-crown-award.png">
+        </div><!-- /.col-md-5 -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </section><!-- /.dance-styles -->
+
+  <!-- NEWSLETTER SUBSCRIPTION
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <section class="section newsletter-subscription bg-info">
+    <div class="container">
+      <div class="card">
+        <div class="card-block py-5">
+          <h4 class="card-title display-4 text-center">Want a taste?</h4>
+          <h6 class="card-subtitle text-muted text-center">Subscribe to our newsletter. No spam, promised.</h6>
+          <hr class="my-4">
+          <form method="POST" action="https://lists.columbia.edu/mailman/subscribe/saborgbody">
+            <div class="row">
+              <div class="form-group col-md">
+                <label class="sr-only" for="newsletter-subscription-input-name">Name</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-user-o fa-fw"></i>
+                  </div><!-- /.input-group-addon -->
+                  <input class="form-control"
+                    id="newsletter-subscription-input-name"
+                    name="fullname"
+                    type="text"
+                    placeholder="Name"
+                    aria-describedby="newsletter-subscription-help-message"
+                    @focus="newsletterSubscriptionHelpMessage = 'Optional.'"
+                    @blur="newsletterSubscriptionHelpMessage = null">
+                </div><!-- /.input-group -->
+              </div><!-- /.form-group .col -->
+              <div class="form-group col-md">
+                <label class="sr-only" for="newsletter-subscription-input-email">Email Address</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-envelope-o fa-fw"></i>
+                  </div><!-- /.input-group-addon -->
+                  <input class="form-control"
+                    id="newsletter-subscription-input-email"
+                    name="email"
+                    type="email"
+                    placeholder="Email Address"
+                    aria-describedby="newsletter-subscription-help-message"
+                    @focus="newsletterSubscriptionHelpMessage = 'Required. We\'ll never share your email with anyone else.'"
+                    @blur="newsletterSubscriptionHelpMessage = null">
+                </div><!-- /.input-group -->
+              </div><!-- /.form-group .col-md -->
+            </div><!-- /.row -->
+            <div class="form-group">
+              <button class="btn btn-info" type="submit">Subscribe!</button>
+              <transition name="v-fade">
+                <small class="form-text text-muted"
+                  id="newsletter-subscription-help-message"
+                  v-if="newsletterSubscriptionHelpMessage">
+                  {{ newsletterSubscriptionHelpMessage }}
+                </small>
+              </transition>
+            </div><!-- /.form-group .text-left -->
+          </form><!-- /form -->
+        </div><!-- /.card-block -->
+      </div><!-- /.card -->
+    </div><!-- /.container -->
+  </section><!-- /.newsletter-subscription -->
+
+</div><!-- /#home-page -->

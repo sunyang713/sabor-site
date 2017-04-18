@@ -1,0 +1,91 @@
+<div id="team-page">
+
+  <!-- HERO
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <section class="hero jumbotron">
+    <div class="container">
+      <h1 class="display-1">Meet the Sa-familia</h1>
+      <p class="lead font-italic">Un grupo unido jamás será vencido Sabor</p>
+    </div><!-- /.container -->
+  </section><!-- /.hero -->
+
+  <!-- BOARD
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <section class="board container mb-4" v-if="boardMembers">
+    <h1>The Board</h1>
+    <hr>
+    <div class="row no-gutters">
+      <div class="col-6 col-sm-4 col-md-3"
+        v-for="member in boardMembers"
+        :key="member.name">
+        <div class="card card-inverse mb-1 p-0">
+          <img class="card-img h-100"
+            :src="member.picture || require('./images/placeholder.png')"
+            :alt="`${ member.name } picture`">
+          <transition name="v-fade">
+            <div class="card-img-overlay">
+              <h4 class="card-title">{{ member.name }}</h4>
+              <h6 class="card-subtitle mb-2">{{ member.boardPosition }}</h6>
+              <p class="card-text">{{ member.year }}</p>
+            </div>
+          </transition>
+        </div><!-- /.card -->
+      </div><!-- /.col-md-3 -->
+    </div><!-- /.row -->
+  </section><!-- /.board -->
+
+  <!-- PARALLAX IMAGE
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="parallax-image" :style="`background-image: url('${ teamPicture }')`"></div>
+
+  <!-- QUOTE
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <section class="quote bg-info mb-5 py-5">
+    <div class="container">
+      <transition name="v-fade-overlay">
+        <blockquote class="blockquote text-white" :key="quote.name">
+          <p class="h4 font-weight-normal">
+            <i class="fa fa-2x fa-fw fa-quote-left align-middle" aria-hidden="true"></i><span class="align-middle">{{ quote.text }}</span><i class="fa fa-2x fa-fw fa-quote-right align-middle" aria-hidden="true"></i>
+          </p><!-- /.h4 -->
+          <footer class="blockquote-footer text-white">
+            {{ quote.name }},
+            <cite :title="quote.name">{{ quote.source }}</cite>
+          </footer>
+        </blockquote><!-- /.blockquote -->
+      </transition>
+    </div><!-- /.container -->
+  </section><!-- /.quote -->
+
+  <!-- ROSTER
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <section class="roster container my-5" v-if="roster">
+    <h1>Full Roster</h1>
+    <hr>
+    <ul class="list-unstyled">
+      <li class="member"
+        v-for="member in roster"
+        :key="member.name"
+        :title="member.flavor"
+        :class="{ 'fade-on-hover': member.quote }"
+        @click="setQuote(member, true)">
+        {{ member.name }}
+      </li>
+    </ul>
+  </section>
+
+  <!-- JOIN
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <section class="join">
+    <div class="container py-5">
+      <div class="card text-center">
+        <div class="card-block my-5">
+          <h4 class="card-title display-4 my-3">What flavor are you?</h4>
+          <h6 class="card-subtitle text-muted my-3">We’re committed to our family and our dance, and we're always looking for new talent.</h6>
+          <router-link class="btn btn-lg btn-danger my-3" to="/join">Join the family &rsaquo;</router-link>
+        </div><!-- /.card-block -->
+      </div><!-- /.card -->
+    </div><!-- /.container -->
+    <p class="sr-only">what flavor r u? find out how join</p>
+  </section><!-- /.join -->
+
+</div>
