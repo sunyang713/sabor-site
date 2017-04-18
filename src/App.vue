@@ -164,7 +164,7 @@ body {
 }
 .v-fade-overlay-enter, .v-fade-overlay-leave-to {
   opacity: 0;
-  position: absolute; /* YESSS!!! */
+  position: absolute;
 }
 
 /* NAVBAR
