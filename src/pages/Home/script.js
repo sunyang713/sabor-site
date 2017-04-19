@@ -20,13 +20,19 @@ export default {
   computed: {
     heroImage () {
       return require(`./images/hero-${ this.heroImageIndex }.jpg`)
+    },
+    nextHeroImage () {
+      const nextIndex = this.heroImageIndex + 1 < NUM_HERO_PIX ?
+        this.heroImageIndex + 1
+      : 1
+      return require(`./images/hero-${ nextIndex }.jpg`)
     }
   }, // end 'computed'
 
   /*
    * Instructions to execute when this component mounts on the DOM (i.e. when loaded for user).
    */
-  mounted () {
+  created () {
     // TODO handle errors
     /* Initialize fade-flowing hero images */
     this.intervalId = setInterval(() => {
