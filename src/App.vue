@@ -8,7 +8,7 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand font-weight-bold">Sabor</a>
+        <router-link class="navbar-brand font-weight-bold" to="/">Sabor</router-link>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ml-auto">
             <router-link v-for="route in routes" v-if="route.showInNav"
@@ -166,6 +166,7 @@ body {
   opacity: 0;
   position: absolute;
 }
+
 
 /* NAVBAR
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

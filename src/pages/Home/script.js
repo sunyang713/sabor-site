@@ -75,10 +75,10 @@ export default {
       fields: 'permalink_url,message,created_time,full_picture,attachments.limit(1){media}',
       limit: '3'
     }, response => {
-      this.posts = response.data.map(post => (post.message && {
+      this.posts = response.data.map(post => ({
         title: moment(post.created_time).fromNow(),
         time: moment(post.created_time).calendar(),
-        description: post.message,
+        description: post.message || 'Sabor!',
         image: post.full_picture,
         url: post.permalink_url
       }))
