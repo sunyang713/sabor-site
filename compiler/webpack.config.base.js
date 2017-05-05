@@ -11,7 +11,7 @@ module.exports = env => ({
   context: resolve('src'),
   entry: '.',
   output: {
-    filename: 'js/[name].js?[chunkhash]',
+    filename: 'js/[name].[chunkhash].js',
     path: process.env.BUILD_PATH && resolve(process.env.BUILD_PATH),
     publicPath: process.env.PUBLIC_PATH
   },
@@ -35,7 +35,7 @@ module.exports = env => ({
     }, {
       test: /\.(gif|png|jpe?g|svg)$/i,
       loader: 'file-loader',
-      options: { name: 'images/[name].[ext]?[hash]' }
+      options: { name: 'images/[hash].[ext]' }
     }]
   },
   resolve: {
@@ -92,7 +92,6 @@ module.exports = env => ({
     new HtmlPlugin({
       filename: '404.html',
       template: resolve('compiler', 'template.ejs'),
-      ghpages: true,
       inject: false
     }),
 
@@ -100,7 +99,7 @@ module.exports = env => ({
     new ChunkHashPlugin(),
 
     new ExtractTextPlugin({
-      filename: 'css/[name].css?[contenthash]',
+      filename: 'css/[name].[contenthash].css',
       allChunks: true // https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/120
     }),
 
