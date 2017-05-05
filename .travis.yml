@@ -11,42 +11,44 @@ cache:
   - node_modules
 
 env:
-- NODE_ENV="development"
-- NODE_ENV="production" PUBLIC_PATH="/cu/sabor/"
-- NODE_ENV="production" PUBLIC_PATH="/sabor-website/"
+  global:
+  - BUILD_PATH=dist
+  - secure: pQQgGUTlOTWbgRHkgiPFBDfwHpGlYm+IKMEsBo2P3K5gFEVHqCXVJyYZuPQZhaN6kjfA9baxz4OEDCH9xqDTg2oSydN0o9z3f5ImqY4jQhBB4VvWHEBshkMqpgJSDDNyB/s+t4PZVVUi2uJQxxxRuatKLMcfb9RPsv9GRuJVRVhgYTUDx0WNjV/gSd9GX/AMlUgPFt36YmwyXNHGEnKxu4dbUYe/FFDnmmQGkpgScHwQvwhTBEzbM0VmkfhaM0ADU5GqMEBSj2v8fFg5WSiQAZTkLK32RW20M4eCumSqLqM+67MYSvVEhoCA/7mTwL/K5UyMjh/dAfMg4FHsl2UAczEvGmKWyTGxRlrEuMj6dYfCFjUr6zLS5hsSm/G/YuWiaXcbrLH2qypRog7gZCAlrdTFT+2pGnFjuepFELgIDb5CZVXcCtTwlRIpPmK5MwNKpl2LPKxUd4fP7cuRBhenV2oGZMGi2BvN3n/jpLAfcY1nP5YjLU/IDEcDY1U3/uiteE45POJABGNK9lEWgRi+gFg+UbSy4OV79LSyv8ZxoR7hNd325KG3OV4hWT6Kh7CkCK9ImOJwuaDMkQ+N8YDJiajDjNffpL5ychuSDa+caEi9kICLt4WsXEh41z1L01NlkIOzRv4Vq8x2qNqN+j1/dVXaWDNAkDfztx1U+Jv22AI=
+  matrix:
+  - ENV=development
+  - ENV=staging NODE_ENV=production PUBLIC_PATH=/sabor-website/
+  - ENV=production NODE_ENV=production PUBLIC_PATH=/cu/sabor/
 
 addons:
   ssh_known_hosts:
-  - cunix.cc.columbia.edu
+  - "$DEPLOY_HOST"
+
+before_script:
+- openssl aes-256-cbc -k $password -in .npmrc.enc -out .npmrc -d
 
 script:
 - npm run build
 
 before_deploy:
-- openssl aes-256-cbc -K $encrypted_75ef2f069074_key -iv $encrypted_75ef2f069074_iv
-  -in cunix_deploy_key.enc -out /tmp/cunix_deploy_key -d
+- openssl aes-256-cbc -k $password -in deploy_key.enc -out deploy_key -d
 - eval "$(ssh-agent -s)"
-- chmod 400 /tmp/cunix_deploy_key
-- ssh-add /tmp/cunix_deploy_key
+- chmod 400 deploy_key
+- ssh-add deploy_key
 
 deploy:
-
 - provider: pages
-  local_dir: dist
+  local_dir: "$BUILD_PATH"
   skip_cleanup: true
   github_token: "$GITHUB_TOKEN"
   on:
     branch: master
-    condition: 
-    - $NODE_ENV = "production"
-    - $PUBLIC_PATH = "/sabor-website/"
-
+    condition:
+    - "$ENV = staging"
 - provider: script
   skip_cleanup: true
   script:
-  - rsync -r --delete-after dist/* $CUNIX_USER@cunix.cc.columbia.edu:/www/data/cu/sabor
+  - rsync -r --delete-after $BUILD_PATH $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
   on:
     branch: production
-    condition: 
-    - $NODE_ENV = "production"
-    - $PUBLIC_PATH = "/cu/sabor/"
+    condition:
+    - "$ENV = production"

@@ -1,7 +1,10 @@
-const webpack = require('webpack')
+var webpackMerge = require('webpack-merge')
+var baseConfig = require('./webpack.config.base')
 
-const webpackConfig = process.env.NODE_ENV === 'production' ?
-  require('./config/webpack.config.prod')
-: require('./config/webpack.config.devo')
-
-export default webpack(webpackConfig)
+module.exports = env => {
+  env = JSON.parse(env)
+  return webpackMerge.smart(baseConfig(env), process.env.NODE_ENV === 'production' ?
+    require('./webpack.config.prod')
+  : require('./webpack.config.dev')
+  )
+}
