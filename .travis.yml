@@ -13,37 +13,36 @@ cache:
 env:
   global:
   - BUILD_PATH=dist
-  - secure: pQQgGUTlOTWbgRHkgiPFBDfwHpGlYm+IKMEsBo2P3K5gFEVHqCXVJyYZuPQZhaN6kjfA9baxz4OEDCH9xqDTg2oSydN0o9z3f5ImqY4jQhBB4VvWHEBshkMqpgJSDDNyB/s+t4PZVVUi2uJQxxxRuatKLMcfb9RPsv9GRuJVRVhgYTUDx0WNjV/gSd9GX/AMlUgPFt36YmwyXNHGEnKxu4dbUYe/FFDnmmQGkpgScHwQvwhTBEzbM0VmkfhaM0ADU5GqMEBSj2v8fFg5WSiQAZTkLK32RW20M4eCumSqLqM+67MYSvVEhoCA/7mTwL/K5UyMjh/dAfMg4FHsl2UAczEvGmKWyTGxRlrEuMj6dYfCFjUr6zLS5hsSm/G/YuWiaXcbrLH2qypRog7gZCAlrdTFT+2pGnFjuepFELgIDb5CZVXcCtTwlRIpPmK5MwNKpl2LPKxUd4fP7cuRBhenV2oGZMGi2BvN3n/jpLAfcY1nP5YjLU/IDEcDY1U3/uiteE45POJABGNK9lEWgRi+gFg+UbSy4OV79LSyv8ZxoR7hNd325KG3OV4hWT6Kh7CkCK9ImOJwuaDMkQ+N8YDJiajDjNffpL5ychuSDa+caEi9kICLt4WsXEh41z1L01NlkIOzRv4Vq8x2qNqN+j1/dVXaWDNAkDfztx1U+Jv22AI=
   matrix:
-  - ENV=development
-  - ENV=staging NODE_ENV=production PUBLIC_PATH=/sabor-website/
-  - ENV=production NODE_ENV=production PUBLIC_PATH=/cu/sabor/
+  -
+  - NODE_ENV=production PUBLIC_PATH=/sabor-website/
+  - NODE_ENV=production PUBLIC_PATH=/cu/sabor/
 
 addons:
   ssh_known_hosts:
   - "$DEPLOY_HOST"
 
 before_script:
-- openssl aes-256-cbc -k $password -in .npmrc.enc -out .npmrc -d
+- openssl aes-256-cbc -k $ENCRYPTION_KEY -in .npmrc.enc -out .npmrc -d
 
 script:
 - npm run build
 
 before_deploy:
-- openssl aes-256-cbc -k $password -in deploy_key.enc -out deploy_key -d
+- openssl aes-256-cbc -k $ENCRYPTION_KEY -in deploy_key.enc -out deploy_key -d
 - eval "$(ssh-agent -s)"
 - chmod 400 deploy_key
 - ssh-add deploy_key
 
 deploy:
 - provider: pages
-  local_dir: "$BUILD_PATH"
+  local_dir: $BUILD_PATH
   skip_cleanup: true
-  github_token: "$GITHUB_TOKEN"
+  github_token: $GITHUB_TOKEN
   on:
     branch: master
     condition:
-    - "$ENV = staging"
+    - $ENV = staging
 - provider: script
   skip_cleanup: true
   script:
@@ -51,4 +50,4 @@ deploy:
   on:
     branch: production
     condition:
-    - "$ENV = production"
+    - $ENV = production
