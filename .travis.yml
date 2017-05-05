@@ -14,13 +14,13 @@ env:
   global:
   - BUILD_PATH=dist
   matrix:
-  -
-  - NODE_ENV=production PUBLIC_PATH=/sabor-website/
-  - NODE_ENV=production PUBLIC_PATH=/cu/sabor/
+  - ENV=development
+  - ENV=staging NODE_ENV=production PUBLIC_PATH=/sabor-website/
+  - ENV=production NODE_ENV=production PUBLIC_PATH=/cu/sabor/
 
 addons:
   ssh_known_hosts:
-  - "$DEPLOY_HOST"
+  - $DEPLOY_HOST
 
 before_script:
 - openssl aes-256-cbc -k $ENCRYPTION_KEY -in .npmrc.enc -out .npmrc -d
