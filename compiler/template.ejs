@@ -1,3 +1,9 @@
+<% if (htmlWebpackPlugin.options.ghpages) { %>
+---
+permalink: /404.html
+---
+<% } %>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -26,10 +32,16 @@
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 		<script src="https://use.fontawesome.com/4e0ae692f8.js"></script>
 
+		<!-- Custom CSS
+		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<% for (var css of htmlWebpackPlugin.files.css) { %>
+		<link rel="stylesheet" href="<%= css %>">
+		<% } %>
+
 	</head>
 	<body>
 
-		<!-- Primary Page Layout
+		<!-- Application mount node
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 		<div id="root" style="height: 100vh; display: flex; align-items: center;">
 			<div style="width: 100%; text-align: center;">
@@ -37,13 +49,19 @@
 			</div>
 		</div>
 
-		<!-- Webpack Manifest
+		<!-- Runtime Manifest
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-		<%= htmlWebpackPlugin.files.webpackManifest %>
+		<%= htmlWebpackPlugin.files.webpackRuntimeManifest %>
 
-		<!-- Webpack Chunk Manifest
+		<!-- Chunk Manifest
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 		<%= htmlWebpackPlugin.files.webpackChunkManifest %>
+
+		<!-- Application scripts
+		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+		<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+		<% } %>
 
 	</body>
 </html>

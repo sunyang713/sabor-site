@@ -1,17 +1,17 @@
 var { resolve } = require('path')
 var webpack = require('webpack')
-var WebpackChunkHash = require('webpack-chunk-hash')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
-var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin')
-var CopyWebpackPlugin = require('copy-webpack-plugin')
+var ChunkHashPlugin = require('webpack-chunk-hash')
+var HtmlPlugin = require('html-webpack-plugin')
+var RuntimeManifestHtmlPlugin = require('inline-manifest-webpack-plugin')
+var ChunkManifestHtmlPlugin = require('chunk-manifest-webpack-plugin')
+var CopyAssetsPlugin = require('copy-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = env => ({
   context: resolve('src'),
   entry: '.',
   output: {
-    filename: 'js/[name].bundle.js?[chunkhash]',
+    filename: 'js/[name].js?[chunkhash]',
     path: process.env.BUILD_PATH && resolve(process.env.BUILD_PATH),
     publicPath: process.env.PUBLIC_PATH
   },
@@ -45,7 +45,10 @@ module.exports = env => ({
   plugins: [
 
     // Inject environment variables.
-    new webpack.EnvironmentPlugin(['NODE_ENV', 'PUBLIC_PATH']),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: null,
+      PUBLIC_PATH: null
+    }),
 
     // Inject application variables.
     new webpack.EnvironmentPlugin(env),
@@ -68,36 +71,48 @@ module.exports = env => ({
       minChunks: Infinity
     }),
 
-    // Inline the webpack runtime manifest into the HTML
-    new InlineManifestWebpackPlugin(),
+    // Export the webpack runtime manifest.
+    new RuntimeManifestHtmlPlugin({
+      name: 'webpackRuntimeManifest'
+    }),
 
-    // Export a chunk manifest.
-    new ChunkManifestPlugin({
-      filename: 'chunk-manifest.json',
+    // Export the webpack chunk manifest.
+    new ChunkManifestHtmlPlugin({
       manifestVariable: 'webpackChunkManifest',
       inlineManifest: true
     }),
 
-    new HtmlWebpackPlugin({
+    new HtmlPlugin({
       template: resolve('compiler', 'template.ejs'),
-      chunksSortMode: 'dependency',
-      production: process.env.NODE_ENV === 'production'
+      production: process.env.NODE_ENV === 'production',
+      inject: false
+    }),
+
+    // for gh-pages
+    new HtmlPlugin({
+      filename: '404.html',
+      template: resolve('compiler', 'template.ejs'),
+      ghpages: true,
+      inject: false
     }),
 
     // Replace the standard webpack chunkhash with md5.
-    new WebpackChunkHash(),
+    new ChunkHashPlugin(),
 
     new ExtractTextPlugin({
       filename: 'css/[name].css?[contenthash]',
       allChunks: true // https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/120
     }),
 
-    new CopyWebpackPlugin([{
+    new CopyAssetsPlugin([{
       from: resolve('assets')
     }]),
 
     // Ignore extraneous locales from moment - saves ~100k from build
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
-  ]
+  ],
+  // no seriously fuck you. https://github.com/webpack/webpack/issues/1593#issuecomment-154418231
+  // https://github.com/webpack/webpack/issues/1315
+  // recordsPath: resolve(process.env.BUILD_PATH, 'records.json')
 })
