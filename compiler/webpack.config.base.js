@@ -1,6 +1,9 @@
 var { resolve } = require('path')
 var webpack = require('webpack')
+var WebpackChunkHash = require('webpack-chunk-hash')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
+var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
@@ -65,11 +68,24 @@ module.exports = env => ({
       minChunks: Infinity
     }),
 
+    // Inline the webpack runtime manifest into the HTML
+    new InlineManifestWebpackPlugin(),
+
+    // Export a chunk manifest.
+    new ChunkManifestPlugin({
+      filename: 'chunk-manifest.json',
+      manifestVariable: 'webpackChunkManifest',
+      inlineManifest: true
+    }),
+
     new HtmlWebpackPlugin({
       template: resolve('compiler', 'template.ejs'),
       chunksSortMode: 'dependency',
       production: process.env.NODE_ENV === 'production'
     }),
+
+    // Replace the standard webpack chunkhash with md5.
+    new WebpackChunkHash(),
 
     new ExtractTextPlugin({
       filename: 'css/[name].css?[contenthash]',
