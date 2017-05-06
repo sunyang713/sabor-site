@@ -22,7 +22,7 @@ export default {
       return require(`./images/hero-${ this.heroImageIndex }.jpg`)
     },
     nextHeroImage () {
-      const nextIndex = this.heroImageIndex + 1 < NUM_HERO_PIX ?
+      const nextIndex = this.heroImageIndex < NUM_HERO_PIX ?
         this.heroImageIndex + 1
       : 1
       return require(`./images/hero-${ nextIndex }.jpg`)
