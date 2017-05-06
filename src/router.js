@@ -3,30 +3,15 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const HomePage = resolve => require.ensure(
-  ['pages/Home'],
-  () => resolve(require('pages/Home'))
-)
+const HomePage = resolve => require(['pages/Home'], resolve)
 
-const TeamPage = resolve => require.ensure(
-  ['pages/Team'],
-  () => resolve(require('pages/Team'))
-)
+const TeamPage = resolve => require(['pages/Team'], resolve)
 
-const MediaPage = resolve => require.ensure(
-  ['pages/Media'],
-  () => resolve(require('pages/Media'))
-)
+const MediaPage = resolve => require(['pages/Media'], resolve)
 
-const NewsletterSubscriptionPage = resolve => require.ensure(
-  ['pages/NewsletterSubscription'],
-  () => resolve(require('pages/NewsletterSubscription'))
-)
+const NewsletterSubscriptionPage = resolve => require(['pages/NewsletterSubscription'], resolve)
 
-const NotFoundPage = resolve => require.ensure(
-  ['pages/NotFound'],
-  () => resolve(require('pages/NotFound'))
-)
+const NotFoundPage = resolve => require(['pages/NotFound'], resolve)
 
 export const routes = [
   { path: '/', name: 'Home', component: HomePage, showInNav: true },
