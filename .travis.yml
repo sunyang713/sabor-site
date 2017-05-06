@@ -6,9 +6,9 @@ language: node_js
 node_js:
 - node
 
-cache:
-  directories:
-  - node_modules
+addons:
+  ssh_known_hosts:
+  - $DEPLOY_HOST
 
 env:
   global:
@@ -18,9 +18,9 @@ env:
   - ENV=staging NODE_ENV=production PUBLIC_PATH=/sabor-website/
   - ENV=production NODE_ENV=production PUBLIC_PATH=/cu/sabor/
 
-addons:
-  ssh_known_hosts:
-  - $DEPLOY_HOST
+cache:
+  directories:
+  - node_modules
 
 before_script:
 - openssl aes-256-cbc -k $ENCRYPTION_KEY -in .npmrc.enc -out .npmrc -d
@@ -29,6 +29,7 @@ script:
 - npm run build
 
 before_deploy:
+- ssh-keyscan -t $TRAVIS_SSH_KEY_TYPES -H $DEPLOY_HOST 2>&1 | tee -a $HOME/.ssh/known_hosts
 - openssl aes-256-cbc -k $ENCRYPTION_KEY -in deploy_key.enc -out deploy_key -d
 - eval "$(ssh-agent -s)"
 - chmod 400 deploy_key
@@ -46,7 +47,7 @@ deploy:
 - provider: script
   skip_cleanup: true
   script:
-  - rsync -r --delete-after $BUILD_PATH $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+  - rsync -r --delete-after $BUILD_PATH/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
   on:
     branch: production
     condition:
