@@ -1,0 +1,24 @@
+team page
+ - everyone needs a quote in the google sheets
+
+about/contact page
+ - pull long description from fb
+ - twitter, fb, youtube, insta, snapchat, etc.
+
+join page
+ - description of general audition process, what to expect
+ - tips on what to focus on
+ - provide links to columbia clubs, vids, downtown clubs to learn dancing
+
+dance styles page
+ - longer descriptions of dance styles.
+
+Releve
+ - extended info, photos, schedule, pdf download?
+ - ideally an online form that will send an email, but probs not.
+ - detailed instructions on the essay questions and where to email applications.
+
+
+
+General:
+ - switch from bootstrap to a css-only framework like bulma. its bad to have both jquery and vue messing with the DOM.
