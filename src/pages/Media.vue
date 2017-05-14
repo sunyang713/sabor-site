@@ -112,10 +112,6 @@ export default {
   background-color: #fff;
 }
 
-.jumbotron p:last-child {
-  margin-bottom: 0;
-}
-
 .jumbotron-heading {
   font-weight: 300;
 }
