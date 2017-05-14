@@ -49,6 +49,6 @@ deploy:
   script:
   - rsync -r --delete-after $BUILD_PATH/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
   on:
-    branch: production
+    branch: master
     condition:
     - $ENV = production
