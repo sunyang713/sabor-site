@@ -15,9 +15,9 @@
     <div class="album text-muted">
       <div class="container">
 
-        <div class="card-columns">
+        <div class="card-columns" v-for="pictureSet in pictures" :key="JSON.stringify(pictureSet)">
           <div class="card"
-            v-for="picture in pictures"
+            v-for="picture in pictureSet"
             :key="picture.id">
             <a :href="picture.url">
               <img class="card-img-top img-fluid" :src="picture.src" :alt="picture.title">
@@ -45,7 +45,7 @@ import fbapi from 'utils/fbapi'
 export default {
   data () {
     return {
-      pictures: null,
+      pictures: [],
       nextUrl: null
     }
   }, // end 'data()'
@@ -61,8 +61,9 @@ export default {
         response => response.json()
       ).then(
         response => {
+          var pics = []
           response.data.forEach(picture => {
-            this.pictures.push({
+            pics.push({
               title: picture.name,
               time: moment(picture.created_time).calendar(),
               description: moment(picture.created_time).calendar(),
@@ -70,6 +71,7 @@ export default {
               url: `https://www.facebook.com/${ picture.id }`
             })
           })
+          this.pictures.push(pics)
           this.nextUrl = response.paging.next
         }
       )
@@ -82,14 +84,14 @@ export default {
       fields: 'id,created_time,name,source',
       limit: '9'
     }, response => {
-      this.pictures = response.data.map(picture => ({
+      var pics = response.data.map(picture => ({
         title: picture.name,
         time: moment(picture.created_time).calendar(),
         description: moment(picture.created_time).calendar(),
         src: picture.source,
         url: `https://www.facebook.com/${ picture.id }`
       }))
-
+      this.pictures.push(pics)
       this.nextUrl = response.paging.next
     })
 
@@ -131,6 +133,11 @@ export default {
 
 .album .btn:hover {
   cursor: pointer;
+}
+
+.album .card-columns + .card-columns {
+  border-top: .05rem solid #e5e5e5;
+  padding-top: 1.1rem;
 }
 
 </style>
