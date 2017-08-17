@@ -77,10 +77,10 @@ module.exports = env => ({
     }),
 
     // Export the webpack chunk manifest.
-    new ChunkManifestHtmlPlugin({
-      manifestVariable: 'webpackChunkManifest',
-      inlineManifest: true
-    }),
+    // new ChunkManifestHtmlPlugin({
+    //   manifestVariable: 'webpackChunkManifest',
+    //   inlineManifest: true
+    // }),
 
     // Generate the index.html document
     new HtmlPlugin({
