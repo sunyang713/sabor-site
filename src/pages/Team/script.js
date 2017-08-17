@@ -1,4 +1,4 @@
-import Member from 'classes/Member'
+import Member from './Member'
 import fbapi from 'utils/fbapi'
 import gSheetsApi from 'utils/gSheetsApi'
 import getRandomInteger from 'utils/getRandomInteger'
