@@ -82,13 +82,13 @@ module.exports = env => ({
       inlineManifest: true
     }),
 
+    // Generate the index.html document
     new HtmlPlugin({
       template: resolve('compiler', 'template.ejs'),
-      production: process.env.NODE_ENV === 'production',
       inject: false
     }),
 
-    // for gh-pages
+    // Hack for gh-pages
     new HtmlPlugin({
       filename: '404.html',
       template: resolve('compiler', 'template.ejs'),
@@ -98,6 +98,7 @@ module.exports = env => ({
     // Replace the standard webpack chunkhash with md5.
     new ChunkHashPlugin(),
 
+    // Extract CSS to stylesheet file.
     new ExtractTextPlugin({
       filename: 'css/[name].[contenthash].css',
       allChunks: true // https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/120
@@ -107,10 +108,10 @@ module.exports = env => ({
       from: resolve('assets')
     }]),
 
-    // Ignore extraneous locales from moment - saves ~100k from build
+    // Ignore extraneous locales from moment. Saves ~100k from build.
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
-  ],
+  ]
   // no seriously fuck you. https://github.com/webpack/webpack/issues/1593#issuecomment-154418231
   // https://github.com/webpack/webpack/issues/1315
   // recordsPath: resolve(process.env.BUILD_PATH, 'records.json')

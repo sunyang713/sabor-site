@@ -8,7 +8,6 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     overlay: true,
-    stats: 'minimal',
     hot: true
   },
   devtool: 'cheap-module-eval-source-map',
