@@ -1,5 +1,8 @@
 import jsonToQueryString from 'utils/jsonToQueryString'
 
+/*
+ * For Facebook Graph API
+ */
 export default function fbapi (path, queryParams, callback) {
   return fetch(
     `https://graph.facebook.com/v2.8/${ path }?${ jsonToQueryString(queryParams) }&access_token=${ process.env.FACEBOOK_ACCESS_TOKEN }`,

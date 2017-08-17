@@ -1,3 +1,6 @@
+/*
+ * Returns a random integer within a given range.
+ */
 export default function getRandomInteger(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
