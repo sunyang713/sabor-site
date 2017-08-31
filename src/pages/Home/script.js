@@ -48,25 +48,22 @@ export default {
       this.blurb = response.about
     })
 
-    /* Get the most recent event. */
+    /* Get the closest future event. Otherwise, get the most recent event. */
     fbapi('cusabor/events', {
       fields: 'id,name,description,start_time,end_time,place,cover',
-      limit: '1'
+      since: 'today'
     }, response => {
-      const event = response.data[0]
-      this.event = {
-        name: event.name,
-        description: event.description,
-        link: `https://www.facebook.com/${ event.id }`,
-        image: event.cover.source,
-        location: event.place.name,
-        locationLink: `https://www.google.com/maps/place/${ event.place.name }`,
-        startDate: moment(event.start_time).format('dddd, MMM Do'),
-        startTime: moment(event.start_time).format('h:mma'),
-        endDate: moment(event.end_time).format('dddd, MMM Do'),
-        endTime: moment(event.end_time).format('h:mma'),
-        relativeTimeMessage: moment(event.start_time).fromNow(),
-        isNew: new Date(event.start_time) - new Date() > 0
+      const eventData = response.data[response.data.length - 1]
+      if (eventData) {
+        this.setEventFromFacebookData(eventData)
+      } else {
+        fbapi('cusabor/events', {
+          fields: 'id,name,description,start_time,end_time,place,cover',
+          limit: '1'
+        }, response => {
+          const eventData = response.data[response.data.length - 1]
+          this.setEventFromFacebookData(eventData)
+        })
       }
     })
 
@@ -88,6 +85,25 @@ export default {
 
   beforeDestroy() {
     clearInterval(this.intervalId)
-  } // end 'beforeDestroy()'
+  }, // end 'beforeDestroy()'
+
+  methods: {
+    setEventFromFacebookData(eventData) {
+      this.event = {
+        name: eventData.name,
+        description: eventData.description,
+        link: `https://www.facebook.com/${ eventData.id }`,
+        image: eventData.cover.source,
+        location: eventData.place.name,
+        locationLink: `https://www.google.com/maps/place/${ eventData.place.name }`,
+        startDate: moment(eventData.start_time).format('dddd, MMM Do'),
+        startTime: moment(eventData.start_time).format('h:mma'),
+        endDate: moment(eventData.end_time).format('dddd, MMM Do'),
+        endTime: moment(eventData.end_time).format('h:mma'),
+        relativeTimeMessage: moment(eventData.start_time).fromNow(),
+        isNew: moment(eventData.start_time) - moment() > 0
+      }
+    }
+  }
 
 } // end 'export'
