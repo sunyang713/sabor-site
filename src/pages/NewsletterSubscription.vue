@@ -1,61 +1,60 @@
 <template>
   <div id="newsletter-subscription-page">
-    <section class="newsletter-subscription py-5">
+    <section class="newsletter-subscription bg-info py-5">
       <div class="container">
-        <h4 class="display-1 text-center">Want a taste?</h4>
-        <h6 class="text-muted text-center">Subscribe to our newsletter. No spam, promised.</h6>
-        <hr class="my-4">
-        <form action="https://lists.columbia.edu/mailman/subscribe/saborgbody" method="POST">
-          <div class="row">
-            <div class="form-group col-md">
-              <label for="newsletter-subscription-input-name" class="sr-only">Name</label>
-              <div class="input-group">
-                <div class="input-group-addon">
-                  <i class="fa fa-user-o fa-fw"></i>
-                </div><!-- /.input-group-addon -->
-                <input
-                  v-model="name"
-                  id="newsletter-subscription-input-name"
-                  name="fullname"
-                  type="text"
-                  class="form-control"
-                  aria-describedby="newsletter-subscription-help-message"
-                  placeholder="Name"
-                  @focus="newsletterSubscriptionHelpMessage = 'Optional.'"
-                  @blur="newsletterSubscriptionHelpMessage = null">
-              </div><!-- /.input-group -->
-            </div><!-- /.form-group .col -->
-            <div class="form-group col-md">
-              <label for="newsletter-subscription-input-email" class="sr-only">Email Address</label>
-              <div class="input-group">
-                <div class="input-group-addon">
-                  <i class="fa fa-envelope-o fa-fw"></i>
-                </div><!-- /.input-group-addon -->
-                <input
-                  v-model="email"
-                  id="newsletter-subscription-input-email"
-                  name="email"
-                  type="email"
-                  class="form-control"
-                  aria-describedby="newsletter-subscription-help-message"
-                  placeholder="Email Address"
-                  @focus="newsletterSubscriptionHelpMessage = 'Required. We\'ll never share your email with anyone else.'"
-                  @blur="newsletterSubscriptionHelpMessage = null">
-              </div><!-- /.input-group -->
-            </div><!-- /.form-group .col-md -->
-          </div><!-- /.row -->
-          <div class="form-group">
-            <button type="button" class="btn btn-info">Subscribe!</button>
-            <transition name="v-fade">
-              <small
-                v-if="newsletterSubscriptionHelpMessage"
-                id="newsletter-subscription-help-message"
-                class="form-text text-muted">
-                {{ newsletterSubscriptionHelpMessage }}
-              </small>
-            </transition>
-          </div><!-- /.form-group .text-left -->
-        </form><!-- /form -->
+        <div class="card">
+          <div class="card-block py-5">
+            <h4 class="card-title display-4 text-center">Want a taste?</h4>
+            <h6 class="card-subtitle text-muted text-center">Subscribe to our newsletter. No spam, promised.</h6>
+            <hr class="my-4">
+            <form method="POST" action="https://lists.columbia.edu/mailman/subscribe/saborgbody">
+              <div class="row">
+                <div class="form-group col-md">
+                  <label class="sr-only" for="newsletter-subscription-input-name">Name</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-user-o fa-fw"></i>
+                    </div><!-- /.input-group-addon -->
+                    <input class="form-control"
+                      id="newsletter-subscription-input-name"
+                      name="fullname"
+                      type="text"
+                      placeholder="Name"
+                      aria-describedby="newsletter-subscription-help-message"
+                      @focus="newsletterSubscriptionHelpMessage = 'Optional.'"
+                      @blur="newsletterSubscriptionHelpMessage = null">
+                  </div><!-- /.input-group -->
+                </div><!-- /.form-group .col -->
+                <div class="form-group col-md">
+                  <label class="sr-only" for="newsletter-subscription-input-email">Email Address</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-envelope-o fa-fw"></i>
+                    </div><!-- /.input-group-addon -->
+                    <input class="form-control"
+                      id="newsletter-subscription-input-email"
+                      name="email"
+                      type="email"
+                      placeholder="Email Address"
+                      aria-describedby="newsletter-subscription-help-message"
+                      @focus="newsletterSubscriptionHelpMessage = 'Required. We\'ll never share your email with anyone else.'"
+                      @blur="newsletterSubscriptionHelpMessage = null">
+                  </div><!-- /.input-group -->
+                </div><!-- /.form-group .col-md -->
+              </div><!-- /.row -->
+              <div class="form-group">
+                <button class="btn btn-info" type="submit">Subscribe!</button>
+                <transition name="v-fade">
+                  <small class="form-text text-muted"
+                    id="newsletter-subscription-help-message"
+                    v-if="newsletterSubscriptionHelpMessage">
+                    {{ newsletterSubscriptionHelpMessage }}
+                  </small>
+                </transition>
+              </div><!-- /.form-group .text-left -->
+            </form><!-- /form -->
+          </div><!-- /.card-block -->
+        </div><!-- /.card -->
       </div><!-- /.container -->
     </section><!-- /.newsletter-subscription -->
   </div><!-- /#newsletter-subscription-page -->
@@ -74,7 +73,20 @@ export default {
 </script>
 
 <style scoped>
-.newsletter-subscription .container {
-  max-width: 60rem;
+
+/* NEWSLETTER SUBSCRIPTION
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@media (min-width: 768px) {
+  .newsletter-subscription .container {
+    max-width: 50rem;
+  }
+
+  .newsletter-subscription .card-block {
+    width: 40rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
+
 </style>
