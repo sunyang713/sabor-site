@@ -1,4 +1,5 @@
 import Member from './Member'
+import legends from './legends'
 import fbapi from 'utils/fbapi'
 import gSheetsApi from 'utils/gSheetsApi'
 import getRandomInteger from 'utils/getRandomInteger'
@@ -9,6 +10,7 @@ export default {
 
   data () {
     return {
+      legends,
       boardMembers: null,
       roster: null,
       quotedMembers: null,

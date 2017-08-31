@@ -70,11 +70,11 @@
         @click="setQuote(member, true)">
         {{ member.name }}
       </li>
-      <!-- <li>Domingo</li> -->
-      <!-- <li>Mingo</li> -->
-      <!-- <li>The Admiral</li> -->
-      <!-- <li>The Big D</li> -->
-      <!-- <li>Mingo</li> -->
+      <li class="sr-only"
+        v-for="legend in legends"
+        :key="legend">
+        {{ legend }}
+      </li>
     </ul>
   </section>
 
