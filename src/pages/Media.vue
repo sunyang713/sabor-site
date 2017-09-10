@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="media-page">
     <section class="jumbotron text-center">
       <div class="container">
         <h1 class="jumbotron-heading">Sabor in Action</h1>

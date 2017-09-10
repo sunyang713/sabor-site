@@ -18,7 +18,8 @@ Releve
  - ideally an online form that will send an email, but probs not.
  - detailed instructions on the essay questions and where to email applications.
 
-
+Newsletter Subscription
+ - Handle our own success page
 
 General:
  - switch from bootstrap to a css-only framework like bulma. its bad to have both jquery and vue messing with the DOM.
