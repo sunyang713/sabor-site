@@ -10,7 +10,7 @@ module.exports = {
     overlay: true,
     hot: true
   },
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
