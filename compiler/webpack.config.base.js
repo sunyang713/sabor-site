@@ -28,7 +28,7 @@ module.exports = env => ({
           css: ExtractTextPlugin.extract({
             use: 'css-loader',
             fallback: 'vue-style-loader',
-            publicPath: '../' // fuck you sokra https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27
+            publicPath: '../' // https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27
           })
         }
       }
@@ -112,7 +112,7 @@ module.exports = env => ({
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
   ]
-  // no seriously fuck you. https://github.com/webpack/webpack/issues/1593#issuecomment-154418231
+  // https://github.com/webpack/webpack/issues/1593#issuecomment-154418231
   // https://github.com/webpack/webpack/issues/1315
   // recordsPath: resolve(process.env.BUILD_PATH, 'records.json')
 })
